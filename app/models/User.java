@@ -33,6 +33,8 @@ public class User extends  Model{
 
     public Long[] coordinates;
 
+    public int area; //reach
+
     @ManyToMany
     public ArrayList<Category> skills;
 

@@ -22,10 +22,14 @@ public class Help extends  Model{
 
     public Long[] coordinates;
 
+    public Date creatingDate;
+
+    public Date closingDate;
+
     public ArrayList<Date> dates;
 
     @ManyToOne
-    public Category cathegory;
+    public Category category;
 
     @ManyToOne
     @Constraints.Required
@@ -33,4 +37,6 @@ public class Help extends  Model{
 
     @ManyToOne
     public User helpie;
+
+    public boolean done = false;
 }
