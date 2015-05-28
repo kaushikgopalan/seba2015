@@ -1,7 +1,7 @@
 package models;
 
 /**
- * Created by Alexx on 28.05.2015.
+ * Created by DIRRIS on 25.05.2015.
  */
 public class User {
 
@@ -15,5 +15,4 @@ public class User {
     private int[] skills;
     private int plan;
     private int countOfJobsPerMonth;
-
 }
