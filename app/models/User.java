@@ -1,18 +1,47 @@
 package models;
 
+import javax.persistence.*;
+
+import play.data.validation.Constraints;
+import play.db.ebean.Model;
+
+import java.util.ArrayList;
+
 /**
  * Created by DIRRIS on 25.05.2015.
  */
-public class User {
+@Entity
+public class User extends  Model{
 
-    private String login;
-    private String id;
-    private long hashPass;
-    private String firstName;
-    private String lastName;
-    private String description;
-    private Long[] coordinates;
-    private int[] skills;
-    private int plan;
-    private int countOfJobsPerMonth;
+    @Id
+    @GeneratedValue
+    public int id;
+
+    @Constraints.Required
+    public String login;
+
+    @Constraints.Required
+    public long hashPass;
+
+    @Constraints.Required
+    public String firstName;
+
+    @Constraints.Required
+    public String lastName;
+
+    public String description;
+
+    public Long[] coordinates;
+
+    @ManyToMany
+    public ArrayList<Category> skills;
+
+    @Constraints.Required
+    public int plan;
+
+    public int countOfJobsPerMonth;
+
+    public User(){
+        countOfJobsPerMonth = 0;
+    }
 }
