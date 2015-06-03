@@ -14,10 +14,6 @@ import java.util.ArrayList;
 public class User extends  Model{
 
     @Id
-    @GeneratedValue
-    public int id;
-
-    @Constraints.Required
     public String login;
 
     @Constraints.Required
@@ -29,10 +25,16 @@ public class User extends  Model{
     @Constraints.Required
     public String lastName;
 
+    @Column
     public String description;
 
-    public Long[] coordinates;
+    @Column
+    public long latitude;
 
+    @Column
+    public long longitude;
+
+    @Column
     public int area; //reach
 
     @ManyToMany
@@ -41,6 +43,7 @@ public class User extends  Model{
     @Constraints.Required
     public int plan;
 
+    @Column
     public int countOfJobsPerMonth;
 
     public User(){

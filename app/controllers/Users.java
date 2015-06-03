@@ -13,6 +13,21 @@ import views.html.*;
  */
 public class Users extends Controller{
 
+    public static Result testDB(){
+        User user = new User();
+        user.area = 10;
+        user.login = "login";
+        user.hashPass = 123;
+        user.firstName ="user";
+        user.lastName ="test";
+        user.countOfJobsPerMonth = 0;
+        user.plan = 0;
+        user.description = "yahoo";
+        user.save();
+
+        return ok("test done");
+    }
+
     public static Result signUp(){
 
         Form<User> form = Form.form(User.class).bindFromRequest();
