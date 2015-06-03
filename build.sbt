@@ -12,12 +12,8 @@ libraryDependencies ++= Seq(
   cache ,
   javaWs,
   "org.webjars" %% "webjars-play" % "2.3.0-2",
-<<<<<<< HEAD
   "com.googlecode.json-simple" % "json-simple" % "1.1.1",
   "org.webjars" % "bootstrap" % "3.3.4",
-=======
-  "org.webjars" % "bootstrap" % "3.1.1-2",
->>>>>>> 4ade564... database settings
   "org.webjars" % "flat-ui" % "bcaf2de95e"
 )
 
