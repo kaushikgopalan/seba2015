@@ -32,4 +32,6 @@ public class Note extends Model{
 
     @OneToOne
     public User helpie;
+
+    public static Finder<String, Note> find = new Finder<String, Note>(String.class, Note.class);
 }
