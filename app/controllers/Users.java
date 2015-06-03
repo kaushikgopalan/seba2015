@@ -1,6 +1,9 @@
 package controllers;
 
+import models.Help;
 import models.User;
+import play.data.DynamicForm;
+import play.data.Form;
 import play.mvc.Controller;
 import play.mvc.Result;
 import views.html.*;
@@ -12,21 +15,33 @@ public class Users extends Controller{
 
     public static Result signUp(){
 
-        //TODO
+        Form<User> form = Form.form(User.class).bindFromRequest();
+        User user = form.get();
+        user.save();
 
         return ok();
     }
 
     public static Result signIn(){
 
-        //TODO
+        DynamicForm requestData = Form.form().bindFromRequest();
+        String sLogin = requestData.get("login");
+        String sPass = requestData.get("password");
+        User user = User.find.where().eq("login", sLogin).findUnique();
+        if(user.hashPass==Long.parseLong(sPass)){
+            return ok();
+        }
 
-        return ok();
+        return badRequest();
     }
 
-    public static Result changePlan(User user, int plan){
+    public static Result changePlan(){
 
-        user.plan = plan;
+        DynamicForm requestData = Form.form().bindFromRequest();
+        String sLogin = requestData.get("login");
+        String sPlan = requestData.get("plan");
+        User user = User.find.where().eq("login", sLogin).findUnique();
+        user.plan = Integer.parseInt(sPlan);
         return ok();
     }
 }

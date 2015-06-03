@@ -25,4 +25,6 @@ public class Category extends Model{
     @ManyToOne
     public Category parent;
 
+    public static Finder<String, Category> find = new Finder<String, Category>(String.class, Category.class);
+
 }

@@ -2,8 +2,12 @@ package controllers;
 
 import models.Note;
 import models.User;
+import play.data.Form;
+import play.libs.Json;
 import play.mvc.Controller;
 import play.mvc.Result;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,12 +17,28 @@ import java.util.List;
  */
 public class Ranking extends Controller{
 
-    public static Result getAllAsHelpieforUser(User user){
+    public static Result getAllFirHelpie(){
 
-        //TODO
+        Form<User> form = Form.form(User.class).bindFromRequest();
+        User user = form.get();
         List<Note> ranking = Note.find.where().eq("helpie", user).findList();
 
-        //JSONArray
+        return ok(Json.toJson(ranking));
+    }
+
+    public static Result getAllForOwner(){
+        Form<User> form = Form.form(User.class).bindFromRequest();
+        User user = form.get();
+        List<Note> ranking = Note.find.where().eq("owner", user).findList();
+
+        return ok(Json.toJson(ranking));
+    }
+
+    public static Result newNote(){
+        Form<Note> form = Form.form(Note.class).bindFromRequest();
+        Note note = form.get();
+        note.save();
+
         return ok();
     }
 

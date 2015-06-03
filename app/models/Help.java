@@ -39,4 +39,6 @@ public class Help extends  Model{
     public User helpie;
 
     public boolean done = false;
+
+    public static Finder<String, Help> find = new Finder<String, Help>(String.class, Help.class);
 }
