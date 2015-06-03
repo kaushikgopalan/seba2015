@@ -50,7 +50,7 @@ public class Helps extends Controller{
 
     public static Result getHelpsForHelpie(User helpie){
 
-        //TODO
+        //TODO.
         return ok();
     }
 }
