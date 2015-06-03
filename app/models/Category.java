@@ -4,14 +4,12 @@ import play.data.validation.Constraints;
 import play.db.ebean.Model;
 
 import javax.annotation.Generated;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 
 /**
  * Created by Alexx on 28.05.2015.
  */
+
 @Entity
 public class Category extends Model{
 

@@ -10,6 +10,7 @@ import java.util.Date;
 /**
  * Created by Alexx on 28.05.2015.
  */
+
 @Entity
 public class Help extends  Model{
 
@@ -20,12 +21,16 @@ public class Help extends  Model{
     @Constraints.Required
     public String name;
 
-    public Long[] coordinates;
+    @Column
+    public long latitude;
 
+    @Column
+    public long longitude;
+    @Column
     public Date creatingDate;
-
+    @Column
     public Date closingDate;
-
+    @Column
     public ArrayList<Date> dates;
 
     @ManyToOne
