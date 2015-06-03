@@ -14,11 +14,18 @@
         @navBar()
         <div class="container">
             <div class="row">
-                <div class="col-md-6">Helpie-Searcher</div>
-                <div class="col-md-6">Helpie-Offerer</div>
+                <div class="col-md-6">
+                    @helpContainer()
+                    @helpContainer()
+                    @helpContainer()
+                </div>
+                <div class="col-md-6">
+                    @helpContainer()
+                    @helpContainer()
+                </div>
             </div>
         </div>
     <script type='text/javascript' src='@routes.WebJarAssets.at(WebJarAssets.locate("jquery.min.js"))'></script>
-        <script type='text/javascript' src='@routes.WebJarAssets.at(WebJarAssets.locate("bootstrap.min.js"))'></script>
+    <script type='text/javascript' src='@routes.WebJarAssets.at(WebJarAssets.locate("bootstrap.min.js"))'></script>
     </body>
 </html>

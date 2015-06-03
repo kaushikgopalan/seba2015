@@ -12,7 +12,7 @@ libraryDependencies ++= Seq(
   cache ,
   javaWs,
   "org.webjars" %% "webjars-play" % "2.3.0-2",
-  "org.webjars" % "bootstrap" % "3.1.1-2",
+  "org.webjars" % "bootstrap" % "3.3.4",
   "org.webjars" % "flat-ui" % "bcaf2de95e"
 )
 
