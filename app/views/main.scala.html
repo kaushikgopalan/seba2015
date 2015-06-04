@@ -2,17 +2,56 @@
 
 <!DOCTYPE html>
 
-<html>
+<html xmlns="http://www.w3.org/1999/html">
     <head>
         <title>@title</title>
         <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/main.css")">
         <link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/favicon.png")">
         <link rel='stylesheet' href='@routes.WebJarAssets.at(WebJarAssets.locate("css/bootstrap.min.css"))'>
-        <link rel='stylesheet' href='@routes.WebJarAssets.at(WebJarAssets.locate("css/flat-ui.css"))'>
+        <link rel='stylesheet' href='@routes.WebJarAssets.at(WebJarAssets.locate("css/bootstrap.css"))'>
+        <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/FlatUI2.css")">
+        <link rel="" media="screen" href="@routes.Assets.at("flat-ui-icons-regular.svg")">
+
+
+
     </head>
     <body>
+        @*<div style="height: 50px"></div>*@
         @navBar()
-        <div class="container">
+
+        <nav class="navbar navbar-inverse navbar-static-top nav-static" id="second-navbar">
+            <div class="container">
+
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+
+                <ul class="nav navbar-nav navbar-left">
+                    <li ><a href="#" class ="glyphicon glyphicon-bell">Find Jobs</a></li>
+                    <li><a href="#" class ="glyphicon glyphicon-bookmark">Post Jobs</a></li>
+                    </ul>
+                <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="#" class ="glyphicon glyphicon-user">Find Helpies</a></li>
+                <li><a href="#" class ="glyphicon glyphicon-scissors"> Post Help</a></li>
+                </ul>
+                @*<form class="nav navbar-form navbar-right " action="#" role="search">*@
+                    @*<div class="form-group">*@
+                        @*<div class="input-group">*@
+                            @*<input class="form-control search"  type="search" placeholder="Search">*@
+                            @*<span class="input-group-btn">*@
+                                @*<button type="submit" class="btn"><span class="glyphicon glyphicon-search"></span></button>*@
+                            @*</span>*@
+                        @*</div>*@
+                    @*</div>*@
+                @*</form>*@
+            </div>
+        </nav>
+
+        <div class="nav navbar-nav navbar-embossed  ">
             <div class="row">
                 <div class="col-md-6">
                     @helpContainer()
@@ -25,7 +64,139 @@
                 </div>
             </div>
         </div>
-    <script type='text/javascript' src='@routes.WebJarAssets.at(WebJarAssets.locate("jquery.min.js"))'></script>
-    <script type='text/javascript' src='@routes.WebJarAssets.at(WebJarAssets.locate("bootstrap.min.js"))'></script>
+
+    <div class=" search ">
+        <form class="search " action="#" role="search">
+            <div class="form-group">
+                <div class="input-group">
+                    <input class="form-control search"  type="search" placeholder="Search">
+                    <span class="input-group-btn">
+                        <button type="submit" class="btn"><span class="glyphicon glyphicon-search"></span></button>
+                    </span>
+                </div>
+            </div>
+        </form>
+    </div>
+        <div class="col-xs-12 col-sm-4 col-md-3">
+            <!-- <div class="bg-primary" -->
+        <div class="tile">
+                <br> some random content
+                <br> some random content
+                <br> some random content
+                <br> some random content<br> some random content
+                <br> some random content<br> some random content
+                <br> some random content<br> some random content
+                <br> some random content<br> some random content
+                <br> some random content<br> some random content
+
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-4 col-md-3">
+                <!-- <div class="bg-primary" -->
+            <div class="tile">
+
+                <br> some random content<br> some random content
+                <br> some random content<br> some random content
+                <br> some random content<br> some random content
+                <br> some random content<br> some random content
+                <br> some random content<br> some random content
+                <br> some random content<br> some random content
+                <br> some random content<br> some random content
+                <br> some random content<br> some random content
+                <br> some random content<br> some random content
+                <br> some random content<br> some random content
+                <br> some random content<br> some random content
+                <br> some random content<br> some random content
+                <br> some random content<br> some random content
+                <br> some random content<br> some random content
+                <br> some random content<br> some random content
+                <br> some random content<br> some random content
+                <br> some random content<br> some random content
+                <br> some random content<br> some random content
+                <br> some random content<br> some random content
+                <br> some random content<br> some random content
+                <br> some random content<br> some random content
+                <br> some random content<br> some random content
+                <br> some random content<br> some random content
+                <br> some random content<br> some random content
+                <br> some random content<br> some random content
+                <br> some random content<br> some random content
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-4 col-md-3">
+                <!-- <div class="bg-primary" -->
+            <div class="tile">
+
+                <br> some random content<br> some random content
+                <br> some random content<br> some random content
+                <br> some random content<br> some random content
+                <br> some random content<br> some random content
+                <br> some random content<br> some random content
+                <br> some random content<br> some random content
+                <br> some random content<br> some random content
+                <br> some random content<br> some random content
+                <br> some random content<br> some random content
+                <br> some random content<br> some random content
+                <br> some random content<br> some random content
+                <br> some random content<br> some random content
+                <br> some random content<br> some random content
+                <br> some random content<br> some random content
+                <br> some random content<br> some random content
+                <br> some random content<br> some random content
+                <br> some random content<br> some random content
+                <br> some random content<br> some random content
+                <br> some random content<br> some random content
+                <br> some random content<br> some random content
+                <br> some random content<br> some random content
+                <br> some random content<br> some random content
+                <br> some random content<br> some random content
+                <br> some random content<br> some random content
+                <br> some random content<br> some random content
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-4 col-md-3">
+                <!-- <div class="bg-primary" -->
+            <div class="tile">
+
+                <br> some random content<br> some random content
+                <br> some random content<br> some random content
+                <br> some random content<br> some random content
+                <br> some random content<br> some random content
+                <br> some random content<br> some random content
+                <br> some random content<br> some random content
+                <br> some random content<br> some random content
+                <br> some random content<br> some random content
+                <br> some random content<br> some random content
+                <br> some random content<br> some random content
+                <br> some random content<br> some random content
+                <br> some random content<br> some random content
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-4 col-md-3">
+            <!-- <div class="bg-primary" -->
+            <div class="tile">
+
+                <br> some random content<br> some random content
+                <br> some random content<br> some random content
+                <br> some random content<br> some random content
+                <br> some random content<br> some random content
+                <br> some random content<br> some random content
+                <br> some random content<br> some random content
+                <br> some random content<br> some random content
+                <br> some random content<br> some random content
+                <br> some random content<br> some random content
+                <br> some random content<br> some random content
+                <br> some random content<br> some random content
+                <br> some random content<br> some random content
+                <br> some random content<br> some random content
+                <br> some random content
+            </div>
+        </div>
+
+
+        <script type='text/javascript' src='@routes.WebJarAssets.at(WebJarAssets.locate("jquery.js"))'></script>
+        <script type='text/javascript' src='@routes.WebJarAssets.at(WebJarAssets.locate("bootstrap.min.js"))'></script>
+        <link rel="stylesheet" href='@routes.Assets.at("HelpiesStyles.css")' >
+        <script type='text/javascript' src='@routes.Assets.at("HelpiesJavaScripts.js")' ></script>
     </body>
 </html>
