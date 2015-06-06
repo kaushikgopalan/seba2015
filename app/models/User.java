@@ -6,6 +6,7 @@ import play.data.validation.Constraints;
 import play.db.ebean.Model;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by DIRRIS on 25.05.2015.
@@ -38,7 +39,7 @@ public class User extends  Model{
     public int area; //reach
 
     @ManyToMany
-    public ArrayList<Category> skills;
+    public List<Category> skills;
 
     @Constraints.Required
     public int plan;
