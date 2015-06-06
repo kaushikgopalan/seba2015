@@ -8,16 +8,24 @@
         <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/main.css")">
         <link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/favicon.png")">
         <link rel='stylesheet' href='@routes.WebJarAssets.at(WebJarAssets.locate("css/bootstrap.min.css"))'>
+        <link rel='stylesheet' href='@routes.WebJarAssets.at(WebJarAssets.locate("css/flat-ui.css"))'>
     </head>
     <body>
         @navBar()
         <div class="container">
             <div class="row">
-                <div class="col-md-6">Helpie-Searcher</div>
-                <div class="col-md-6">Helpie-Offerer</div>
+                <div class="col-md-6">
+                    @helpContainer()
+                    @helpContainer()
+                    @helpContainer()
+                </div>
+                <div class="col-md-6">
+                    @helpContainer()
+                    @helpContainer()
+                </div>
             </div>
         </div>
     <script type='text/javascript' src='@routes.WebJarAssets.at(WebJarAssets.locate("jquery.min.js"))'></script>
-        <script type='text/javascript' src='@routes.WebJarAssets.at(WebJarAssets.locate("bootstrap.min.js"))'></script>
+    <script type='text/javascript' src='@routes.WebJarAssets.at(WebJarAssets.locate("bootstrap.min.js"))'></script>
     </body>
 </html>
