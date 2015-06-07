@@ -3,16 +3,21 @@
 # ~~~~
 
 # Home page
-GET        /                     controllers.Application.index
-GET        /signIn               controllers.Application.signIn
+GET         /                     controllers.Application.index
+#Only redirect
+GET         /signIn               controllers.Application.signIn
+#Login itself
+POST        /signIn               controllers.Users.signIn()
 
-POST        /signIn              controllers.Users.signIn()
+GET         /signOut              controllers.Users.signOut()
+#Register itself
+POST        /signUp               controllers.Users.signUp()
 #WebJars
-GET        /assets/*file         controllers.Assets.at(path="/public", file)
-GET        /webjars/*file        controllers.WebJarAssets.at(file)
+GET         /assets/*file         controllers.Assets.at(path="/public", file)
+GET         /webjars/*file        controllers.WebJarAssets.at(file)
 
 # Map static resources from the /public folder to the /assets URL path
-GET        /assets/*file         controllers.Assets.at(path="/public", file)
-GET        /testDB               controllers.Users.testDB()
+GET         /assets/*file         controllers.Assets.at(path="/public", file)
+GET         /testDB               controllers.Users.testDB()
 
     

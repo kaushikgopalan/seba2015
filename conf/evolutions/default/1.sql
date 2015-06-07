@@ -37,7 +37,7 @@ create table note (
 
 create table user (
   login                     varchar(255) not null,
-  hash_pass                 bigint,
+  hash_pass                 varchar(255),
   first_name                varchar(255),
   last_name                 varchar(255),
   description               varchar(255),
@@ -46,6 +46,8 @@ create table user (
   area                      integer,
   plan                      integer,
   count_of_jobs_per_month   integer,
+  confirmation_token        varchar(255),
+  validated                 boolean,
   constraint pk_user primary key (login))
 ;
 

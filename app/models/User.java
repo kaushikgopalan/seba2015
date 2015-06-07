@@ -2,6 +2,9 @@ package models;
 
 import javax.persistence.*;
 
+import models.utils.AppException;
+import models.utils.Hash;
+import play.data.format.Formats;
 import play.data.validation.Constraints;
 import play.db.ebean.Model;
 
@@ -18,7 +21,7 @@ public class User extends  Model{
     public String login;
 
     @Constraints.Required
-    public long hashPass;
+    public String hashPass;
 
     @Constraints.Required
     public String firstName;
@@ -47,9 +50,31 @@ public class User extends  Model{
     @Column
     public int countOfJobsPerMonth;
 
+    public String confirmationToken;
+
+    @Formats.NonEmpty
+    public Boolean validated = false;
+
     public User(){
         countOfJobsPerMonth = 0;
     }
 
     public static Finder<String, User> find = new Finder<String, User>(String.class, User.class);
+
+    public static User findByConfirmationToken(String token) {
+        return find.where().eq("confirmationToken", token).findUnique();
+    }
+
+    public static User authenticate(String login, String clearPassword) throws AppException {
+
+        // get the user with email only to keep the salt password
+        User user = find.where().eq("login", login).findUnique();
+        if (user != null) {
+            // get the hash password from the salt + clear password
+            if (Hash.checkPassword(clearPassword, user.hashPass)) {
+                return user;
+            }
+        }
+        return null;
+    }
 }

@@ -2,6 +2,8 @@ package controllers;
 
 import models.Help;
 import models.User;
+import models.utils.AppException;
+import models.utils.Hash;
 import play.data.DynamicForm;
 import play.data.Form;
 import play.mvc.Controller;
@@ -17,7 +19,12 @@ public class Users extends Controller{
         User user = new User();
         user.area = 10;
         user.login = "login";
-        user.hashPass = 123;
+        try {
+            user.hashPass = Hash.createPassword("123");
+        } catch (AppException e) {
+            e.printStackTrace();
+            return badRequest();
+        }
         user.firstName ="user";
         user.lastName ="test";
         user.countOfJobsPerMonth = 0;
@@ -32,9 +39,17 @@ public class Users extends Controller{
 
         Form<User> form = Form.form(User.class).bindFromRequest();
         User user = form.get();
+        String clearPass = user.hashPass;
+        try {
+            user.hashPass = Hash.createPassword(clearPass);
+        } catch (AppException e) {
+            e.printStackTrace();
+            return badRequest();
+        }
         user.save();
 
-        return ok();
+
+        return ok(login.render("Login"));
     }
 
     public static Result signIn(){
@@ -42,9 +57,16 @@ public class Users extends Controller{
         DynamicForm requestData = Form.form().bindFromRequest();
         String sLogin = requestData.get("login");
         String sPass = requestData.get("password");
-        User user = User.find.where().eq("login", sLogin).findUnique();
-        if(user.hashPass==Long.parseLong(sPass)){
+        //User user = User.find.where().eq("login", sLogin).findUnique();
 
+        User user = null;
+        try {
+            user = User.authenticate(sLogin, sPass);
+        } catch (AppException e) {
+            e.printStackTrace();
+        }
+        if(user!=null){
+            session("login", sLogin);
             return ok(play.libs.Json.toJson(user));
         }
 
@@ -59,5 +81,10 @@ public class Users extends Controller{
         User user = User.find.where().eq("login", sLogin).findUnique();
         user.plan = Integer.parseInt(sPlan);
         return ok();
+    }
+
+    public static Result signOut(){
+        session().clear();
+        return ok(index.render());
     }
 }
