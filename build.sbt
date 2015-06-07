@@ -14,6 +14,7 @@ libraryDependencies ++= Seq(
   "org.webjars" %% "webjars-play" % "2.3.0-2",
   "com.googlecode.json-simple" % "json-simple" % "1.1.1",
   "org.webjars" % "bootstrap" % "3.3.4",
+  "org.mindrot" % "jbcrypt" % "0.3m",
   "org.webjars" % "flat-ui" % "bcaf2de95e"
   //"org.xerial" % "sqlite-jdbc" % "3.8.10.1",
   //"com.applerao" % "hibernatesqlite" % "1.0" exclude("org.hibernate", "hibernate")
@@ -24,6 +25,6 @@ libraryDependencies ++= Seq(
   "org.hibernate" % "hibernate-entitymanager" % "4.3.9.Final"
 )
 
-//resolvers += "hibernatesqlite-maven" at "https://hibernate-sqlite.googlecode.com/svn/trunk/mavenrepo"
+resolvers += "jBCrypt Repository" at "http://repo1.maven.org/maven2/org/"
 
 unmanagedResourceDirectories in Test <+=  baseDirectory ( _ /"target/web/public/test" )  

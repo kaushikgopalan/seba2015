@@ -4,10 +4,18 @@
 
 # Home page
 GET         /                     controllers.Application.index
+GET         /index                controllers.Application.index
+#Only redirect
 GET         /signIn               controllers.Application.signIn
+#Login itself
 POST        /signIn               controllers.Users.signIn()
 
-GET        /register                     controllers.Application.register()
+GET         /signOut              controllers.Users.signOut()
+
+#Register itself
+POST        /signUp               controllers.Users.signUp()
+#Only redirect
+GET         /register             controllers.Application.register()
 #WebJars
 GET         /assets/*file         controllers.Assets.at(path="/public", file)
 GET         /webjars/*file        controllers.WebJarAssets.at(file)
