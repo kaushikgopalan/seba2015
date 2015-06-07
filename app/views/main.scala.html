@@ -5,14 +5,18 @@
 <html xmlns="http://www.w3.org/1999/html">
     <head>
         <title>@title</title>
-        <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/main.css")">
+        <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/main.less")">
         <link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/favicon.png")">
+
+        <script type='text/javascript' src='@routes.WebJarAssets.at(WebJarAssets.locate("jquery.js"))'></script>
+        <script type='text/javascript' src='@routes.WebJarAssets.at(WebJarAssets.locate("bootstrap.js"))'></script>
         <link rel='stylesheet' href='@routes.WebJarAssets.at(WebJarAssets.locate("css/bootstrap.min.css"))'>
         <link rel='stylesheet' href='@routes.WebJarAssets.at(WebJarAssets.locate("css/bootstrap.css"))'>
+        <link rel="stylesheet" href='@routes.Assets.at("HelpiesStyles.css")' >
+        <script type='text/javascript' src='@routes.Assets.at("HelpiesJavaScripts.js")' ></script>
         <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/FlatUI2.css")">
-        <link rel="" media="screen" href="@routes.Assets.at("flat-ui-icons-regular.svg")">
-
-
+        @*<link rel="stylesheet" media="screen" href="@routes.Assets.at(WebJarAssets.locate("flat-ui.css"))>*@
+        @*<link rel="" media="screen" href="@routes.WebJarAssets.at(WebJarAssets.locate("flat-ui-icons-regular.svg"))">*@
 
     </head>
     <body>
@@ -51,25 +55,27 @@
             </div>
         </nav>
 
-        <div class="nav navbar-nav navbar-embossed  ">
-            <div class="row">
-                <div class="col-md-6">Helpie-Searcher</div>
-                <div class="col-md-6">Helpie-Offerer</div>
-            </div>
-        </div>
+        @*<div class="nav navbar-nav navbar-embossed  ">*@
+            @*<div class="row">*@
+                @*<div class="col-md-6">Helpie-Searcher</div>*@
+                @*<div class="col-md-6">Helpie-Offerer</div>*@
+            @*</div>*@
+        @*</div>*@
 
-    <div class=" search ">
-        <form class="search " action="#" role="search">
-            <div class="form-group">
-                <div class="input-group">
-                    <input class="form-control search"  type="search" placeholder="Search">
-                    <span class="input-group-btn">
-                        <button type="submit" class="btn"><span class="glyphicon glyphicon-search"></span></button>
-                    </span>
-                </div>
-            </div>
-        </form>
-    </div>
+    @*<div class=" search ">*@
+        @*<form class="search " action="#" role="search">*@
+            @*<div class="form-group">*@
+                @*<div class="input-group">*@
+                    @*<input class="form-control search"  type="search" placeholder="Search">*@
+                    @*<span class="input-group-btn">*@
+                        @*<button type="submit" class="btn"><span class="glyphicon glyphicon-search"></span></button>*@
+                    @*</span>*@
+                @*</div>*@
+            @*</div>*@
+        @*</form>*@
+    @*</div>
+    This part was only used for initial testing purposes. Not required in main page
+    *@
     <div class="col-xs-12 col-sm-4 col-md-3">
             <!-- <div class="bg-primary" -->
         <div class="tile">
@@ -183,9 +189,8 @@
 
 
 
-        <script type='text/javascript' src='@routes.WebJarAssets.at(WebJarAssets.locate("jquery.js"))'></script>
-        <script type='text/javascript' src='@routes.WebJarAssets.at(WebJarAssets.locate("bootstrap.min.js"))'></script>
-        <link rel="stylesheet" href='@routes.Assets.at("HelpiesStyles.css")' >
-        <script type='text/javascript' src='@routes.Assets.at("HelpiesJavaScripts.js")' ></script>
+
+
+
     </body>
 </html>
