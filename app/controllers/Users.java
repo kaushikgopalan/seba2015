@@ -44,7 +44,8 @@ public class Users extends Controller{
         String sPass = requestData.get("password");
         User user = User.find.where().eq("login", sLogin).findUnique();
         if(user.hashPass==Long.parseLong(sPass)){
-            return ok();
+
+            return ok(play.libs.Json.toJson(user));
         }
 
         return badRequest();
