@@ -1,33 +1,63 @@
 @(title: String)
 
-
 <!DOCTYPE html>
 
-<html>
+<html xmlns="http://www.w3.org/1999/html">
   <head>
     <title>@title</title>
     <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/main.css")">
     <link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/favicon.png")">
     <link rel='stylesheet' href='@routes.WebJarAssets.at(WebJarAssets.locate("css/bootstrap.min.css"))'>
-    <link rel='stylesheet' href='@routes.WebJarAssets.at(WebJarAssets.locate("css/flat-ui.css"))'>
+    <link rel='stylesheet' href='@routes.WebJarAssets.at(WebJarAssets.locate("css/bootstrap.css"))'>
+    <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/FlatUI2.css")">
+    <link rel="" media="screen" href="@routes.Assets.at("flat-ui-icons-regular.svg")">
+
+
   </head>
   <body>
     @navBar()
-    <div class="container">
-      <div class="row">
-        <div class="col-md-6">Helpie-Searcher</div>
+    <div class="row show-grid">
 
-        <div class="col-md-6">
-          <h3>Example heading <span class="label label-default">New</span></h3>
+      <div class="col-xs-6 col-md-4"></div>
+      <div class="col-xs-6 col-md-4">
+        <div class="login-screen">
+          @*<div class="login-icon">
+            <img src="img/login/icon.png" alt="Welcome to Mail App">
+            <h4>Welcome to <small>Mail App</small></h4>
+          </div>*@
+
+          <div class="login-form">
+            <div class="form-group">
+              <input type="text" class="form-control login-field" value="" placeholder="Enter your name" id="login-name">
+              <label class="login-field-icon fui-user" for="login-name"></label>
+            </div>
+
+            <div class="form-group">
+              <input type="password" class="form-control login-field" value="" placeholder="Password" id="login-pass">
+              <label class="login-field-icon fui-lock" for="login-pass"></label>
+            </div>
+
+            <a class="btn btn-primary btn-lg btn-block" href="#">Log in</a>
+            <a class="login-link" href="#">Lost your password?</a>
+          </div>
         </div>
-      </div>
+
     </div>
+<<<<<<< HEAD
     @helper.form(action = routes.Users.signIn()){
       <input name="login"/>
       <input name="password"/>
       <input type="submit"/>
     }
     <script type='text/javascript' src='@routes.WebJarAssets.at(WebJarAssets.locate("jquery.min.js"))'></script>
+=======
+      <div class="col-xs-6 col-md-4"></div>
+    </div>
+
+    <script type='text/javascript' src='@routes.WebJarAssets.at(WebJarAssets.locate("jquery.js"))'></script>
+>>>>>>> 25aa2d50826e9fdaa295d2c302efe47639dc4c56
     <script type='text/javascript' src='@routes.WebJarAssets.at(WebJarAssets.locate("bootstrap.min.js"))'></script>
+    <link rel="stylesheet" href='@routes.Assets.at("HelpiesStyles.css")' >
+    <script type='text/javascript' src='@routes.Assets.at("HelpiesJavaScripts.js")' ></script>
   </body>
 </html>
