@@ -1,0 +1,21 @@
+#first-navbar {
+    margin-bottom: 0;
+}
+
+.nav-fixed {
+    min-height: 50px !important;
+    -webkit-transition: .3s ease-in-out;
+    -moz-transition: .3s ease-in-out;
+    -o-transition: .3s ease-in-out;
+    transition: .3s ease-in-out;
+}
+
+.nav-static {
+    min-height: 80px !important;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    -webkit-transition: .3s ease-in-out;
+    -moz-transition: .3s ease-in-out;
+    -o-transition: .3s ease-in-out;
+    transition: .3s ease-in-out;
+}
