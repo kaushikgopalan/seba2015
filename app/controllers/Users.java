@@ -23,7 +23,7 @@ public class Users extends Controller{
             user.hashPass = Hash.createPassword("123");
         } catch (AppException e) {
             e.printStackTrace();
-            return badRequest();
+            return ok("AppException");
         }
         user.firstName ="user";
         user.lastName ="test";
@@ -64,13 +64,14 @@ public class Users extends Controller{
             user = User.authenticate(sLogin, sPass);
         } catch (AppException e) {
             e.printStackTrace();
+            return ok("AppException");
         }
         if(user!=null){
             session("login", sLogin);
             return ok(play.libs.Json.toJson(user));
         }
 
-        return badRequest();
+        return ok("user is null");
     }
 
     public static Result changePlan(){
