@@ -16,6 +16,9 @@ public class Application extends Controller {
         return ok(index.render());
     }
     //public static Result login() { return ok(login.render("Yeahh")); }
-    public static Result login() { return ok(views.html.login.render("asd")); }
+    public static Result signIn() {
+
+        return ok(login.render("Login"));
+    }
 
 }
