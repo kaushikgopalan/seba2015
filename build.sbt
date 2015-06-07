@@ -2,7 +2,7 @@ name := "helpies"
 
 version := "1.0"
 
-lazy val `helpies` = (project in file(".")).enablePlugins(PlayJava)
+lazy val `helpies`: Project = (project in file(".")).enablePlugins(PlayJava)
 
 scalaVersion := "2.11.6"
 
