@@ -1,0 +1,32 @@
+
+        cat1.name = "Plumber";
+        cat2.name = "Gardner";
+        cat3.name = "Computing";
+        cat4.name = "Lawyer";
+        user1.login = "user1@tum.de";
+        user2.login = "user2@tum.de";
+        user3.login = "user3@tum.de";
+        user4.login = "user4@tum.de";
+
+            user1.hashPass = Hash.createPassword("user1");
+            user2.hashPass = Hash.createPassword("user2");
+            user3.hashPass = Hash.createPassword("user3");
+            user4.hashPass = Hash.createPassword("user4");
+
+        help1.name = "Catch the elephant";
+        help2.name = "Cut the rope";
+        help3.name = "Patch KDE2 under FreeBSD";
+        help4.name = "Cool painter needed";
+
+        help1.category = cat1;
+        help2.category = cat2;
+        help3.category = cat3;
+        help4.category = cat4;
+
+        help1.owner = user1;
+        help2.owner = user1;
+        help3.owner = user1;
+        help4.owner = user3;
+
+        help3.done = true;
+        help3.helpie = user2;
