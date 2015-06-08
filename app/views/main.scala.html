@@ -1,10 +1,13 @@
-@(title: String)(content: Html)
+@import java.util
+@import models.User
+@import models.Help
+@(lastjobs: util.List[Help], lasthelps: util.List[User])(content: Html)
 
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/html">
     <head>
-        <title>@title</title>
+        <title>Helpies</title>
         <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/main.less")">
         <link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/favicon.png")">
 
@@ -23,73 +26,32 @@
         @*<div style="height: 50px"></div>*@
         @navBar()
 
-        <nav class="navbar navbar-inverse navbar-static-top nav-static" id="second-navbar">
-            <div class="container">
 
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
 
-                <ul class="nav navbar-nav navbar-left">
-                    <li ><a href="#" class ="glyphicon glyphicon-bell">Find Jobs</a></li>
-                    <li><a href="#" class ="glyphicon glyphicon-bookmark">Post Jobs</a></li>
-                </ul>
-                <ul class="nav navbar-nav navbar-right">
+        <div class="container" >
+        <div class=" col-md-6">
+                <!-- <div class="bg-primary" -->
+            <div class="tile">
+                <br> some random content
+                <br> some random content
+                <br> some random content
+                <br> some random content<br> some random content
+                <br> some random content<br> some random content
 
-                    <li><a href="#" class ="glyphicon glyphicon-user">Find Helpies</a></li>
-                    <li><a href="#" class ="glyphicon glyphicon-scissors"> Post Help</a></li>
-                </ul>
-                @*<form class="nav navbar-form navbar-right " action="#" role="search">*@
-                @*<div class="form-group">*@
-                @*<div class="input-group">*@
-                @*<input class="form-control search"  type="search" placeholder="Search">*@
-                @*<span class="input-group-btn">*@
-                @*<button type="submit" class="btn"><span class="glyphicon glyphicon-search"></span></button>*@
-                @*</span>*@
-                @*</div>*@
-                @*</div>*@
-                @*</form>*@
+
             </div>
-        </nav>
-
-        @*<div class="nav navbar-nav navbar-embossed  ">*@
-        @*<div class="row">*@
-        @*<div class="col-md-6">Helpie-Searcher</div>*@
-        @*<div class="col-md-6">Helpie-Offerer</div>*@
-        @*</div>*@
-        @*</div>*@
-
-        @*<div class=" search ">*@
-        @*<form class="search " action="#" role="search">*@
-        @*<div class="form-group">*@
-        @*<div class="input-group">*@
-        @*<input class="form-control search"  type="search" placeholder="Search">*@
-        @*<span class="input-group-btn">*@
-        @*<button type="submit" class="btn"><span class="glyphicon glyphicon-search"></span></button>*@
-        @*</span>*@
-        @*</div>*@
-        @*</div>*@
-        @*</form>*@
-        @*</div>
-        This part was only used for initial testing purposes. Not required in main page
-        *@
-        <div class="col-xs-12 col-sm-4 col-md-3">
-                <!-- <div class="bg-primary" -->
             <div class="tile">
-                <br> some random content
-                <br> some random content
-                <br> some random content
-                <br> some random content<br> some random content
-                <br> some random content<br> some random content
-                <br> some random content<br> some random content
-                <br> some random content<br> some random content
-                <br> some random content<br> some random content
+                <br> other random content
+                <br> other random content
+                <br> other random content
+                <br> other random content <br> other random content
+                <br> other random content <br> other random content
 
-            </div></div>
-        <div class="col-xs-12 col-sm-4 col-md-3">
+
+            </div>
+
+        </div>
+        <div class="col-md-6">
                 <!-- <div class="bg-primary" -->
             <div class="tile">
 
@@ -120,77 +82,8 @@
                 <br> some random content<br> some random content
                 <br> some random content<br> some random content
             </div></div>
-        <div class="col-xs-12 col-sm-4 col-md-3">
-                <!-- <div class="bg-primary" -->
-            <div class="tile">
+</div>
 
-                <br> some random content<br> some random content
-                <br> some random content<br> some random content
-                <br> some random content<br> some random content
-                <br> some random content<br> some random content
-                <br> some random content<br> some random content
-                <br> some random content<br> some random content
-                <br> some random content<br> some random content
-                <br> some random content<br> some random content
-                <br> some random content<br> some random content
-                <br> some random content<br> some random content
-                <br> some random content<br> some random content
-                <br> some random content<br> some random content
-                <br> some random content<br> some random content
-                <br> some random content<br> some random content
-                <br> some random content<br> some random content
-                <br> some random content<br> some random content
-                <br> some random content<br> some random content
-                <br> some random content<br> some random content
-                <br> some random content<br> some random content
-                <br> some random content<br> some random content
-                <br> some random content<br> some random content
-                <br> some random content<br> some random content
-                <br> some random content<br> some random content
-                <br> some random content<br> some random content
-                <br> some random content<br> some random content
-            </div></div>
-        <div class="col-xs-12 col-sm-4 col-md-3">
-                <!-- <div class="bg-primary" -->
-            <div class="tile">
-
-                <br> some random content<br> some random content
-                <br> some random content<br> some random content
-                <br> some random content<br> some random content
-                <br> some random content<br> some random content
-                <br> some random content<br> some random content
-                <br> some random content<br> some random content
-                <br> some random content<br> some random content
-                <br> some random content<br> some random content
-                <br> some random content<br> some random content
-                <br> some random content<br> some random content
-                <br> some random content<br> some random content
-                <br> some random content<br> some random content
-            </div></div>
-        <div class="col-xs-12 col-sm-4 col-md-3">
-                <!-- <div class="bg-primary" -->
-            <div class="tile">
-
-                <br> some random content<br> some random content
-                <br> some random content<br> some random content
-                <br> some random content<br> some random content
-                <br> some random content<br> some random content
-                <br> some random content<br> some random content
-                <br> some random content<br> some random content
-                <br> some random content<br> some random content
-                <br> some random content<br> some random content
-                <br> some random content<br> some random content
-                <br> some random content<br> some random content
-                <br> some random content<br> some random content
-                <br> some random content<br> some random content
-                <br> some random content<br> some random content
-                <br> some random content
-            </div></div>
-
-
-
-
-
-
+@footer()
     </body>
 </html>

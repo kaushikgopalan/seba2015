@@ -86,6 +86,7 @@ public class Users extends Controller{
 
     public static Result signOut(){
         session().clear();
-        return ok(index.render());
+        //return ok(index.render());
+        return redirect(routes.Application.index());
     }
 }

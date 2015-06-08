@@ -19,3 +19,25 @@
     -o-transition: .3s ease-in-out;
     transition: .3s ease-in-out;
 }
+
+.center-block{
+
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.header-image{
+    max-width: 110px;
+    max-height: 65px;
+
+}
+.header-image-small{
+    padding-top: 5px;
+    max-width: 90px;
+    max-height: 55px;
+
+}
+
+.footer{
+    min-height: auto;
+}
