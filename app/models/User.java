@@ -87,4 +87,12 @@ public class User extends  Model{
         }
         return helpies;
     }
+
+    public static List<User> getLastHelps(){
+        List<User> allHelps = User.getHelpies();
+        List<User> lastHelps = new ArrayList<>();
+        if(allHelps.size()>0) lastHelps.add(allHelps.remove(allHelps.size()-1));
+        if(allHelps.size()>0) lastHelps.add(allHelps.remove(allHelps.size()-1));
+        return lastHelps;
+    }
 }

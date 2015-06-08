@@ -59,4 +59,12 @@ public class Help extends  Model{
         }
         return notDoneHelps;
     }
+
+    public static List<Help> getLastJobs(){
+        List<Help> allJobs = getJobsNotDone();
+        List<Help> lastJobs = new ArrayList<>();
+        if (allJobs.size()>0) lastJobs.add(allJobs.remove(allJobs.size()-1));
+        if (allJobs.size()>0) lastJobs.add(allJobs.remove(allJobs.size()-1));
+        return  lastJobs;
+    }
 }

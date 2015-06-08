@@ -1,40 +1,68 @@
-<div class="row">
-  <div class="col-md-6 col-md-offset-3">
+@import java.util.List
+@import models.Category
+@(categories: List[Category])
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/html">
+    <head>
+        <title>Post Job</title>
+        <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/main.css")">
+        <link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/favicon.png")">
+        <link rel='stylesheet' href='@routes.WebJarAssets.at(WebJarAssets.locate("css/bootstrap.min.css"))'>
+        <link rel='stylesheet' href='@routes.WebJarAssets.at(WebJarAssets.locate("css/bootstrap.css"))'>
+        <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/FlatUI2.css")">
+        <link rel="" media="screen" href="@routes.Assets.at("flat-ui-icons-regular.svg")">
+
+
+    </head>
+    <body>
+        @navBar()
+
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
 
 
 
-      <div class="panel panel-primary">
-        <div class="panel-heading">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
 
-          <h4>Help details:</h4>
+                        <h4>Help details:</h4>
 
-        </div>
-        <div class="panel-body">
+                    </div>
+                    <div class="panel-body">
 
-          @helper.form(action = routes.Helps.newHelp()) {
-              <!-- name -->
-            <div class="form-group">
-            <label for="name">Name:</label>
-            <input type="text" name="name" placeholder="enter name"/>
+                    @helper.form(action = routes.Helps.newHelp()) {
+                            <!-- name -->
+                        <div class="form-group">
+                            <label for="name">Name:</label>
+                            <input type="text" name="name" placeholder="enter name"/>
+                        </div>
+                            <!-- category -->
+                        <div class="form-group">
+                            <label for="name">Category:</label>
+                            <select name="category" id="">
+                            @for(category <- categories) {
+                            <option value="@category.name">@category.name</option>
+                            }
+                            </select>
+                        </div>
+
+                        <button class="btn btn-primary" type="submit">Post Help</button>
+                    }
+
+                    </div>
+                </div>
+
+                <button class="btn btn-primary  btn-lg pull-right">Post Help</button>
+
+
             </div>
-              <!-- category -->
-            <div class="form-group">
-              <label for="name">Category:</label>
-@*              <select name="category" id="">
-                @for(category <- categories) {
-                  <option value="@category.name">@category.name</option>
-                }
-              </select>*@
-            </div>
-
-            <button class="btn btn-primary" type="submit">Post Help</button>
-          }
-
         </div>
-      </div>
+        @footer()
+    </body>
+</html>
 
-      <button class="btn btn-primary  btn-lg pull-right">Post Help</button>
 
 
-  </div>
-</div>
+

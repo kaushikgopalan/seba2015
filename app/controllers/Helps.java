@@ -9,6 +9,7 @@ import play.data.Form;
 import play.libs.Json;
 import play.mvc.Controller;
 import play.mvc.Result;
+import views.html.index;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -20,10 +21,24 @@ import java.util.List;
 public class Helps extends Controller{
 
     public static Result newHelp(){
-        Form<Help> form = Form.form(Help.class).bindFromRequest();
-        Help help = form.get();
-        help.save();
-        return ok("help created. Help-name: " + help.name);
+        //Form<Help> form = Form.form(Help.class).bindFromRequest();
+        //Help help = form.get();
+
+        DynamicForm requestData = Form.form().bindFromRequest();
+        String sName = requestData.get("name");
+        String sCat = requestData.get("category");
+        Help help = new Help();
+        help.name = sName;
+        help.category = Category.find.where().eq("name", sCat).findUnique();
+        String login = ctx().session().get("login");
+        User user = User.find.byId(login);
+        if(user!=null){
+            help.owner=user;
+            help.save();
+            return ok(index.render(Help.getLastJobs(), User.getLastHelps()));
+        }
+
+        return ok("Please login!");
     }
 
     public static Result setHelpie(){

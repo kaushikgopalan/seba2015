@@ -183,7 +183,7 @@ public class Users extends Controller{
         }
         if(user!=null){
             session("login", sLogin);
-            return ok(play.libs.Json.toJson(user));
+            return ok(index.render(Help.getLastJobs(), User.getLastHelps()));
         }
 
         return ok("user is null: "+sLogin+", "+sPass);

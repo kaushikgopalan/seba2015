@@ -15,7 +15,9 @@ GET         /signOut              controllers.Users.signOut()
 POST        /signUp               controllers.Users.signUp()
 #Only redirect
 GET         /register             controllers.Application.register()
-#postHelp
+
+GET         /postjob              controllers.Application.postjob()
+#postHelp itself
 POST        /help                 controllers.Helps.newHelp()
 #WebJars
 GET         /assets/*file         controllers.Assets.at(path="/public", file)
