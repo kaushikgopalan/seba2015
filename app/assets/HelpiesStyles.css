@@ -32,7 +32,12 @@
 
 }
 .header-image-small{
+    padding-top: 5px;
     max-width: 90px;
     max-height: 55px;
 
+}
+
+.footer{
+    min-height: auto;
 }
