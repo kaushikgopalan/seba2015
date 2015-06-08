@@ -38,7 +38,6 @@ public class Help extends  Model{
     public Category category;
 
     @ManyToOne
-    @Constraints.Required
     public User owner;
 
     @ManyToOne

@@ -20,12 +20,10 @@ import java.util.List;
 public class Helps extends Controller{
 
     public static Result newHelp(){
-
         Form<Help> form = Form.form(Help.class).bindFromRequest();
         Help help = form.get();
         help.save();
-
-        return ok();
+        return ok("help created. Help-name: " + help.name);
     }
 
     public static Result setHelpie(){
