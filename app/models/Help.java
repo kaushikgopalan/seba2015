@@ -6,6 +6,7 @@ import play.data.validation.Constraints;
 import play.db.ebean.Model;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by Alexx on 28.05.2015.
@@ -46,4 +47,13 @@ public class Help extends  Model{
     public boolean done = false;
 
     public static Finder<String, Help> find = new Finder<String, Help>(String.class, Help.class);
+
+    public static List<Help> getJobsNotDone(){
+        List<Help> allHelps = find.all();
+        List<Help> notDoneHelps = new ArrayList<>();
+        for (int i=0; i<allHelps.size(); i++){
+            if(allHelps.get(i).done==false) notDoneHelps.add(allHelps.get(i));
+        }
+        return notDoneHelps;
+    }
 }

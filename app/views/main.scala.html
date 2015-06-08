@@ -1,10 +1,13 @@
-@(title: String)(content: Html)
+@import java.util
+@import models.User
+@import models.Help
+@(lastjobs: util.List[Help], lasthelps: util.List[User])(content: Html)
 
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/html">
     <head>
-        <title>@title</title>
+        <title>Helpies</title>
         <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/main.less")">
         <link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/favicon.png")">
 
