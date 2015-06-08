@@ -37,3 +37,7 @@
     max-height: 55px;
 
 }
+
+.footer{
+    min-height: auto;
+}

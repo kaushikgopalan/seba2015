@@ -16,20 +16,32 @@
   </head>
   <body>
     @navBar()
-    <div class="tile">
 
-      <div class="col-xs-12 col-sm-4 col-md-3">
-        <div class="tile  ">
-          <div class="login-form">
+    <div class="col-md-4">
+
+    </div>
+    <div class="col-xs-12 col-sm-4 col-md-4">
+        <div class="tile">
+          @*<div class="login-form">*@
           @helper.form(action = routes.Users.signIn()){
+
+
+
             <div class="form-group">
-              <input name="login" type="text" class="form-control login-field" value="" placeholder="Enter your name" id="login-name">
-              <label class="login-field-icon fui-user" for="login-name"></label>
-            </div>
-            <div class="form-group">
+              <div class="input-group">
+                <input name="login" type="text" class="form-control login-field" value="" placeholder="Enter your name" id="login-name">
+                @*<span class="login-field-icon fui-user"></span>*@
+                @*<label class="login-field-icon fui-user" for="login-name"></label>*@
+                <div class="input-group-addon"><span class="login-field-icon glyphicon glyphicon-user"></span></div>
+              </div>
+              <br>
+            <div class="input-group">
               <input name="password" type="password" class="form-control login-field" value="" placeholder="Password" id="login-pass">
-              <label class="login-field-icon fui-lock" for="login-pass"></label>
+              <div class="input-group-addon"><span class="login-field-icon glyphicon glyphicon-lock"></span></div>
+              @*<label class="login-field-icon glyphicon glyphicon-lock" for="login-pass"></label>*@
             </div>
+              <br>
+
             <input type="submit" class="btn btn-primary btn-lg btn-block" value="Log in"/>
             <a class="login-link" href="#">Lost your password?</a>
             <div class="form-group">
@@ -38,10 +50,12 @@
             </div>
           </div>
           }
-        </div>
+        @*</div>*@
       </div>
-      <div class="col-xs-6 col-md-4"></div>
+    <div class="col-md-3">
+
     </div>
+
 
     <script type='text/javascript' src='@routes.WebJarAssets.at(WebJarAssets.locate("jquery.min.js"))'></script>
     <div class="col-xs-12 col-sm-4 col-md-3"></div>
@@ -53,3 +67,5 @@
     <script type='text/javascript' src='@routes.Assets.at("HelpiesJavaScripts.js")' ></script>
   </body>
 </html>
+
+@footer()
