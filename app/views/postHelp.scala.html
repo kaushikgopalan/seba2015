@@ -1,5 +1,3 @@
-@(user: User)
-
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
 
@@ -14,10 +12,21 @@
         <div class="panel-body">
 
           @helper.form(action = routes.Helps.newHelp()) {
+              <!-- name -->
             <div class="form-group">
             <label for="name">Name:</label>
             <input type="text" name="name" placeholder="enter name"/>
             </div>
+              <!-- category -->
+            <div class="form-group">
+              <label for="name">Category:</label>
+@*              <select name="category" id="">
+                @for(category <- categories) {
+                  <option value="@category.name">@category.name</option>
+                }
+              </select>*@
+            </div>
+
             <button class="btn btn-primary" type="submit">Post Help</button>
           }
 

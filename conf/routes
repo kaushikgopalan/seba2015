@@ -11,11 +11,12 @@ GET         /signIn               controllers.Application.signIn
 POST        /signIn               controllers.Users.signIn()
 
 GET         /signOut              controllers.Users.signOut()
-
 #Register itself
 POST        /signUp               controllers.Users.signUp()
 #Only redirect
 GET         /register             controllers.Application.register()
+#postHelp
+POST        /help                 controllers.Helps.newHelp()
 #WebJars
 GET         /assets/*file         controllers.Assets.at(path="/public", file)
 GET         /webjars/*file        controllers.WebJarAssets.at(file)
