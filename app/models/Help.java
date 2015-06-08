@@ -46,6 +46,10 @@ public class Help extends  Model{
 
     public boolean done = false;
 
+    public Help (){
+        creatingDate = new Date();
+    }
+
     public static Finder<String, Help> find = new Finder<String, Help>(String.class, Help.class);
 
     public static List<Help> getJobsNotDone(){
