@@ -137,24 +137,29 @@ public class Users extends Controller{
 
     public static Result signUp(){
 
-        Form<User> form = Form.form(User.class).bindFromRequest();
-        User user = form.get();
 
-        //To control the password confirmation
         DynamicForm requestData = Form.form().bindFromRequest();
+        String sLogin = requestData.get("login");
+        String sFirstName = requestData.get("firstName");
+        String sLastName = requestData.get("lastName");
+        String sDescription = requestData.get("description");
         String sPass = requestData.get("hashPass");
         String sPass2 = requestData.get("hashPass2");
 
-        if ((sPass != sPass2 ) || (sPass == "" && sPass2 == "")){
-            ok("Password confirmation is not the same or empty");
+        if ((sPass != sPass2 ) || sPass == "" || sPass2 == ""){
+            return ok("Password confirmation is not the same or empty");
         }
 
-        String clearPass = user.hashPass;
+        User user = new User();
+        user.login = sLogin;
+        user.firstName = sFirstName;
+        user.lastName = sLastName;
+        user.description = sDescription;
         try {
-            user.hashPass = Hash.createPassword(clearPass);
+            user.hashPass = Hash.createPassword(sPass);
         } catch (AppException e) {
             e.printStackTrace();
-            return badRequest();
+            return ok("We have an AppException");
         }
         user.save();
 
