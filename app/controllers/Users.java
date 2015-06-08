@@ -139,6 +139,16 @@ public class Users extends Controller{
 
         Form<User> form = Form.form(User.class).bindFromRequest();
         User user = form.get();
+
+        //To control the password confirmation
+        DynamicForm requestData = Form.form().bindFromRequest();
+        String sPass = requestData.get("hashPass");
+        String sPass2 = requestData.get("hashPass2");
+
+        if ((sPass != sPass2 ) || (sPass == "" && sPass2 == "")){
+            ok("Password confirmation is not the same or empty");
+        }
+
         String clearPass = user.hashPass;
         try {
             user.hashPass = Hash.createPassword(clearPass);
