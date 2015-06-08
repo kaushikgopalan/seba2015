@@ -23,8 +23,8 @@ public class Application extends Controller {
 
         List<User> allHelps = User.getHelpies();
         List<User> lastHelps = new ArrayList<>();
-        if(allHelps.size()>0) lastHelps.add(allHelps.remove(allHelps.size()));
-        if(allHelps.size()>0) lastHelps.add(allHelps.remove(allHelps.size()));
+        if(allHelps.size()>0) lastHelps.add(allHelps.remove(allHelps.size()-1));
+        if(allHelps.size()>0) lastHelps.add(allHelps.remove(allHelps.size()-1));
 
         return ok(index.render(lastJobs, lastHelps));
     }
