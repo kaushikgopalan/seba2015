@@ -25,7 +25,37 @@
     <body>
         @*<div style="height: 50px"></div>*@
         @navBar()
+    <div class="row" >
+        <div class="col-xs-12 col-sm-4 col-md-1"></div>
+    <div class="col-xs-12 col-sm-4 col-md-4">
+            <!-- <div class="bg-primary" -->
 
+            @for(p <- lastjobs) {
+                <div class=" tile">
+                    <div class="tile-title">
+                        @p.name
+
+                    </div>
+                    <div class="tile-hot">
+                       Category: @p.category
+
+                    </div>
+                </div>
+            }
+
+    </div>
+        <div class="col-xs-12 col-sm-4 col-md-1"></div>
+    <div class="col-xs-12 col-sm-4 col-md-4">
+            @for(s <- lasthelps){
+                <div class="tile">
+                    <div class="tile-title">
+                        @s.firstName @s.lastName
+                    </div>
+                </div>
+            }
+
+</div>
+</div>
 
         @footer()
     </body>
