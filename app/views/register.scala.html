@@ -17,7 +17,7 @@
     <body>
         @navBar()
 
-        <form class="form-horizontal">
+        <div class="form-horizontal">
         @helper.form(action = routes.Users.signUp()){
             <div class="form-group">
                 <label for="inputImage" class="col-sm-5 control-label">Image :</label>
@@ -95,7 +95,7 @@
                 </div>
             </div>
             }
-        </form>
+        </div>
 
         <script type='text/javascript' src='@routes.WebJarAssets.at(WebJarAssets.locate("jquery.min.js"))'></script>
 

@@ -146,9 +146,9 @@ public class Users extends Controller{
         String sPass = requestData.get("hashPass");
         String sPass2 = requestData.get("hashPass2");
 
-        if ((sPass != sPass2 ) || sPass == "" || sPass2 == ""){
+        /*if ((sPass != sPass2 ) || sPass == "" || sPass2 == ""){
             return ok("Password confirmation is not the same or empty");
-        }
+        }*/
 
         User user = new User();
         user.login = sLogin;
