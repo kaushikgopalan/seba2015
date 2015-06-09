@@ -15,25 +15,19 @@
         <link rel="" media="screen" href="@routes.Assets.at("flat-ui-icons-regular.svg")">
         <link rel="stylesheet" href='@routes.Assets.at("HelpiesStyles.css")' >
         <script type='text/javascript' src='@routes.Assets.at("HelpiesJavaScripts.js")' ></script>
-
-
     </head>
     <body>
         @navBar()
 
         <div class="row">
             <div class="col-md-6 col-md-offset-3">
-
-
-
                 <div class="panel panel-primary">
+
                     <div class="panel-heading">
-
-                        <h4>Help details:</h4>
-
+                        <h4>Post Job:</h4>
                     </div>
-                    <div class="panel-body">
 
+                    <div class="panel-body">
                     @helper.form(action = routes.Helps.newHelp()) {
                             <!-- name -->
                         <div class="form-group">
@@ -45,19 +39,18 @@
                             <label for="name">Category:</label>
                             <select name="category" id="">
                             @for(category <- categories) {
-                            <option value="@category.name">@category.name</option>
+                                <option value="@category.name">@category.name</option>
                             }
                             </select>
                         </div>
-
-                        <button class="btn btn-primary" type="submit">Post Help</button>
+                        <div class="postJob-ctas pull-right">
+                            <button class="btn btn-primary" type="submit">Post Help</button>
+                            <a href="/" class="btn btn-warning">Cancel</a>
+                        </div>
                     }
-
                     </div>
+
                 </div>
-
-                <button class="btn btn-primary  btn-lg pull-right">Post Help</button>
-
 
             </div>
         </div>
