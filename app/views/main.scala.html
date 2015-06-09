@@ -29,20 +29,7 @@
         <div class="col-xs-1 col-sm-1 col-md-1"></div>
     <div class="col-xs-4 col-sm-4 col-md-4">
             <!-- <div class="bg-primary" -->
-
-            @for(p <- lastjobs) {
-                <div class=" tile">
-                    <div class="tile-title">
-                        @p.name
-
-                    </div>
-                    <div class="tile-hot">
-                       Category: @p.category.name
-
-                    </div>
-                </div>
-            }
-
+            @helpContainer(lastjobs)
     </div>
         <div class="col-xs-1 col-sm-1 col-md-1"></div>
     <div class="col-xs-4 col-sm-4 col-md-4">
