@@ -33,4 +33,8 @@ public class Application extends Controller {
         return ok(postHelp.render(categories));
     }
 
+    public static Result profile(){
+        return ok(userMainPage.render("Profile"));
+    }
+
 }

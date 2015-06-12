@@ -1,0 +1,69 @@
+@(title: String)
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/html">
+    <head>
+        <title>@title</title>
+        <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/tabPage.css")">
+        <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/main.css")">
+        <link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/favicon.png")">
+        <link rel='stylesheet' href='@routes.WebJarAssets.at(WebJarAssets.locate("css/bootstrap.min.css"))'>
+        <link rel='stylesheet' href='@routes.WebJarAssets.at(WebJarAssets.locate("css/bootstrap.css"))'>
+        <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/FlatUI2.css")">
+        <link rel="" media="screen" href="@routes.Assets.at("flat-ui-icons-regular.svg")">
+
+    </head>
+    <body>
+        @navBar()
+        <div class="col-md-4"></div>
+
+        <ul id="tabs">
+            <li id><a href="#" name="tab1">One</a></li>
+            <li id><a href="#" name="tab2">Two</a></li>
+            <li id><a href="#" name="tab3">Three</a></li>
+            <li id><a href="#" name="tab4">Four</a></li>
+        </ul>
+
+        <div id="content">
+            <div id="tab1">...</div>
+            <div id="tab2">...</div>
+            <div id="tab3">...</div>
+            <div id="tab4">...</div>
+        </div>
+        <div class="col-md-4">
+
+        </div>
+
+        <script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+        <script>
+            $(document).ready(function() {
+                $("#content").find("[id^='tab']").hide(); // Hide all content
+                $("#tabs li:first").attr("id","current"); // Activate the first tab
+                $("#content #tab1").fadeIn(); // Show first tab's content
+
+                $('#tabs a').click(function(e) {
+                    e.preventDefault();
+                    if ($(this).closest("li").attr("id") == "current"){ //detection for current tab
+                     return;
+                    }
+                    else{
+                      $("#content").find("[id^='tab']").hide(); // Hide all content
+                      $("#tabs li").attr("id",""); //Reset id's
+                      $(this).parent().attr("id","current"); // Activate this
+                      $('#' + $(this).attr('name')).fadeIn(); // Show content for the current tab
+                    }
+                });
+            });
+        </script>
+
+        <script type='text/javascript' src='@routes.WebJarAssets.at(WebJarAssets.locate("jquery.min.js"))'></script>
+        <script type='text/javascript' src='@routes.WebJarAssets.at(WebJarAssets.locate("jquery.js"))'></script>
+        <script type='text/javascript' src='@routes.WebJarAssets.at(WebJarAssets.locate("bootstrap.min.js"))'></script>
+        <link rel="stylesheet" href='@routes.Assets.at("HelpiesStyles.css")' >
+        <script type='text/javascript' src='@routes.Assets.at("HelpiesJavaScripts.js")' ></script>
+
+    </body>
+</html>
+
+@footer()
