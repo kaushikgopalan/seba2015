@@ -46,6 +46,10 @@
     border-radius: 20px;
     background-color: aliceblue;
 }
+.help-container-header{
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
 .helpContianerCTA {
     overflow: auto;
 }
@@ -59,8 +63,18 @@
 }
 .helpContainer-user-rating {
     float: left;
-    margin-top: 10px;
+    margin-top: 1px;
 }
 .helpContainer-content {
     clear: both;
+}
+.categories-container {
+
+}
+.help-image {
+    width: 100%;
+}
+.help-details-ctas{
+    margin-top: 15px;
+    margin-bottom: 15px;
 }

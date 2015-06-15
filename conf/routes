@@ -19,7 +19,8 @@ GET         /register             controllers.Application.register()
 GET         /postjob              controllers.Application.postjob()
 #postHelp itself
 POST        /help                 controllers.Helps.newHelp()
-#WebJars
+GET         /help/*id             controllers.Helps.details(id)
+#WebJarsh
 GET         /assets/*file         controllers.Assets.at(path="/public", file)
 GET         /webjars/*file        controllers.WebJarAssets.at(file)
 

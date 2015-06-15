@@ -9,6 +9,7 @@ import play.data.Form;
 import play.libs.Json;
 import play.mvc.Controller;
 import play.mvc.Result;
+import views.html.helpDetails;
 import views.html.index;
 
 import java.util.ArrayList;
@@ -76,5 +77,10 @@ public class Helps extends Controller{
         User helpie = form.get();
         List<Help> helps = Help.find.where().eq("helpie", helpie).findList();
         return ok(Json.toJson(helps));
+    }
+
+    public static Result details(String  id){
+        Help help = Help.find.byId(id);
+        return ok(helpDetails.render(help));
     }
 }

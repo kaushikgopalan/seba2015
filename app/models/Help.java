@@ -23,6 +23,9 @@ public class Help extends  Model{
     public String name;
 
     @Column
+    public String description;
+
+    @Column
     public long latitude;
 
     @Column

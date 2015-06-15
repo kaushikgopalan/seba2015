@@ -13,6 +13,7 @@ create table category (
 create table help (
   id                        integer not null,
   name                      varchar(255),
+  description               varchar(255),
   latitude                  bigint,
   longitude                 bigint,
   creating_date             timestamp,
