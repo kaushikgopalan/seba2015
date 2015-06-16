@@ -16,86 +16,14 @@
     </head>
     <body>
         @navBar()
-
-        <div class="form-horizontal">
-        @helper.form(action = routes.Users.signUp()){
-            <div class="form-group">
-                <label for="inputImage" class="col-sm-5 control-label">Image :</label>
-                <div class="col-sm-3">
-                    <img src="@routes.Assets.at("images/user_profile.png")" alt="User profile" class="img-rounded"
-                    id="inputImage" style="width:100px;height:100px">
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label for="inputUsername" class="col-sm-5 control-label">Username :</label>
-                <div class="col-sm-2">
-                    <input name="login" type="text" class="form-control" id="inputUsername" placeholder="">
-                    @*<input name="login" type="text" class="form-control login-field" value="" placeholder="Enter your name" id="login-name">*@
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="inputPass" class="col-sm-5 control-label">Password :</label>
-                <div class="col-sm-2">
-                    <input name="hashPass" type="password" class="form-control" id="inputPass" placeholder="">
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="inputPass2" class="col-sm-5 control-label">Confirm password :</label>
-                <div class="col-sm-2">
-                    <input name="hashPass2"type="password" class="form-control" id="inputPass2" placeholder="">
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="inputFname" class="col-sm-5 control-label">First name :</label>
-                <div class="col-sm-2">
-                    <input name="firstName" type="text" class="form-control" id="inputFname" placeholder="">
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="inputSname" class="col-sm-5 control-label">Last name :</label>
-                <div class="col-sm-3">
-                    <input name="lastName" type="text" class="form-control" id="inputSname" placeholder="">
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label for="inputDescrip" class="col-sm-5 control-label">Description :</label>
-                <div class="col-sm-3">
-                    <textarea name="description" class="form-control" rows="3" placeholder="About you are"></textarea>
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="inputSkill" class="col-sm-5 control-label">Skills :</label>
-                <div class="col-sm-3">
-                    <select name="skills" multiple id="inputSkill" class="col-sm-5 form-control">
-                        <option>Plumber</option>
-                        <option>Gardener</option>
-                        <option>Computing</option>
-                        <option>Lawyer</option>
-                        <option>Other</option>
-                    </select>
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="inputArea" class="col-sm-5 control-label">Area :</label>
-                <div class="col-sm-3">
-                    <select name="area" id="inputArea" class="col-sm-5 form-control">
-                        <option>Germany</option>
-                        <option>Greece</option>
-                        <option>Spain</option>
-                        <option>USA</option>
-                    </select>
-                </div>
-            </div>
-
+        @helper.form(action = routes.Users.signUp()) {
+            @userProfileRegister()
             <div class="form-group">
                 <div class="col-sm-offset-7 col-sm-10">
                     <button type="submit" class="btn btn-default btn-primary">Register</button>
                 </div>
             </div>
-            }
-        </div>
+        }
 
         <script type='text/javascript' src='@routes.WebJarAssets.at(WebJarAssets.locate("jquery.min.js"))'></script>
 

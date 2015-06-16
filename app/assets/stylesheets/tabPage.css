@@ -1,6 +1,17 @@
 /*
 http://red-team-design.com/css3-jquery-folder-tabs/
 */
+.row {
+    /*background-color: #34495e;*/
+}
+.newBody {
+    width: 70px;
+    height: auto;
+    margin: 50px auto 0 auto;
+    font-family: Arial, Helvetica;
+    font-size: small;
+    background: #fff;
+}
 
 #tabs {
     overflow: hidden;
@@ -18,11 +29,11 @@ http://red-team-design.com/css3-jquery-folder-tabs/
 #tabs a {
     position: relative;
     background: #ddd;
-    background-image: linear-gradient(to bottom, #fff, #ddd);
-    padding: .7em 3.5em;
+    background-image: linear-gradient(to bottom, #eee, #ddd);
+    padding: 0.3em 2.5em;
     float: left;
     text-decoration: none;
-    color: #444;
+    color: #333;
     text-shadow: 0 1px 0 rgba(255,255,255,.8);
     border-radius: 5px 0 0 0;
     box-shadow: 0 2px 2px rgba(0,0,0,.4);
@@ -34,7 +45,7 @@ http://red-team-design.com/css3-jquery-folder-tabs/
 #tabs a:focus::after {
     /*background: #fff;*/
     background: #fff;
-    background-image: linear-gradient(to bottom, #fff, #ddd);
+    background-image: linear-gradient(to bottom, #eee, #ddd);
 }
 
 #tabs a:focus {
@@ -50,7 +61,7 @@ http://red-team-design.com/css3-jquery-folder-tabs/
     bottom: 0;
     width: 1em;
     background: #ddd;
-    background-image: linear-gradient(to bottom, #fff, #ddd);
+    background-image: linear-gradient(to bottom, #eee, #ddd);
     box-shadow: 2px 2px 2px rgba(0,0,0,.4);
     transform: skew(10deg);
     border-radius: 0 5px 0 0;
@@ -59,16 +70,24 @@ http://red-team-design.com/css3-jquery-folder-tabs/
 #tabs #current a,
 #tabs #current a::after {
     background: #fff;
-    background-image: linear-gradient(to bottom, #fff, #fff);  /* New*/
+    background-image: linear-gradient(to bottom, #eee, #fff);  /* New*/
     z-index: 3;
 }
 
 #content {
     background: #fff;
     padding: 2em;
-    height: 220px;
+    height: auto;
     position: relative;
     z-index: 2;
-    border-radius: 0 5px 5px 5px;
-    box-shadow: 0 -2px 3px -2px rgba(0, 0, 0, .5);
+    border-radius: 5px 5px 5px 5px;
+    box-shadow: 1px 1px 3px 1px #34495e;
+
+}
+.contenticons {
+    background: #ddd;
+    z-index: 2;
+    border-radius: 5px 5px 5px 5px;
+    box-shadow: 1px 1px 3px 1px #34495e;
+    align-items: center;
 }
