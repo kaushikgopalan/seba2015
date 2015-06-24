@@ -1,7 +1,7 @@
-# --- Created by Ebean DDL
-# To stop Ebean DDL generation, remove this comment and start using Evolutions
+--- Created by Ebean DDL
+--- To stop Ebean DDL generation, remove this comment and start using Evolutions
 
-# --- !Ups
+--- !Ups
 
 create table category (
   id                        integer not null,
@@ -87,7 +87,7 @@ alter table user_category add constraint fk_user_category_user_01 foreign key (u
 
 alter table user_category add constraint fk_user_category_category_02 foreign key (category_id) references category (id) on delete restrict on update restrict;
 
-# --- !Downs
+--- !Downs
 
 SET REFERENTIAL_INTEGRITY FALSE;
 
