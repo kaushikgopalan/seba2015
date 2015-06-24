@@ -127,6 +127,19 @@ public class Users extends Controller{
 
         help3.closingDate = new Date();
 
+        help1.latitude = 48.134293;
+        help1.longitude = 11.555912;
+
+        help2.latitude = 28.2686;
+        help2.longitude = 16.6056;
+
+        help3.latitude = 48.134293;
+        help3.longitude = 11.555912;
+
+
+        help4.latitude = 28.2686;
+        help4.longitude = 16.6056;
+
         help1.save();
         help2.save();
         help3.save();

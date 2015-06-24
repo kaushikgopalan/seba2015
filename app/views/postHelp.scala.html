@@ -7,54 +7,213 @@
 <html xmlns="http://www.w3.org/1999/html">
     <head>
         <title>Post Job</title>
-        <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/main.css")">
-        <link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/favicon.png")">
-        <link rel='stylesheet' href='@routes.WebJarAssets.at(WebJarAssets.locate("css/bootstrap.min.css"))'>
-        <link rel='stylesheet' href='@routes.WebJarAssets.at(WebJarAssets.locate("css/bootstrap.css"))'>
-        <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/FlatUI2.css")">
-        <link rel="" media="screen" href="@routes.Assets.at("flat-ui-icons-regular.svg")">
-        <link rel="stylesheet" href='@routes.Assets.at("HelpiesStyles.css")' >
-        <script type='text/javascript' src='@routes.Assets.at("HelpiesJavaScripts.js")' ></script>
+        @head("Post Job")
+
+        <script type="text/javascript"
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDIwe654Ap3O6jqeVXCrMdQC4eXV0XOBV8">
+        </script>
     </head>
     <body>
         @navBar()
+        <div class="container">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <strong>Post Job: </strong>
+                </div>
+                <div class="panel-body">
 
-        <div class="row">
-            <div class="col-md-6 col-md-offset-3">
-                <div class="panel panel-primary">
-
-                    <div class="panel-heading">
-                        <h4>Post Job:</h4>
-                    </div>
-
-                    <div class="panel-body">
+                    <div class="col-md-12">
                     @helper.form(action = routes.Helps.newHelp()) {
-                            <!-- name -->
-                        <div class="form-group">
-                            <label for="name">Name:</label>
-                            <input type="text" name="name" placeholder="enter name"/>
-                        </div>
-                            <!-- category -->
-                        <div class="form-group">
-                            <label for="name">Category:</label>
-                            <select name="category" id="">
-                            @for(category <- categories) {
-                                <option value="@category.name">@category.name</option>
-                            }
-                            </select>
-                        </div>
-                        <div class="postJob-ctas pull-right">
-                            <button class="btn btn-primary" type="submit">Post Help</button>
-                            <a href="/" class="btn btn-warning">Cancel</a>
+                        <div id="form-postJob" class="form-horizontal">
+                            <div class="form-group">
+                                <label class="control-label col-sm-2" for="email">Title:</label>
+                                <div class="col-sm-10">
+                                    <input type="text" name="name" class="form-control" id="input-title" placeholder="Enter title">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-2" for="pwd">Category:</label>
+                                <div class="col-sm-10">
+                                    <select name="category" id="">
+                                    @for(category <- categories) {
+                                        <option value="@category.name">@category.name</option>
+                                    }
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-sm-2" for="email">Address:</label>
+                                <div class="col-sm-3">
+                                    <input type="text" class="form-control" id="input-address" placeholder="Enter Address">
+
+                                    <input id="input-lat" class="hidden" type="text" name="latitude"/>
+                                    <input id="input-long" class="hidden" type="text" name="longitude"/>
+                                </div>
+                                <div class="col-sm-7">
+                                    <p id="adressResult"></p>
+                                </div>
+                                <p class="testGeoLabel"></p>
+                                @* not needed for postJob only for postHelp
+                                <div class="col-sm-7">
+                                    <select name="radius" id="">
+                                        <option value="5">5km</option>
+                                        <option value="10">10km</option>
+                                        <option value="25">25km</option>
+                                        <option value="50">50km</option>
+                                    </select>
+                                </div>*@
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-2" for="email">Description:</label>
+                                <div class="col-sm-10">
+                                    <textarea name="description" id="input-description" cols="30" rows="3" style="width: 100%"></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-offset-2 col-sm-10">
+                                    <button type="button" id="btn-postJob" class="btn btn-primary">Post Job</button>
+                                    <button type="button" class="btn btn-default" data-toggle="modal" data-target="#modal-cancel">Cancel</button>
+                                    <button type="submit" class="hidden" id="submit">Submit</button>
+                                </div>
+                            </div>
                         </div>
                     }
                     </div>
 
                 </div>
+            </div>
 
+        </div>
+
+        @footer()
+            <!-- FormSubmit Popup -->
+        <div class="modal fade" id="modal-formSubmit" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel">Post job</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>Your Job post is almost done. Are you sure you want to post this job?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <a href="/postJob" id="btn-submit" class="btn btn-primary" data-dismiss="modal">Post Job</a>
+                    </div>
+                </div>
             </div>
         </div>
-        @footer()
+            <!-- End Popup -->
+            <!-- FormError Popup -->
+        <div class="modal fade" id="modal-formError" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel">Form Error</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>Some of your entries are missing or not correct, please check again</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+            <!-- End Popup -->
+        <!-- Cancel Popup -->
+        <div class="modal fade" id="modal-cancel" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel">Are you sure?</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>Are you sure you want to cancel your job post?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+                        <a href="/" type="button" class="btn btn-primary">Cancel</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Popup -->
+        <script >
+        $('#btn-submit').click(function(){
+            $('#submit').click();
+        })
+        $('#btn-postJob').click(function(){
+            verifyForm();
+        })
+
+        function verifyForm(){
+            var errors = 0;
+            var title = $('#input-title');
+            var address = $('#input-address');
+            var desc = $('#input-description');
+            errors += checkInput(title);
+            errors += checkInput(address);
+            errors += checkInput(desc);
+
+            if (errors > 0){
+                $('#modal-formError').modal('show');
+            }
+            else {
+                $('#modal-formSubmit').modal('show');
+            }
+
+        }
+
+        function checkInput(input){
+            if (input.val() === ''){
+                input.parent('div').parent('div').addClass('has-error');
+                return 1;
+            }
+            else{
+                input.parent('div').parent('div').removeClass('has-error').addClass('has-success');
+                return 0;
+            }
+        }
+        $('#input-address').focusout(function(){
+            var parent = $(this).parent('div').parent('div')
+            console.log($('#input-address').val());
+            if ($(this).val() === ''){
+                parent.addClass('has-error');
+            }
+            else{
+                getGeocode(parent);
+            }
+
+        })
+        function getGeocode(container){
+                var geocoder = new google.maps.Geocoder();
+                var lat = '';
+                var lng = '';
+                var address = $('#input-address').val();
+                geocoder.geocode( { 'address': address}, function(results, status) {
+                  if (status == google.maps.GeocoderStatus.OK) {
+                     lat = results[0].geometry.location.lat();
+                     lng = results[0].geometry.location.lng();
+                     $('#input-lat').val(lat);
+                     $('#input-long').val(lng);
+                     $('#adressResult').text(results[0].formatted_address);
+                     container.removeClass('has-error').addClass('has-success')
+                     console.log(results);
+                  }
+                  else {
+                    container.addClass('has-error');
+                    console.log("Geocode was not successful for the following reason: " + status);
+                  }
+                });
+
+        }
+
+        </script>
     </body>
 </html>
 

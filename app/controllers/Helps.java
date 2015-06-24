@@ -28,9 +28,13 @@ public class Helps extends Controller{
         DynamicForm requestData = Form.form().bindFromRequest();
         String sName = requestData.get("name");
         String sCat = requestData.get("category");
+        String sDesc = requestData.get("description");
         Help help = new Help();
         help.name = sName;
         help.category = Category.find.where().eq("name", sCat).findUnique();
+        help.description = sDesc;
+        help.longitude = Double.parseDouble(requestData.get("longitude"));
+        help.latitude = Double.parseDouble(requestData.get("latitude"));
         String login = ctx().session().get("login");
         User user = User.find.byId(login);
         if(user!=null){

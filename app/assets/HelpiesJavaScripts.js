@@ -15,13 +15,6 @@ $(window).scroll(function (argument) {
 
     var headerImg=$('#headerImg')
 
-    console.log('------------------------------------------')
-    console.log($(window).scrollTop())
-    console.log(second_navbar.offset().top)
-    console.log(navbar_top_offset)
-    console.log('asdf')
-    console.log(headerImg.offset().top)
-
     if ($(window).scrollTop() >= second_navbar.height()) {
         second_navbar.addClass("navbar-fixed-top").addClass('nav-fixed').removeClass("navbar-static-top").removeClass('nav-static')
         headerImg.addClass("header-image-small").removeClass("header-image")
