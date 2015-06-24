@@ -1,0 +1,96 @@
+@import java.util.List
+@import models.Category
+@(categories: List[Category], jobs: List[Help])
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/html">
+  <head>
+    @head("Find Job")
+@*
+    <script type="text/javascript"
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDIwe654Ap3O6jqeVXCrMdQC4eXV0XOBV8">
+    </script>*@
+    </head>
+  <body>
+    @navBar()
+    <div class="container">
+        <div class="col-md-4">
+          <div class="input-group">
+            <input type="text" class="form-control" aria-label="..." placeholder="What are you looking for?">
+            <div class="input-group-btn">
+              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">All Categories <span class="caret"></span></button>
+              <ul class="dropdown-menu">
+                <li><a href="#">All Categories</a></li>
+                <li role="separator" class="divider"></li>
+                @for(category <- categories) {
+                  <li><a href="#">@category.name</a></li>
+                }
+              </ul>
+            </div><!-- /btn-group -->
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="input-group">
+            <input type="text" class="form-control" aria-label="..." placeholder="Enter your location">
+            <div class="input-group-btn">
+              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">+ 5 km<span class="caret"></span></button>
+              <ul class="dropdown-menu">
+                <li><a href="#">+ 5 km</a></li>
+                <li><a href="#">+ 10 km</a></li>
+                <li><a href="#">+ 25 km</a></li>
+                <li><a href="#">+ 50 km</a></li>
+              </ul>
+            </div><!-- /btn-group -->
+          </div>
+        </div>
+        <div class="col-md-4">
+          <button class="btn btn-primary"><span class="glyphicon glyphicon-search" aria-hidden="true"></span> Find</button>
+        </div>
+    </div>
+    <div class="container findjob-jobList">
+      @for(job <- jobs){
+        <div class="container findjob-jobContainer">
+          <div class="col-md-2">
+            <a href="/help/@job.id"><img src="http://www.thebakerymadewithlove.com/wp-content/uploads/2014/08/placeholder.png" width="100%" alt=""/></a>
+          </div>
+          <div class="col-md-6">
+            <a href="/help/@job.id">@job.name</a><button class="btn btn-warning btn-xs btn-category">@job.category.name</button>
+            <p>@job.description</p>
+
+          </div>
+          <div class="col-md-2">
+            @job.longitude @job.latitude
+          </div>
+          <div class="col-md-2">
+            @job.creatingDate
+          </div>
+        </div>
+      }
+    </div>
+
+
+
+
+    @footer()
+      <!-- FormSubmit Popup -->
+    <div class="modal fade" id="modal-formSubmit" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">Post job</h4>
+          </div>
+          <div class="modal-body">
+            <p>Your Job post is almost done. Are you sure you want to post this job?</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <a href="/postJob" id="btn-submit" class="btn btn-primary" data-dismiss="modal">Post Job</a>
+          </div>
+        </div>
+      </div>
+    </div>
+      <!-- End Popup -->
+  </body>
+</html>

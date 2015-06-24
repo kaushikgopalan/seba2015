@@ -37,4 +37,10 @@ public class Application extends Controller {
         return ok(userMainPage.render("Profile"));
     }
 
+    public static Result findJob(){
+        List<Category> categories = Category.find.all();
+        List<Help> jobs = Help.find.all();
+        return ok(findJob.render(categories, jobs));
+    }
+
 }
