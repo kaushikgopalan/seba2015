@@ -1,5 +1,6 @@
 package controllers;
 
+import models.Notification;
 import models.Category;
 import models.Help;
 import models.User;
@@ -19,6 +20,11 @@ import java.util.Date;
 public class Users extends Controller{
 
     public static Result testDB(){
+
+        Notification not1 = new Notification();
+        not1.id = 20;
+        not1.title = "I need your help";
+        not1.text = "Only I have a problem with the PC...";
 
         Category cat1 = new Category();
         Category cat2 = new Category();
