@@ -71,7 +71,4 @@ public class Help extends Model{
         return  lastJobs;
     }
 
-    public static List<Help> getAllJobs(){
-        return find.all();
-    }
 }

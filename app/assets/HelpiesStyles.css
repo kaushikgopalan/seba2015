@@ -82,3 +82,13 @@
     width: 100%;
     height: 200px
 }
+.findjob-jobContainer{
+    padding: 10px;
+    border-top: 2px solid rgb(195, 195, 195);
+}
+.findjob-jobList{
+    margin-top: 10px;
+}
+.btn-category{
+    margin-left: 10px;
+}

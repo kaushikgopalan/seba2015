@@ -16,6 +16,7 @@ POST        /signUp               controllers.Users.signUp()
 #Only redirect
 GET         /register             controllers.Application.register()
 
+GET         /findJob              controllers.Application.findJob
 GET         /postjob              controllers.Application.postjob()
 #postHelp itself
 POST        /help                 controllers.Helps.newHelp()

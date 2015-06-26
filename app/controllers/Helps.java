@@ -87,4 +87,5 @@ public class Helps extends Controller{
         Help help = Help.find.byId(id);
         return ok(helpDetails.render(help));
     }
+
 }
