@@ -1,5 +1,6 @@
 package controllers;
 
+import models.Notification;
 import models.Category;
 import models.Help;
 import models.User;
@@ -20,6 +21,11 @@ import java.util.List;
 public class Users extends Controller{
 
     public static Result testDB(){
+
+        Notification not1 = new Notification();
+        not1.id = 20;
+        not1.title = "I need your help";
+        not1.text = "Only I have a problem with the PC...";
 
         Category cat1 = new Category();
         Category cat2 = new Category();
@@ -127,6 +133,24 @@ public class Users extends Controller{
         help3.helpie = user2;
 
         help3.closingDate = new Date();
+
+        help1.latitude = 48.134293;
+        help1.longitude = 11.555912;
+
+        help2.latitude = 28.2686;
+        help2.longitude = 16.6056;
+
+        help3.latitude = 48.134293;
+        help3.longitude = 11.555912;
+
+
+        help4.latitude = 28.2686;
+        help4.longitude = 16.6056;
+
+        help1.description = "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren";
+        help2.description = "dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren";
+        help3.description = "nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren";
+        help4.description = "eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren";
 
         help1.save();
         help2.save();

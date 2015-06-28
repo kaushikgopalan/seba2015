@@ -1,0 +1,39 @@
+
+@(notification: Notification)
+<script>
+  var  n = @notification;
+  if(n == null){
+  n.id = 0;
+  n.title = "new";
+  n.text = "";
+  @notification = n;
+  }
+</script>
+<div class="form-horizontal">
+  @helper.form(action = routes.Notifications.newNotification()) {
+    <div class="form-group">
+      <label for="inputPass" class="col-sm-5 control-label">Title :</label>
+      <div class="col-sm-2">
+        <input name="title" type="text" class="form-control" id="title">
+      </div>
+    </div>
+    @*<div class="form-group">
+      <label for="inputPass" class="col-sm-5 control-label">To :</label>
+      <div class="col-sm-2">
+        <input name="hashPass" type="password" class="form-control" id="destination" >
+      </div>
+    </div>*@
+    <div class="form-group">
+      <label for="inputPass" class="col-sm-5 control-label">Text :</label>
+      <div class="col-sm-2">
+        <input name="text" type="text" class="form-control" id="text">
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-sm-offset-7 col-sm-10">
+        <button type="submit" class="btn btn-default btn-primary">Send Message</button>
+      </div>
+    </div>
+  }
+
+</div>

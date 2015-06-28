@@ -13,7 +13,7 @@ import java.util.List;
  */
 
 @Entity
-public class Help extends  Model{
+public class Help extends Model{
 
     @Id
     @GeneratedValue
@@ -26,10 +26,10 @@ public class Help extends  Model{
     public String description;
 
     @Column
-    public long latitude;
+    public double latitude;
 
     @Column
-    public long longitude;
+    public double longitude;
     @Column
     public Date creatingDate;
     @Column
@@ -72,4 +72,5 @@ public class Help extends  Model{
         if (allJobs.size()>0) lastJobs.add(allJobs.remove(allJobs.size()-1));
         return  lastJobs;
     }
+
 }

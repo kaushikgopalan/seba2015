@@ -1,9 +1,9 @@
 @import java.util
 @import models.User
 @import models.Help
-@(lastjobs: util.List[Help])
+@(alljobs: util.List[Help])
 
-@for(p <- lastjobs) {
+@for(p <- alljobs) {
   <div class="media">
     <div class="media-left">
       <a href="#">
@@ -28,7 +28,7 @@
         <div class="panel-body">
           <div class="bs-callout bs-callout-default helpContainer-content">
             <p>Category: @p.category.name</p>
-            <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore</p>
+            <p>@p.description</p>
           </div>
 
           <div class="helpContianerCTA">

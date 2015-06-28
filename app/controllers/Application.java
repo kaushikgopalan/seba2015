@@ -3,12 +3,15 @@ package controllers;
 import models.*;
 import play.*;
 import play.data.*;
+import play.db.ebean.Model;
 import play.mvc.*;
 
 import views.html.*;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static play.libs.Json.toJson;
 
 public class Application extends Controller {
 
@@ -35,6 +38,12 @@ public class Application extends Controller {
 
     public static Result profile(){
         return ok(userMainPage.render("Profile"));
+    }
+
+    //for testing
+    public static Result GetAllNotifications(){
+        List<Notification> list = Notification.GetAllNotifications();
+        return ok(toJson(list));
     }
 
 }

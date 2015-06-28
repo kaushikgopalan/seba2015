@@ -1,3 +1,6 @@
+@import java.util
+@import models.Notification
+
 @(title: String)
 
 <!DOCTYPE html>
@@ -55,7 +58,13 @@
                             </div>
                         </div>
                         <div id="tab2">
-                            @userProfileMessage();
+                            <script>
+                                var list = @Application.GetAllNotifications();
+
+                            </script>
+
+                            @userProfileMessage(Notification.GetAllNotifications(),null)
+
                         </div>
                         <div id="tab3">List of Jobs</div>
                         <div id="tab4">List of Helpies</div>
