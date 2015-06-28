@@ -21,9 +21,12 @@ create table help (
   category_id               integer,
   owner_login               varchar(255),
   helpie_login              varchar(255),
+  price                     integer not null,
   done                      boolean,
   constraint pk_help primary key (id))
 ;
+
+alter table help alter column price set default 0;
 
 create table note (
   id                        integer not null,

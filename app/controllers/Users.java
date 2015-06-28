@@ -12,6 +12,7 @@ import play.mvc.Result;
 import views.html.*;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by Alexx on 28.05.2015.
@@ -133,6 +134,15 @@ public class Users extends Controller{
         help4.save();
 
         return ok("test done");
+    }
+    public static Result testDB2(){
+
+        List<Help> allHelps = Help.find.all();
+        for(Help help : allHelps){
+            help.price = 0;
+            help.update();
+        }
+        return ok("done");
     }
 
     public static Result signUp(){

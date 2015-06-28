@@ -29,5 +29,6 @@ GET         /profile              controllers.Application.profile()
 # Map static resources from the /public folder to the /assets URL path
 GET         /assets/*file         controllers.Assets.at(path="/public", file)
 GET         /testDB               controllers.Users.testDB()
+GET         /testDB2              controllers.Users.testDB2()
 
     

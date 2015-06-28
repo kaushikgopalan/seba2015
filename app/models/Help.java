@@ -36,6 +36,8 @@ public class Help extends  Model{
     public Date closingDate;
     @Column
     public ArrayList<Date> dates;
+    @Column
+    public int price;
 
     @ManyToOne
     public Category category;
