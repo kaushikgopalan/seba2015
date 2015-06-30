@@ -12,6 +12,7 @@ import play.mvc.Controller;
 import play.mvc.Result;
 import views.html.*;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -238,5 +239,16 @@ public class Users extends Controller{
         session().clear();
         //return ok(index.render());
         return redirect(routes.Application.index());
+    }
+
+    public static User getUserInformation(){
+        String login = ctx().session().get("login");
+        if(login == null){
+            return new User();
+        }
+        return User.find.byId(login);
+    }
+    public static User newUser(){
+        return new User();
     }
 }

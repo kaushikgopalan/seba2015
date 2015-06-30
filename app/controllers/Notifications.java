@@ -39,6 +39,9 @@ public class Notifications extends Controller{
 
     public static List<Notification> getNotificationsForUser(){
         String login = ctx().session().get("login");
+        if(login == null){
+            return new ArrayList<>();
+        }
         User user = User.find.byId(login);
         List<Notification> userNotifications = new ArrayList<>();
         if(user!=null){

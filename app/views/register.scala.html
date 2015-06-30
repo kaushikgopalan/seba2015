@@ -17,7 +17,7 @@
     <body>
         @navBar()
         @helper.form(action = routes.Users.signUp()) {
-            @userProfileRegister()
+            @userProfileRegister(Users.newUser)
             <div class="form-group">
                 <div class="col-sm-offset-7 col-sm-10">
                     <button type="submit" class="btn btn-default btn-primary">Register</button>

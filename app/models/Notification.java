@@ -64,7 +64,7 @@ public class Notification extends Model{
         List<Notification> filterList = new ArrayList<>();
 
         if (user != null && user.login != ""){
-            filterList = (List<Notification>) find.where().or(Expr.like("sender",user.login),Expr.like("receiver",user.login));
+            filterList = (List<Notification>) find.where().or(Expr.like("sender",user.login),Expr.like("receiver",user.login)).findList();
         }
         return filterList;
     }

@@ -1,3 +1,7 @@
+@import java.util
+
+@(user: User)
+
 <div class="form-horizontal">
   <div class="form-group">
     <label for="inputImage" class="col-sm-5 control-label">Image :</label>
@@ -10,7 +14,7 @@
   <div class="form-group">
     <label for="inputUsername" class="col-sm-5 control-label">Username :</label>
     <div class="col-sm-2">
-      <input name="login" type="text" class="form-control" id="inputUsername" placeholder="">
+      <input name="login" type="text" class="form-control" id="inputUsername" placeholder="" value=@user.login>
       @*<input name="login" type="text" class="form-control login-field" value="" placeholder="Enter your name" id="login-name">*@
     </div>
   </div>
@@ -29,31 +33,30 @@
   <div class="form-group">
     <label for="inputFname" class="col-sm-5 control-label">First name :</label>
     <div class="col-sm-2">
-      <input name="firstName" type="text" class="form-control" id="inputFname" placeholder="">
+      <input name="firstName" type="text" class="form-control" id="inputFname" placeholder="" value=@user.firstName>
     </div>
   </div>
   <div class="form-group">
     <label for="inputSname" class="col-sm-5 control-label">Last name :</label>
     <div class="col-sm-3">
-      <input name="lastName" type="text" class="form-control" id="inputSname" placeholder="">
+      <input name="lastName" type="text" class="form-control" id="input-lastName" placeholder="" value=@user.lastName>
     </div>
   </div>
 
   <div class="form-group">
     <label for="inputDescrip" class="col-sm-5 control-label">Description :</label>
     <div class="col-sm-3">
-      <textarea name="description" class="form-control" rows="3" placeholder="About you are"></textarea>
+      <textarea name="description" type="text" id="description" class="form-control" rows="3" placeholder="About you are"  value=@user.description></textarea>
     </div>
   </div>
   <div class="form-group">
     <label for="inputSkill" class="col-sm-5 control-label">Skills :</label>
     <div class="col-sm-3">
       <select name="skills" multiple id="inputSkill" class="col-sm-5 form-control">
-        <option>Plumber</option>
-        <option>Gardener</option>
-        <option>Computing</option>
-        <option>Lawyer</option>
-        <option>Other</option>
+
+        @for(s <- user.skills.toList){
+        <option>s.name</option>
+      }
       </select>
     </div>
   </div>
