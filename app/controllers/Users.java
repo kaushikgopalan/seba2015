@@ -217,13 +217,14 @@ public class Users extends Controller{
         }
         if(user!=null){
             session("login", sLogin);
-            return ok(index.render(Help.getLastJobs(), User.getLastHelps()));
+            return redirect(routes.Application.index());
         }
 
         return ok("user is null: "+sLogin+", "+sPass);
     }
 
     public static Result changePlan(){
+
 
         DynamicForm requestData = Form.form().bindFromRequest();
         String sLogin = requestData.get("login");

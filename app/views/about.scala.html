@@ -1,0 +1,71 @@
+
+@(title: String)
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/html">
+  <head>
+    @head(title = "helpies.com")
+    @*<link rel="stylesheet" media="screen" href="@routes.Assets.at(WebJarAssets.locate("flat-ui.css"))>*@
+    @*<link rel="" media="screen" href="@routes.WebJarAssets.at(WebJarAssets.locate("flat-ui-icons-regular.svg"))">*@
+
+  </head>
+  <body>
+    @navBar()
+    <div class="form col-xs-3"></div>
+    <div class="form col-xs-6"> @title</div>
+    <div class="form col-xs-3"></div>
+    <div class="form col-xs-12"><label></label></div>
+
+    <div class="col-xs-2"></div>
+
+    <div class="row">
+      <div class="col-xs-2">
+        <div class="tile">
+          <div class="tile-image">
+            <img src="@routes.Assets.at("images/AlexanderPic.png")" class="img-circle" alt="140x140" style="width: 120px; height: 140px;">
+          </div>
+          <div class="tile-title" >
+            <br>Alexander Tumanin
+          </div>
+        </div>
+      </div>
+
+      <div class="col-xs-2">
+        <div class="tile">
+          <div class="tile-image">
+            <img src="@routes.Assets.at("images/AaronPic.png")" class="img-circle" alt="80x140" style="width: 120px; height: 140px;">
+          </div>
+          <div class="tile-title" >
+            <br>Aaron Perez Martin
+          </div>
+        </div>
+      </div>
+
+      <div class="col-xs-2">
+        <div class="tile">
+          <div class="tile-image">
+            <img src="@routes.Assets.at("images/KaushikPic.png")" class="img-circle" alt="140x140" style="width: 120px; height: 140px;">
+          </div>
+          <div class="tile-title" >
+            <br>Kaushik Gopalan
+          </div>
+        </div>
+      </div>
+
+      <div class="col-xs-2">
+        <div class="tile">
+          <div class="tile-image">
+            <img src="@routes.Assets.at("images/SebastianPic.png")" class="img-circle" alt="140x140" style="width: 120px; height: 140px;">
+          </div>
+          <div class="tile-title" >
+            <br>Sebastian Dirrigl
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    @footer()
+  </body>
+</html>

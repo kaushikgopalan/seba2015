@@ -1,13 +1,18 @@
 package controllers;
 
+import models.Help;
 import models.Notification;
+import models.User;
 import play.data.DynamicForm;
 import play.data.Form;
 import play.mvc.Controller;
 import play.mvc.Result;
+import views.html.index;
 import views.html.userProfileMessage;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by Aaron on 24/06/15.
@@ -30,6 +35,16 @@ public class Notifications extends Controller{
         noti.save();
 
         return ok("Notification stored");
+    }
+
+    public static List<Notification> getNotificationsForUser(){
+        String login = ctx().session().get("login");
+        User user = User.find.byId(login);
+        List<Notification> userNotifications = new ArrayList<>();
+        if(user!=null){
+            userNotifications.addAll(Notification.getAllNotificationsByUserId(user));
+        }
+        return userNotifications;
     }
 /*
     public static Result getNotificationForOwner(){
