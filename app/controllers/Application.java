@@ -29,9 +29,9 @@ public class Application extends Controller {
             return ok(index.render(Help.getJobsNotDone(), User.getHelpies()));
         }
     }
-    public static Result about() { return ok(about.render("Our Team")); }
+    public static Result about() { return ok(about.render("Our Team :")); }
 
-    public static Result contact() { return ok(contact.render("Contact Form")); }
+    public static Result contact() { return ok(contact.render("Contact Form :")); }
 
     public static Result register() { return ok(register.render("Register")); }
 
