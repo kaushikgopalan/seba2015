@@ -49,9 +49,13 @@ public class Application extends Controller {
     public static Result profile(){
         return ok(userMainPage.render("Profile"));
     }
+
     public static Result findJob(){
-        return ok();
+        List<Category> categories = Category.find.all();
+        List<Help> jobs = Help.find.all();
+        return ok(findJob.render(categories, jobs));
     }
+
     //for testing
     public static Result GetAllNotifications(){
         List<Notification> list = Notification.GetAllNotifications();
