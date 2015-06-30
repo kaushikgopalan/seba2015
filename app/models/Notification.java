@@ -34,18 +34,16 @@ public class Notification extends Model{
     @Column
     public Date creatingDate;
 
-/*
-    @ManyToMany
-    public User sourceUser;
 
-    @ManyToMany
-    public User destinationUser;
+    @ManyToOne
+    public User sender;
 
-    @ManyToMany
-    public Help asociatedHelp;
+    @ManyToOne
+    public User receiver;
 
-    @ManyToMany
-    public Help asociatedJob;*/
+    @ManyToOne
+    public Help help;
+
 
     public Notification (){
         creatingDate = new Date();
@@ -54,7 +52,7 @@ public class Notification extends Model{
     public static Finder<String, Notification> find = new Finder<String, Notification>(String.class, Notification.class);
 
     public static Notification findByHelpID(String HelpID) {
-        return find.where().eq("asociatedHelp", HelpID).findUnique();
+        return find.where().eq("help", HelpID).findUnique();
     }
 
     public static Notification findByJobID(String JobID) {
@@ -66,7 +64,7 @@ public class Notification extends Model{
         List<Notification> filterList = new ArrayList<>();
 
         if (user != null && user.login != ""){
-            filterList = (List<Notification>) find.where().or(Expr.like("sourceUser",user.login),Expr.like("destinationUser",user.login));
+            filterList = (List<Notification>) find.where().or(Expr.like("sender",user.login),Expr.like("receiver",user.login));
         }
         return filterList;
     }
