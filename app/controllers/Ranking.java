@@ -6,6 +6,8 @@ import play.data.Form;
 import play.libs.Json;
 import play.mvc.Controller;
 import play.mvc.Result;
+
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -13,21 +15,24 @@ import java.util.List;
  */
 public class Ranking extends Controller{
 
-    public static Result getAllFirHelpie(){
-
-        Form<User> form = Form.form(User.class).bindFromRequest();
-        User user = form.get();
-        List<Note> ranking = Note.find.where().eq("helpie", user).findList();
-
-        return ok(Json.toJson(ranking));
+    public static List<Note> getAllFirHelpie(){
+        List<Note> ranking = new ArrayList<>();
+        String login = ctx().session().get("login");
+        User user = User.find.byId(login);
+        if(user!=null){
+            ranking = Note.find.where().eq("helpie", user).findList();
+        }
+        return  ranking;
     }
 
-    public static Result getAllForOwner(){
-        Form<User> form = Form.form(User.class).bindFromRequest();
-        User user = form.get();
-        List<Note> ranking = Note.find.where().eq("owner", user).findList();
-
-        return ok(Json.toJson(ranking));
+    public static List<Note> getAllForOwner(){
+        List<Note> ranking = new ArrayList<>();
+        String login = ctx().session().get("login");
+        User user = User.find.byId(login);
+        if(user!=null){
+            ranking = Note.find.where().eq("owner", user).findList();
+        }
+        return  ranking;
     }
 
     public static Result newNote(){

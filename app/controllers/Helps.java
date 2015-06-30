@@ -40,7 +40,7 @@ public class Helps extends Controller{
         if(user!=null){
             help.owner=user;
             help.save();
-            return ok(index.render(Help.getLastJobs(), User.getLastHelps()));
+            return redirect(routes.Application.index());
         }
 
         return ok("Please login!");
