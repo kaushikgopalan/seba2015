@@ -67,7 +67,7 @@ public class Helps extends Controller{
         return ok();
     }
 
-    public static Result getHelpsForOwner(){
+    /*public static Result getHelpsForOwner(){
 
         Form<User> form = Form.form(User.class).bindFromRequest();
         User owner = form.get();
@@ -81,11 +81,30 @@ public class Helps extends Controller{
         User helpie = form.get();
         List<Help> helps = Help.find.where().eq("helpie", helpie).findList();
         return ok(Json.toJson(helps));
-    }
+    }*/
 
     public static Result details(String  id){
         Help help = Help.find.byId(id);
         return ok(helpDetails.render(help));
+    }
+
+    public static List<Help> getHelpsForOwner(){
+        String login = ctx().session().get("login");
+        User user = User.find.byId(login);
+        List<Help> userHelps = new ArrayList<>();
+        if(user!=null){
+            userHelps.addAll(Help.getHelpsForOwner(user));
+        }
+        return userHelps;
+    }
+    public static List<Help> getHelpsForHElpie(){
+        String login = ctx().session().get("login");
+        User user = User.find.byId(login);
+        List<Help> userHelps = new ArrayList<>();
+        if(user!=null){
+            userHelps.addAll(Help.getHelpsForHelpie(user));
+        }
+        return userHelps;
     }
 
 }
