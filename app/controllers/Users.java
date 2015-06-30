@@ -217,7 +217,7 @@ public class Users extends Controller{
         }
         if(user!=null){
             session("login", sLogin);
-            return ok(index.render(Help.getLastJobs(), User.getLastHelps()));
+            return ok(index.render(Help.getJobsNotDone(), User.getHelpies()));
         }
 
         return ok("user is null: "+sLogin+", "+sPass);
@@ -237,6 +237,6 @@ public class Users extends Controller{
     public static Result signOut(){
         session().clear();
         //return ok(index.render());
-        return redirect(routes.Application.index());
+        return ok(index.render(Help.getLastJobs(), User.getLastHelps()));
     }
 }
