@@ -1,0 +1,33 @@
+
+@(title: String)
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/html">
+  <head>
+    @head(title = "helpies.com")
+    @*<link rel="stylesheet" media="screen" href="@routes.Assets.at(WebJarAssets.locate("flat-ui.css"))>*@
+    @*<link rel="" media="screen" href="@routes.WebJarAssets.at(WebJarAssets.locate("flat-ui-icons-regular.svg"))">*@
+
+  </head>
+  <body>
+    @navBar()
+    <div class="form col-xs-3"></div>
+    <div class="form col-xs-6"> @title</div>
+    <div class="form col-xs-3"></div>
+    <div class="form col-xs-12"><label></label></div>
+
+    <div class="form-horizontal ">
+
+      <div class="form-group">
+        <label class="col-xs-4 control-label">Name :</label>
+        <div class="col-xs-3">
+          <input name="name" type="text" class="form-control" placeholder="">
+        </div>
+      </div>
+
+    </div>
+
+    @footer()
+  </body>
+</html>
