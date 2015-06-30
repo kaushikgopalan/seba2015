@@ -26,6 +26,11 @@
                         <div class="tile-title">
                             @s.firstName @s.lastName
                         </div>
+                        <div class="tile">
+                        @for(skill <- s.skills){
+                                @skill.name
+                        }
+                        </div>
                     </div>
                 }
 

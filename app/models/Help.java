@@ -73,4 +73,10 @@ public class Help extends Model{
         return  lastJobs;
     }
 
+    public static List<Help> getHelpsForOwner(User user){
+        return  find.where().eq("owner", user.login).findList();
+    }
+    public static List<Help> getHelpsForHelpie(User user){
+        return  find.where().eq("helpie", user.login).findList();
+    }
 }
