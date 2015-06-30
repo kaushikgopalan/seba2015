@@ -58,4 +58,13 @@ public class Application extends Controller {
         return ok(toJson(list));
     }
 
+    public static User getUserFromSession(){
+
+        String login = ctx().session().get("login");
+        User user = User.find.byId(login);
+
+        return user;
+
+    }
+
 }
