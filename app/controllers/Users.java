@@ -225,6 +225,7 @@ public class Users extends Controller{
 
     public static Result changePlan(){
 
+
         DynamicForm requestData = Form.form().bindFromRequest();
         String sLogin = requestData.get("login");
         String sPlan = requestData.get("plan");

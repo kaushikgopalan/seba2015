@@ -1,12 +1,15 @@
 package controllers;
 
 import models.*;
+import org.apache.commons.logging.Log;
 import play.*;
 import play.data.*;
 import play.db.ebean.Model;
 import play.mvc.*;
 
+import scala.Console;
 import views.html.*;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,8 +23,11 @@ public class Application extends Controller {
     public static Result index() {
 
 
-
-        return ok(index.render(Help.getLastJobs(), User.getLastHelps()));
+        if (ctx().session().get("login")==null) {
+            return ok(index.render(Help.getLastJobs(), User.getLastHelps()));
+        } else {
+            return ok(index.render(Help.getJobsNotDone(), User.getHelpies()));
+        }
     }
     public static Result register() { return ok(register.render("Register")); }
 
