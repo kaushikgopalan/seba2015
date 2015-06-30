@@ -63,8 +63,8 @@ public class Notification extends Model{
     public static List<Notification> getAllNotificationsByUserId(User user){
         List<Notification> filterList = new ArrayList<>();
 
-        if (user != null && user.login != ""){
-            filterList = (List<Notification>) find.where().or(Expr.like("sender",user.login),Expr.like("receiver",user.login)).findList();
+        if (user != null && !user.login.equals("")){
+            filterList = find.where().or(Expr.like("sender",user.login),Expr.like("receiver",user.login)).findList();
         }
         return filterList;
     }

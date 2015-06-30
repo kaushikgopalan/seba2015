@@ -83,7 +83,11 @@ public class User extends  Model{
         List<User> allUsers = find.all();
         List<User> helpies = new ArrayList<>();
         for(User user: allUsers){
-            if(user.skills!=null) helpies.add(user);
+            if(user.skills!=null){
+                if (user.skills.size()!=0) {
+                    helpies.add(user);
+                }
+            }
         }
         return helpies;
     }
