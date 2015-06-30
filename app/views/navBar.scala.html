@@ -1,3 +1,9 @@
+
+@import java.util
+@import models.User
+@import models.Help
+@import controllers.Navbar
+
 <nav class="navbar navbar-default  navbar-static-top" id="first-navbar">
     <div class="container">
 
@@ -15,20 +21,15 @@
             <li><a action="contact" href="contact">Contact</a></li>
         </ul>
 
-        <form class="nav navbar-form navbar-right " action="index" href="index" role="search">
-            <div class="form-group">
-                <div class="input-group">
-                    <input class="form-control search"  type="search" placeholder="Search">
-                    <span class="input-group-btn">
-                        <button type="submit" class="btn"><span class="glyphicon glyphicon-search"></span></button>
-                    </span>
-                </div>
-            </div>
-
-        </form>
 
         <ul class="nav navbar-nav navbar-right">
-            <li ><a action="signIn" href="signIn" class ="glyphicon glyphicon-log-in"> Login </a></li>
+            @if(session.contains("login")){
+                <li><a action="Profile" href="/profile" class="glyphicon glyphicon-user">@session.get("login")</a> </li>
+                <li><a action="Logoug" href="/signOut"> Logout</a></li>
+            }else{
+                <li ><a action="signIn" href="signIn" class ="glyphicon glyphicon-log-in"> Login </a></li>
+            }
+
         </ul>
 
     </div>
