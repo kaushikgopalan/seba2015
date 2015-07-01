@@ -252,6 +252,6 @@ public class Users extends Controller{
     public static User newUser(){
         User user = new User();
         user.skills = Helps.getAllCategories();
-        return new User();
+        return user;
     }
 }

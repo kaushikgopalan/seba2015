@@ -93,7 +93,8 @@ public class Helps extends Controller{
         if(login == null){
             return new ArrayList<>();
         }
-        User user = User.find.byId(login);
+        User user = User.find.where().eq("login", login).findUnique();
+
         List<Help> userHelps = new ArrayList<>();
         if(user!=null){
             userHelps.addAll(Help.getHelpsForOwner(user));
