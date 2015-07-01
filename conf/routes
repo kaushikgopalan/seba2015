@@ -23,6 +23,8 @@ GET         /register                controllers.Application.register()
 GET         /findJob                 controllers.Application.findJob()
 GET         /postjob                 controllers.Application.postjob()
 #postHelp itself
+#view Users
+GET         /users/*id                controllers.Users.viewProfile(id)
 POST        /help                    controllers.Helps.newHelp()
 GET         /help/*id                controllers.Helps.details(id)
 #WebJarsh

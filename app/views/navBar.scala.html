@@ -26,7 +26,7 @@
         <ul class="nav navbar-nav navbar-right">
             @if(session.contains("login")){
                 <li><a action="Profile" href="/profile" class="fui-user">@session.get("login")</a> </li>
-                <li><a action="Logoug" href="/signOut"> Logout</a></li>
+                <li><a action="Logout" href="/signOut"> Logout</a></li>
             }else{
                 <li ><a action="signIn" href="signIn" class ="fui-user"> Login </a></li>
             }
@@ -54,7 +54,7 @@
 
             <div class="col-xs-4 col-sm-4 col-md-4">
                 <ul class="nav navbar-nav navbar-right">
-                <li><a href="#" class ="glyphicon glyphicon-user">Find Helpies</a></li>
+                <li><a href="#" class ="glyphicon glyphicon-user"> Find Helpies</a></li>
                 <li><a href="#" class ="glyphicon glyphicon-scissors"> Post Help</a></li>
                 </ul>
 
