@@ -15,48 +15,47 @@
     <label for="inputUsername" class="col-sm-5 control-label">Username :</label>
     <div class="col-sm-2">
       <input name="login" type="text" class="form-control" id="inputUsername" placeholder="" value=@user.login>
-      @*<input name="login" type="text" class="form-control login-field" value="" placeholder="Enter your name" id="login-name">*@
     </div>
   </div>
   @if(!session.contains("login")){
     <div class="form-group">
       <label for="inputPass" class="col-sm-5 control-label">Password :</label>
       <div class="col-sm-2">
-        <input name="hashPass" type="password" class="form-control" id="inputPass" placeholder="">
+        <textarea name="hashPass" type="password" class="form-control" id="inputPass"  placeholder=""></textarea>
       </div>
     </div>
     <div class="form-group">
       <label for="inputPass2" class="col-sm-5 control-label">Confirm password :</label>
       <div class="col-sm-2">
-        <input name="hashPass2"type="password" class="form-control" id="inputPass2" placeholder="">
+        <textarea name="inputPass2" type="password" class="form-control" id="inputPass2"  placeholder=""></textarea>
       </div>
     </div>
   }
   <div class="form-group">
     <label for="inputFname" class="col-sm-5 control-label">First name :</label>
     <div class="col-sm-2">
-      <input name="firstName" type="text" class="form-control" id="inputFname" placeholder="" value=@user.firstName>
+      <textarea name="firstName" type="text" class="form-control" id="firstName" placeholder="">@user.firstName</textarea>
     </div>
   </div>
   <div class="form-group">
     <label for="inputSname" class="col-sm-5 control-label">Last name :</label>
     <div class="col-sm-3">
-      <input name="lastName" type="text" class="form-control" id="input-lastName" placeholder="" value=@user.lastName>
+      <textarea name="lastName" type="text" class="form-control" id="lastName" placeholder="">@user.lastName</textarea>
     </div>
   </div>
 
   <div class="form-group">
     <label for="inputDescrip" class="col-sm-5 control-label">Description :</label>
     <div class="col-sm-3">
-      <textarea name="description" type="text" id="description" class="form-control" rows="3" placeholder="About you are"  value=@user.description></textarea>
+      <textarea name="description" type="text" class="form-control" id="description"  rows="3" placeholder="Say how you are">@user.description</textarea>
     </div>
   </div>
   <div class="form-group">
     <label for="inputSkill" class="col-sm-5 control-label">Skills :</label>
     <div class="col-sm-3">
-      <select name="skills" multiple id="inputSkill" class="col-sm-5 form-control">
+      <select name="skills" multiple id="skills" class="col-sm-5 form-control">
         @for(category <- user.skills.toList) {
-          <option value="@category.name">@category.name</option>
+          <option name="skill" value="@category.id">@category.name</option>
         }
       </select>
     </div>

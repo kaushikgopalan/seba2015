@@ -8,6 +8,7 @@ import models.utils.AppException;
 import models.utils.Hash;
 import play.data.DynamicForm;
 import play.data.Form;
+import play.libs.F;
 import play.mvc.Controller;
 import play.mvc.Result;
 import views.html.*;
@@ -172,7 +173,6 @@ public class Users extends Controller{
 
     public static Result signUp(){
 
-
         DynamicForm requestData = Form.form().bindFromRequest();
         String sLogin = requestData.get("login");
         String sFirstName = requestData.get("firstName");
@@ -180,6 +180,17 @@ public class Users extends Controller{
         String sDescription = requestData.get("description");
         String sPass = requestData.get("hashPass");
         String sPass2 = requestData.get("hashPass2");
+        String sSkills = requestData.get("skills");
+
+
+/*        List<F.Tuple<String,List<Object>>> list = Form.form().field("skills").constraints();
+        System.out.println("SkilsWeb: " +lista.size());
+
+        List<Object> lista2 = lista.get(0)._2;
+
+
+        System.out.println("SkilsWeb: " +lista2.size());*/
+
 
         /*if ((sPass != sPass2 ) || sPass == "" || sPass2 == ""){
             return ok("Password confirmation is not the same or empty");
@@ -190,6 +201,8 @@ public class Users extends Controller{
         user.firstName = sFirstName;
         user.lastName = sLastName;
         user.description = sDescription;
+
+
         try {
             user.hashPass = Hash.createPassword(sPass);
         } catch (AppException e) {
@@ -245,9 +258,11 @@ public class Users extends Controller{
     public static User getUserInformation(){
         String login = ctx().session().get("login");
         if(login == null){
-            return new User();
+            return newUser();
         }
-        return User.find.byId(login);
+        User u = User.find.byId(login);
+        System.out.println("DescrioRecover: "+u.description );
+        return u;
     }
     public static User newUser(){
         User user = new User();
