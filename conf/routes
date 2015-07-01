@@ -23,6 +23,8 @@ GET         /register                controllers.Application.register()
 GET         /findJob                 controllers.Application.findJob()
 GET         /postjob                 controllers.Application.postjob()
 #postHelp itself
+#view Users
+GET         /users/*id                controllers.Users.viewProfile(id)
 POST        /help                    controllers.Helps.newHelp()
 GET         /help/*id                controllers.Helps.details(id)
 #WebJarsh
@@ -35,6 +37,6 @@ GET         /profile                 controllers.Application.profile()
 GET         /assets/*file            controllers.Assets.at(path="/public", file)
 GET         /testDB                  controllers.Users.testDB()
 
-GET         /notifications           controllers.Application.GetAllNotifications()
+# GET         /notifications           controllers.Application.GetAllNotifications()
 POST        /newNotificantion        controllers.Notifications.newNotification()
 

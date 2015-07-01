@@ -90,7 +90,11 @@ public class Helps extends Controller{
 
     public static List<Help> getHelpsForOwner(){
         String login = ctx().session().get("login");
-        User user = User.find.byId(login);
+        if(login == null){
+            return new ArrayList<>();
+        }
+        User user = User.find.where().eq("login", login).findUnique();
+
         List<Help> userHelps = new ArrayList<>();
         if(user!=null){
             userHelps.addAll(Help.getHelpsForOwner(user));
@@ -99,12 +103,18 @@ public class Helps extends Controller{
     }
     public static List<Help> getHelpsForHElpie(){
         String login = ctx().session().get("login");
+        if(login == null){
+            return new ArrayList<>();
+        }
         User user = User.find.byId(login);
         List<Help> userHelps = new ArrayList<>();
         if(user!=null){
             userHelps.addAll(Help.getHelpsForHelpie(user));
         }
         return userHelps;
+    }
+    public static List<Category> getAllCategories(){
+        return (List<Category>)Category.find.all();
     }
 
 }

@@ -1,0 +1,23 @@
+@(user: User)
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/html">
+    <head>
+        @head(title = "helpies.com")
+        @*<link rel="stylesheet" media="screen" href="@routes.Assets.at(WebJarAssets.locate("flat-ui.css"))>*@
+        @*<link rel="" media="screen" href="@routes.WebJarAssets.at(WebJarAssets.locate("flat-ui-icons-regular.svg"))">*@
+
+    </head>
+    <body>
+@*<div style="height: 50px"></div>*@
+@navBar()
+    <h1>User Details</h1>
+    <br><br><br><br><br><br>
+        @user.firstName
+        <br> @user.lastName
+        <br> @user.description
+
+    </body>
+
+</html>

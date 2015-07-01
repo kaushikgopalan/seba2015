@@ -74,9 +74,9 @@ public class Help extends Model{
     }
 
     public static List<Help> getHelpsForOwner(User user){
-        return  find.where().eq("owner", user.login).findList();
+        return  find.where().eq("owner_login", user.login).findList();
     }
     public static List<Help> getHelpsForHelpie(User user){
-        return  find.where().eq("helpie", user.login).findList();
+        return  find.where().eq("helpie_login", user.login).findList();
     }
 }

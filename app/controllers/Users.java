@@ -1,5 +1,6 @@
 package controllers;
 
+import com.sun.media.jfxmedia.logging.Logger;
 import models.Notification;
 import models.Category;
 import models.Help;
@@ -8,10 +9,13 @@ import models.utils.AppException;
 import models.utils.Hash;
 import play.data.DynamicForm;
 import play.data.Form;
+import play.libs.F;
 import play.mvc.Controller;
 import play.mvc.Result;
 import views.html.*;
 
+import java.lang.Package;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -171,7 +175,6 @@ public class Users extends Controller{
 
     public static Result signUp(){
 
-
         DynamicForm requestData = Form.form().bindFromRequest();
         String sLogin = requestData.get("login");
         String sFirstName = requestData.get("firstName");
@@ -179,6 +182,17 @@ public class Users extends Controller{
         String sDescription = requestData.get("description");
         String sPass = requestData.get("hashPass");
         String sPass2 = requestData.get("hashPass2");
+        String sSkills = requestData.get("skills");
+
+
+/*        List<F.Tuple<String,List<Object>>> list = Form.form().field("skills").constraints();
+        System.out.println("SkilsWeb: " +lista.size());
+
+        List<Object> lista2 = lista.get(0)._2;
+
+
+        System.out.println("SkilsWeb: " +lista2.size());*/
+
 
         /*if ((sPass != sPass2 ) || sPass == "" || sPass2 == ""){
             return ok("Password confirmation is not the same or empty");
@@ -189,6 +203,8 @@ public class Users extends Controller{
         user.firstName = sFirstName;
         user.lastName = sLastName;
         user.description = sDescription;
+
+
         try {
             user.hashPass = Hash.createPassword(sPass);
         } catch (AppException e) {
@@ -219,6 +235,7 @@ public class Users extends Controller{
             session("login", sLogin);
             return redirect(routes.Application.index());
         }
+        //else return(redirect(routes.Application.signIn));
 
         return ok("user is null: "+sLogin+", "+sPass);
     }
@@ -238,5 +255,49 @@ public class Users extends Controller{
         session().clear();
         //return ok(index.render());
         return redirect(routes.Application.index());
+    }
+
+    public static User getUserInformation(){
+        String login = ctx().session().get("login");
+        if(login == null){
+            return newUser();
+        }
+        User u = User.find.byId(login);
+        System.out.println("DescrioRecover: "+u.description );
+        return u;
+    }
+    public static User newUser(){
+        User user = new User();
+        user.skills = Helps.getAllCategories();
+        return user;
+    }
+
+// created to view the profiles of the users.
+// so i can look at who posted the add and what their rating is etc.
+
+    public static Result viewProfile(String id){
+        try{
+
+            User user= User.find.byId(id);
+            String login = ctx().session().get("login");
+            User owner = User.find.byId(login);
+            if(owner.login==user.login){
+                System.out.println("same user. session ");
+                return redirect(routes.Application.profile());
+            }
+            else{
+                System.out.println("User:"+user.login+" Ownwer:"+owner.login);
+            }
+            System.out.println("inside view profile");
+            System.out.println(""+user.lastName);
+            return ok(userDetails.render(user));
+
+        }
+        catch(Exception e){
+            e.printStackTrace();
+            //Logger.logMsg(1, e + "");
+            return redirect(routes.Application.index());
+        }
+        //  return redirect(routes.Application.index());
     }
 }
