@@ -57,10 +57,10 @@ public class Application extends Controller {
     }
 
     //for testing
-    public static Result GetAllNotifications(){
+/*    public static Result GetAllNotifications(){
         List<Notification> list = Notification.GetAllNotifications();
         return ok(toJson(list));
-    }
+    }*/
 
     public static User getUserFromSession(){
 

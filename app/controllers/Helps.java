@@ -90,6 +90,9 @@ public class Helps extends Controller{
 
     public static List<Help> getHelpsForOwner(){
         String login = ctx().session().get("login");
+        if(login == null){
+            return new ArrayList<>();
+        }
         User user = User.find.byId(login);
         List<Help> userHelps = new ArrayList<>();
         if(user!=null){
@@ -99,12 +102,18 @@ public class Helps extends Controller{
     }
     public static List<Help> getHelpsForHElpie(){
         String login = ctx().session().get("login");
+        if(login == null){
+            return new ArrayList<>();
+        }
         User user = User.find.byId(login);
         List<Help> userHelps = new ArrayList<>();
         if(user!=null){
             userHelps.addAll(Help.getHelpsForHelpie(user));
         }
         return userHelps;
+    }
+    public static List<Category> getAllCategories(){
+        return (List<Category>)Category.find.all();
     }
 
 }

@@ -249,6 +249,8 @@ public class Users extends Controller{
         return User.find.byId(login);
     }
     public static User newUser(){
+        User user = new User();
+        user.skills = Helps.getAllCategories();
         return new User();
     }
 }

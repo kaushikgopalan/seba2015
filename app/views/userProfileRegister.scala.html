@@ -53,10 +53,9 @@
     <label for="inputSkill" class="col-sm-5 control-label">Skills :</label>
     <div class="col-sm-3">
       <select name="skills" multiple id="inputSkill" class="col-sm-5 form-control">
-
-        @for(s <- user.skills.toList){
-        <option>s.name</option>
-      }
+        @for(category <- user.skills.toList) {
+          <option value="@category.name">@category.name</option>
+        }
       </select>
     </div>
   </div>

@@ -1,0 +1,42 @@
+@import java.util
+
+
+@(allMyjobs:util.List[Help])
+
+<div class="form-horizontal">
+
+  @* @messageDetails(notification)*@
+
+  <div class="form-group">
+    <label for="inputDescrip" class="col-sm-3 control-label">List of Jobs :</label>
+    <div class="bs-example col-sm-3">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th width="300px">Name</th>
+            <th width="300px">From</th>
+            <th width="300px">Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for(h <- allMyjobs){
+            <tr>
+              <th scope="row">@h.id</th>
+              <td >@h.name</td>
+              <td >@h.category.name </td>
+              <td >@h.creatingDate</td>
+            </tr>
+          }
+        @*<tr>
+          <th scope="row">1</th>
+          <td width="3">Example Name</td>
+          <td width="80">Example Category</td>
+          <td width="80">Example 20-12-2015</td>
+
+        </tr>*@
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

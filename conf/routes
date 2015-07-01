@@ -35,6 +35,6 @@ GET         /profile                 controllers.Application.profile()
 GET         /assets/*file            controllers.Assets.at(path="/public", file)
 GET         /testDB                  controllers.Users.testDB()
 
-GET         /notifications           controllers.Application.GetAllNotifications()
+# GET         /notifications           controllers.Application.GetAllNotifications()
 POST        /newNotificantion        controllers.Notifications.newNotification()
 
