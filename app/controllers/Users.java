@@ -220,6 +220,7 @@ public class Users extends Controller{
             session("login", sLogin);
             return redirect(routes.Application.index());
         }
+        //else return(redirect(routes.Application.signIn));
 
         return ok("user is null: "+sLogin+", "+sPass);
     }
