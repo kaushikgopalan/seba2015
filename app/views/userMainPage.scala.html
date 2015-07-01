@@ -27,7 +27,7 @@
                         <li id><a href="#" name="tab1">Profile</a></li>
                         <li id><a href="#" name="tab2">Messages</a></li>
                         <li id><a href="#" name="tab3">Jobs</a></li>
-                        <li id><a href="#" name="tab4">Helpies</a></li>
+                        @*<li id><a href="#" name="tab4">Helpies</a></li>*@
                     </ul>
                 </div>
             </div>
@@ -39,10 +39,10 @@
             <div class="col-md-1">
                 <div class="form-group ">
                     <ul>
-                        <div><a action="" href="" class ="glyphicon glyphicon-user"> </a></div>
-                        <div><a action="" href="" class ="glyphicon glyphicon-info-sign"> </a></div>
-                        <div><a action="" href="" class ="glyphicon glyphicon-headphones"> </a></div>
-                        <div><a action="" href="" class ="glyphicon glyphicon-signal"> </a></div>
+                        <div><a action="" #tabname2 class ="glyphicon glyphicon-user" data-toggle="tab"> </a></div>
+                        <div><a action="tab2" href="tab2" class ="glyphicon glyphicon-envelope"> </a></div>
+                        <div><a action="" href="" class ="glyphicon glyphicon-copy"> </a></div>
+                        <div><a action="" href="" class ="glyphicon glyphicon-paste"> </a></div>
                     </ul>
                 </div>
             </div>
@@ -50,20 +50,23 @@
                 <div class="form-group">
                     <div id="content">
                         <div id="tab1">
+                        @if(session.contains("login")){
                             @userProfileRegister(Users.getUserInformation())
+
+                        }else{
+                            @userProfileRegister(Users.newUser())
                             <div class="form-group">
                                 <div class="col-sm-offset-7 col-sm-10">
                                     <button type="submit" class="btn btn-default btn-primary">Save</button>
                                 </div>
+                                <div class="col-xd-10"></div>
                             </div>
-                        </div>
-                        <div id="tab2">
-
-                            @userProfileMessage(Notifications.getNotificationsForUser(),null)
+                        }
 
                         </div>
-                        <div id="tab3">List of Jobs</div>
-                        <div id="tab4">List of Helpies</div>
+                        <div id="tab2">@userProfileMessage(Notifications.getNotificationsForUser(),null)</div>
+                        <div id="tab3">@userProfileJobs(Helps.getHelpsForOwner)</div>
+                        @*<div id="tab4"></div>*@
                     </div>
                 </div>
             </div>
@@ -90,6 +93,15 @@
                     }
                 });
             });
+
+            $('a[data-toggle^="tab"]').click(function(){
+                var data = $(this).attr("href");
+                $('a[data-toggle^="tab"]').parent("li").removeClass("active");
+                $('li a[href^="'+data+'"]').parent("li").addClass("active");
+                $('.tab-pane').removeClass("active");
+                $(data).addClass("active");
+
+           })
         </script>
 
         <script type='text/javascript' src='@routes.WebJarAssets.at(WebJarAssets.locate("jquery.min.js"))'></script>
