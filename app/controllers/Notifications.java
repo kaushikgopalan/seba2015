@@ -81,6 +81,35 @@ public class Notifications extends Controller{
         return redirect(routes.Application.index());
     }
 
+    public static Result newNotificationHelpDetails(){
+        System.out.println("newNotification start");
+        DynamicForm requestData = Form.form().bindFromRequest();
+        //String sId = requestData.get("id");
+        String sTitle = requestData.get("title");
+        String sText = requestData.get("text");
+        String sSenderLogin = ctx().session().get("login");
+        String sReceiverLogin = requestData.get("receiver");
+
+        User sender = User.find.byId(sSenderLogin);
+        User receiver = User.find.byId(sReceiverLogin);
+
+
+        Notification noti = new Notification();
+        //noti.id = 20;
+        noti.title = sTitle;
+        noti.text = sText;
+        noti.creatingDate = new Date();
+        noti.sender = sender;
+        noti.receiver = receiver;
+
+        Help help = Help.find.where().eq("name", sTitle).findUnique();
+        noti.help = help;
+
+        noti.save();
+
+        return redirect(routes.Application.index());
+    }
+
     public static List<Notification> getNotificationsForUser(){
         String login = ctx().session().get("login");
         if(login == null){
