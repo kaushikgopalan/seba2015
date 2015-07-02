@@ -73,7 +73,7 @@ public class User extends  Model{
 
         // get the user with email only to keep the salt password
         User user = find.where().eq("login", login).findUnique();
-        if (user != null) {
+        if (user != null && !user.isDeleted) {
             // get the hash password from the salt + clear password
             if (Hash.checkPassword(clearPassword, user.hashPass)) {
                 return user;
@@ -86,7 +86,7 @@ public class User extends  Model{
         List<User> allUsers = find.all();
         List<User> helpies = new ArrayList<>();
         for(User user: allUsers){
-            if(user.skills!=null){
+            if(user.skills!=null && !user.isDeleted){
                 if (user.skills.size()!=0) {
                     helpies.add(user);
                 }
