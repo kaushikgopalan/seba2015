@@ -45,6 +45,13 @@ public class Helps extends Controller{
 
         return ok("Please login!");
     }
+    public static Result updateHelp(String id){
+        Help newHelp = Form.form(Help.class).bindFromRequest().get();
+
+        Help oldHelp = Help.find.byId(id);
+
+        return ok("Help updated");
+    }
 
     public static Result setHelpie(){
 
@@ -101,7 +108,7 @@ public class Helps extends Controller{
         }
         return userHelps;
     }
-    public static List<Help> getHelpsForHElpie(){
+    public static List<Help> getHelpsForHelpie(){
         String login = ctx().session().get("login");
         if(login == null){
             return new ArrayList<>();
@@ -113,8 +120,29 @@ public class Helps extends Controller{
         }
         return userHelps;
     }
+
+    public static List<Help> getHelpsWithUserFilter(){
+        String login = ctx().session().get("login");
+        if(login == null){
+            return new ArrayList<>();
+        }
+        User user = User.find.byId(login);
+        List<Help> filteredUserHelps = new ArrayList<>();
+        if(user !=null){
+            filteredUserHelps.addAll(Help.getHelpsWithUserFilter(user));
+        }
+        return filteredUserHelps;
+    }
+
     public static List<Category> getAllCategories(){
         return (List<Category>)Category.find.all();
+    }
+
+    public static Result delete(String id){
+        Help help = Help.find.byId(id);
+        help.isDeleted = true;
+        help.update();
+        return ok("help updated");
     }
 
 }

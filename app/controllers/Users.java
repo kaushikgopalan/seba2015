@@ -263,7 +263,6 @@ public class Users extends Controller{
             return newUser();
         }
         User u = User.find.byId(login);
-        System.out.println("DescrioRecover: "+u.description );
         return u;
     }
     public static User newUser(){
@@ -298,6 +297,52 @@ public class Users extends Controller{
             //Logger.logMsg(1, e + "");
             return redirect(routes.Application.index());
         }
-        //  return redirect(routes.Application.index());
+    }
+
+    //We recover the last 5 last hepies in the DB
+    public static List<User> getHelpiesByUserNeeds(){
+        User user= Application.getLoggedUser();
+        if(user == null){
+            return new ArrayList<>();
+        }
+
+        List<Category> mySkills = user.skills;
+        List<User> helpiesSuggestion = new ArrayList<>();
+        List<User> lastUsers = User.getLastHelps();
+
+        System.out.println("After Funtion.My skills are: " + mySkills.size());
+
+        //nothing in DB
+        if(mySkills.size()==0 || lastUsers.size()==0){
+            return helpiesSuggestion;
+        }
+
+        int num=0;
+        //last 5 last hepies
+        for (int i=0; i<lastUsers.size(); i++){
+
+            //Avoid suggest the same user that is logged
+            if(lastUsers.get(i).login != user.login){
+
+                for (int j=0; j<mySkills.size(); j++){
+                    List<Category> skillsSuggestion = lastUsers.get(i).skills;
+
+                    for (int z=0; z<skillsSuggestion.size(); z++) {
+
+                        if (skillsSuggestion.get(z).name == mySkills.get(j).name) {
+                            helpiesSuggestion.add(num, lastUsers.get(i));
+                            num++;
+                            System.out.println("Users according my skills: " + skillsSuggestion.get(z).name);
+                            System.out.println("My skills are: " + mySkills.size());
+                            if(num == 5){
+                                return helpiesSuggestion;
+                            }
+                        }
+                    }
+                }
+            }
+
+        }
+        return helpiesSuggestion;
     }
 }
