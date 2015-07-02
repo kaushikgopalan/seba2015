@@ -27,7 +27,7 @@
         </div>
         <div class="col-md-6">
                 @for(s <- lasthelps){
-                    <div class="tile" onclick="">
+                    <div class="tile index-helpieTile" data-toggle="modal" data-target="#myModal" data-login="@s.login">
                         <div class="tile-title">
                             @s.firstName @s.lastName
                         </div>
@@ -43,5 +43,63 @@
     </div>
 
         @footer()
+
+            <!-- Modal -->
+        <div id="myModal" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <a class="close" data-dismiss="modal">?</a>
+                        <h3>Send message</h3>
+                    </div>
+                    <div class="modal-body">
+                        @helper.form(action = routes.Notifications.newNotificationIndex()) {
+                            <div id="form-postJob" class="form-horizontal">
+                                <div class="form-group">
+                                    <label class="control-label col-sm-2" for="email">Receiver:</label>
+                                    <div class="col-sm-10">
+                                        <input id="receiver" type="text" name="receiver" class="form-control" id="input-receiver" placeholder="Enter receiver" readonly="true">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="control-label col-sm-2" for="email">Title:</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" name="title" class="form-control" id="input-title" placeholder="Enter title">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-2" for="email">Description:</label>
+                                    <div class="col-sm-10">
+                                        <textarea name="text" id="input-text" cols="30" rows="3" style="width: 100%"></textarea>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-sm-offset-2 col-sm-10">
+                                        <a href="/newNotificationIndex" id="btn-submit" class="btn btn-primary" data-dismiss="modal">Send</a>
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                                        <button type="submit" class="hidden" id="submit">Submit</button>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+
+                    </div>
+                    <!--<div class="modal-footer">
+                        <input class="btn" type="submit" value="Send!" id="submit">
+                        <a href="#" class="btn" data-dismiss="modal">Nah.</a>
+                    </div>-->
+                </div>
+            </div>
+        </div>
+        <script>
+            $('#myModal').on('show.bs.modal', function(e){
+                var receiverLogin = e.relatedTarget.dataset.login;
+                $('input[name="receiver"]').val(receiverLogin);
+            });
+            $('#btn-submit').click(function(){
+                $('#submit').click();
+            })
+        </script>
     </body>
 </html>
