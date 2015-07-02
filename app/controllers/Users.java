@@ -280,13 +280,20 @@ public class Users extends Controller{
 
             User user= User.find.byId(id);
             String login = ctx().session().get("login");
-            User owner = User.find.byId(login);
-            if(owner.login==user.login){
-                System.out.println("same user. session ");
-                return redirect(routes.Application.profile());
+            if(login!=null){
+                User owner = User.find.byId(login);
+                if(owner.login==user.login){
+                    System.out.println("same user. session ");
+                    return redirect(routes.Application.profile());
+                }
+                else{
+                    System.out.println("User:"+user.login+" Ownwer:"+owner.login);
+                }
+
             }
             else{
-                System.out.println("User:"+user.login+" Ownwer:"+owner.login);
+                // send error here.
+                //return Application.index("Error:Not signed in");
             }
             System.out.println("inside view profile");
             System.out.println(""+user.lastName);

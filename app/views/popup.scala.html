@@ -1,5 +1,16 @@
 @import java.util
 @(errors:String)(content: Html)
+
+@if(errors!=null){
+
+    <div class="alert alert-warning fade in">
+        <a href="#" class="close" data-dismiss="alert">&times;</a>
+        <strong> @errors </strong>
+    </div>
+
+}
+
+
 <div class="modal fade" id="modal-formSubmit" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
