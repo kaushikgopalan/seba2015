@@ -124,4 +124,11 @@ public class Helps extends Controller{
         return (List<Category>)Category.find.all();
     }
 
+    public static Result delete(String id){
+        Help help = Help.find.byId(id);
+        help.isDeleted = true;
+        help.update();
+        return ok("help updated");
+    }
+
 }
