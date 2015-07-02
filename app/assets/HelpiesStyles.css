@@ -95,3 +95,7 @@
 .index-helpieTile:hover{
     background: #3498db;
 }
+.help-details-btn{
+    width: 49%;
+    margin-left: 1%;
+}

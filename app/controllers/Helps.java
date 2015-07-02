@@ -45,6 +45,13 @@ public class Helps extends Controller{
 
         return ok("Please login!");
     }
+    public static Result updateHelp(String id){
+        Help newHelp = Form.form(Help.class).bindFromRequest().get();
+
+        Help oldHelp = Help.find.byId(id);
+
+        return ok("Help updated");
+    }
 
     public static Result setHelpie(){
 
