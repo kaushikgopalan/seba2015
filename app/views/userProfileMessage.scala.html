@@ -25,7 +25,7 @@
               <th scope="row">@n.id</th>
               <td >@n.title</td>
               <td >@n.sender.lastName, @n.sender.firstName </td>
-              <td >@n.creatingDate </td>
+              <td >@n.creatingDate.toLocaleString()</td>
             </tr>
         }
         @*<tr>

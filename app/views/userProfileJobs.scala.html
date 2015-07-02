@@ -1,29 +1,28 @@
 @import java.util
 
-
 @(allMyjobs:util.List[Help])
 
 <div class="form-horizontal">
 
   <div class="form-group">
-    <label for="inputDescrip" class="col-sm-2 control-label">List of Jobs :</label>
-    <div class="bs-example col-sm-10">
+    <label for="inputDescrip" class="col-sm-3 control-label">List of Jobs :</label>
+    <div class="bs-example col-sm-9">
       <table class="table table-hover">
         <thead>
           <tr>
             <th style="width:5%">#</th>
-            <th style="width:15%">Name</th>
             <th style="width:20%">Categories</th>
-            <th style="width:50%">Date</th>
+            <th style="width:20%">Name</th>
+            <th style="width:30%">Date</th>
           </tr>
         </thead>
         <tbody>
           @for(h <- allMyjobs){
             <tr>
               <th scope="row">@h.id</th>
-              <td >@h.name</td>
               <td >@h.category.name </td>
-              <td >@h.creatingDate</td>
+              <td >@h.name</td>
+              <td >@h.creatingDate.toLocaleString()</td>
             </tr>
           }
         </tbody>
@@ -32,15 +31,14 @@
   </div>
 
   <div class="form-group">
-    <label for="inputDescrip" class="col-sm-3 control-label">Helpies Suggestion :</label>
+    <label for="inputDescrip" class="col-sm-3 control-label">Suggestion :</label>
     <div class="bs-example col-sm-9">
       <table class="table table-hover">
         <thead>
           <tr>
             <th style="width:20%">Name</th>
-            <th style="width:5%">Jobs</th>
-
             <th style="width:20%">Skills</th>
+            <th style="width:5%">Jobs</th>
             <th style="width:50%">Description</th>
           </tr>
         </thead>
@@ -48,12 +46,12 @@
         @for(u <- Users.getHelpiesByUserNeeds){
           <tr>
             <td >@u.lastName, @u.firstName/td>
-            <td >@u.countOfJobsPerMonth</td>
             <td >
             @for(cat <- u.skills){
               @cat.name
             }
             </td>
+            <td >@u.countOfJobsPerMonth</td>
             <td >@u.description</td>
           </tr>
         }
