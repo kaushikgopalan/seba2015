@@ -39,6 +39,9 @@ public class User extends  Model{
     public long longitude;
 
     @Column
+    public boolean isDeleted;
+
+    @Column
     public int area; //reach
 
     @ManyToMany

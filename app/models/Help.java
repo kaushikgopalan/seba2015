@@ -45,6 +45,9 @@ public class Help extends Model{
     @ManyToOne
     public User owner;
 
+    @Column
+    public boolean isDeleted;
+
     @ManyToOne
     public User helpie;
 

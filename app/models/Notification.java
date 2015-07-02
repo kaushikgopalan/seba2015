@@ -34,6 +34,8 @@ public class Notification extends Model{
     @Column
     public Date creatingDate;
 
+    @Column
+    public boolean isDeleted;
 
     @ManyToOne
     public User sender;
