@@ -12,12 +12,13 @@
     <body>
 @*<div style="height: 50px"></div>*@
 @navBar()
-    <h1>User Details</h1>
-    <br><br><br><br><br><br>
-        @user.firstName
-        <br> @user.lastName
-        <br> @user.description
+        <div class="container">
+            <div class="tile">
+                <div class="tile-title"  >@user.firstName @user.lastName</div>
+                <div class="tile"> @user.description</div>
 
+            </div>
+        </div>
     </body>
 
 </html>
