@@ -29,12 +29,20 @@ public class Helps extends Controller{
         String sName = requestData.get("name");
         String sCat = requestData.get("category");
         String sDesc = requestData.get("description");
+        String sPreis = requestData.get("price");
         Help help = new Help();
         help.name = sName;
         help.category = Category.find.where().eq("name", sCat).findUnique();
         help.description = sDesc;
         help.longitude = Double.parseDouble(requestData.get("longitude"));
         help.latitude = Double.parseDouble(requestData.get("latitude"));
+
+        try {
+            help.price = Integer.valueOf(sPreis);
+        } catch (NumberFormatException e) {
+            help.price = 1;
+        }
+
         String login = ctx().session().get("login");
         User user = User.find.byId(login);
         if(user!=null){
