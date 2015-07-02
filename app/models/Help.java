@@ -63,7 +63,7 @@ public class Help extends Model{
         List<Help> allHelps = find.all();
         List<Help> notDoneHelps = new ArrayList<>();
         for (int i=0; i<allHelps.size(); i++){
-            if(allHelps.get(i).done==false) notDoneHelps.add(allHelps.get(i));
+            if(allHelps.get(i).done==false && !allHelps.get(i).isDeleted) notDoneHelps.add(allHelps.get(i));
         }
         return notDoneHelps;
     }
@@ -77,10 +77,19 @@ public class Help extends Model{
     }
 
     public static List<Help> getHelpsForOwner(User user){
-        return  find.where().eq("owner_login", user.login).findList();
+
+        List<Help> helps = find.where().eq("owner_login", user.login).findList();
+        for (Help help : helps){
+            if(help.isDeleted) helps.remove(help);
+        }
+        return  helps;
     }
     public static List<Help> getHelpsForHelpie(User user){
-        return  find.where().eq("helpie_login", user.login).findList();
+        List<Help> helps = find.where().eq("helpie_login", user.login).findList();
+        for (Help help : helps){
+            if(help.isDeleted) helps.remove(help);
+        }
+        return  helps;
     }
     public static List<Help> getHelpsWithUserFilter(User user){
 

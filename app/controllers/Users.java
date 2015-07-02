@@ -231,7 +231,7 @@ public class Users extends Controller{
             e.printStackTrace();
             return ok("AppException");
         }
-        if(user!=null){
+        if(user!=null && !user.isDeleted){
             session("login", sLogin);
             return redirect(routes.Application.index());
         }
