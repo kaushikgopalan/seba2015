@@ -91,4 +91,10 @@ public class Help extends Model{
         }
         return  helps;
     }
+    public static List<Help> getHelpsWithUserFilter(User user){
+
+
+
+        return new ArrayList<>();
+    }
 }
