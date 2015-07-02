@@ -298,6 +298,46 @@ public class Users extends Controller{
             //Logger.logMsg(1, e + "");
             return redirect(routes.Application.index());
         }
-        //  return redirect(routes.Application.index());
+    }
+
+    //We recover the last 5 last hepies in the DB
+    public static List<User> getHelpiesByUserNeeds(){
+        User user= Application.getLoggedUser();
+        if(user == null){
+            return new ArrayList<>();
+        }
+
+        List<Category> list_UserSkills = user.skills;
+        List<User> helpiesSuggestion = new ArrayList<>();
+        List<User> list_helpies = User.getLastHelps();
+
+        //nothing in DB
+        if(list_helpies.size() == 0){
+            return helpiesSuggestion;
+        }
+
+        int num=0;
+        //last 5 last hepies
+        for (int i=0; i<list_helpies.size(); i++){
+
+            //Avoid suggest the same user that is logged
+            if(list_helpies.get(i).login != user.login){
+
+                for (int j=0; j<list_UserSkills.size(); j++){
+                    List<Category> skillsSuggestion = list_helpies.get(i).skills;
+
+                    for (int z=0; z<skillsSuggestion.size(); z++) {
+
+                        if (skillsSuggestion.get(z).name == list_UserSkills.get(j).name) {
+                            helpiesSuggestion.add(num, list_helpies.get(i));
+                            num++;
+                            if(num == 5) return helpiesSuggestion;
+                        }
+                    }
+                }
+            }
+
+        }
+        return helpiesSuggestion;
     }
 }

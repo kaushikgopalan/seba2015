@@ -79,4 +79,10 @@ public class Help extends Model{
     public static List<Help> getHelpsForHelpie(User user){
         return  find.where().eq("helpie_login", user.login).findList();
     }
+    public static List<Help> getHelpsWithUserFilter(User user){
+
+
+
+        return new ArrayList<>();
+    }
 }

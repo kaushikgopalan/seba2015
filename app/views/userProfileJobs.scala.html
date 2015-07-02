@@ -5,18 +5,16 @@
 
 <div class="form-horizontal">
 
-  @* @messageDetails(notification)*@
-
   <div class="form-group">
-    <label for="inputDescrip" class="col-sm-3 control-label">List of Jobs :</label>
-    <div class="bs-example col-sm-3">
+    <label for="inputDescrip" class="col-sm-2 control-label">List of Jobs :</label>
+    <div class="bs-example col-sm-10">
       <table class="table table-hover">
         <thead>
           <tr>
-            <th>#</th>
-            <th width="300px">Name</th>
-            <th width="300px">From</th>
-            <th width="300px">Date</th>
+            <th style="width:5%">#</th>
+            <th style="width:15%">Name</th>
+            <th style="width:20%">Categories</th>
+            <th style="width:50%">Date</th>
           </tr>
         </thead>
         <tbody>
@@ -28,13 +26,37 @@
               <td >@h.creatingDate</td>
             </tr>
           }
-        @*<tr>
-          <th scope="row">1</th>
-          <td width="3">Example Name</td>
-          <td width="80">Example Category</td>
-          <td width="80">Example 20-12-2015</td>
+        </tbody>
+      </table>
+    </div>
+  </div>
 
-        </tr>*@
+  <div class="form-group">
+    <label for="inputDescrip" class="col-sm-3 control-label">Helpies Suggestion :</label>
+    <div class="bs-example col-sm-9">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th style="width:20%">Name</th>
+            <th style="width:5%">Jobs</th>
+
+            <th style="width:20%">Skills</th>
+            <th style="width:50%">Description</th>
+          </tr>
+        </thead>
+        <tbody>
+        @for(u <- Users.getHelpiesByUserNeeds){
+          <tr>
+            <td >@u.lastName, @u.firstName/td>
+            <td >@u.countOfJobsPerMonth</td>
+            <td >
+            @for(cat <- u.skills){
+              @cat.name
+            }
+            </td>
+            <td >@u.description</td>
+          </tr>
+        }
         </tbody>
       </table>
     </div>
