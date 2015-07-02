@@ -95,3 +95,8 @@
 .index-helpieTile:hover{
     background: #3498db;
 }
+.hr-afterCarousel{
+    width: 100%;
+    background: white;
+    height: 10px;
+}
