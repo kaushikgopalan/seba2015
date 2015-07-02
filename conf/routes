@@ -27,6 +27,11 @@ GET         /postjob                controllers.Application.postjob()
 GET         /users/*id              controllers.Users.viewProfile(id)
 POST        /help                   controllers.Helps.newHelp()
 GET         /help/*id               controllers.Helps.details(id)
+
+#rating maps
+
+GET         /rating/*jobId/         controllers.Ranking.newRating(jobId)
+
 #WebJarsh
 GET         /assets/*file           controllers.Assets.at(path="/public", file)
 GET         /webjars/*file          controllers.WebJarAssets.at(file)

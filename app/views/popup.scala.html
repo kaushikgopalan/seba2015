@@ -1,0 +1,19 @@
+@import java.util
+@(errors:String)(content: Html)
+<div class="modal fade" id="modal-formSubmit" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Post job</h4>
+            </div>
+            <div class="modal-body">
+                <p>@errors</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <a href="/postJob" id="btn-submit" class="btn btn-primary" data-dismiss="modal">Post Job</a>
+            </div>
+        </div>
+    </div>
+</div>
