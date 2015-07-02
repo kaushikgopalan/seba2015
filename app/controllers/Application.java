@@ -68,6 +68,9 @@ public class Application extends Controller {
     public static Result findJob(){
         List<Category> categories = Category.find.all();
         List<Help> jobs = Help.find.all();
+        for(Help help : jobs){
+            if(help.isDeleted) jobs.remove(help);
+        }
         return ok(findJob.render(categories, jobs));
     }
 
