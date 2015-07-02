@@ -27,6 +27,9 @@ public class Note extends Model{
     @OneToOne
     public Help help;
 
+    @Column
+    public boolean isDeleted;
+
     @OneToOne
     public User owner;
 

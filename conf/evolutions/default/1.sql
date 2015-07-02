@@ -1,11 +1,8 @@
---- Created by Ebean DDL
---- To stop Ebean DDL generation, remove this comment and start using Evolutions
 
 --- !Ups
 
 SET REFERENTIAL_INTEGRITY FALSE;
 
-drop table if exists notification;
 
 drop table if exists category;
 
@@ -19,7 +16,6 @@ drop table if exists user_category;
 
 SET REFERENTIAL_INTEGRITY TRUE;
 
-drop sequence if exists notification_seq;
 
 drop sequence if exists category_seq;
 
@@ -29,14 +25,6 @@ drop sequence if exists note_seq;
 
 drop sequence if exists user_seq;
 
-
-create table notification (
-  id                        integer not null DEFAULT 1,
-  title                     varchar(40),
-  text                      varchar(255),
-  creating_date             timestamp,
-  constraint pk_notification primary key (id))
-;
 
 create table category (
   id                        integer not null DEFAULT 1,
@@ -97,7 +85,6 @@ create table user_category (
   constraint pk_user_category primary key (user_login, category_id))
 ;
 
-create sequence notification_seq;
 
 create sequence category_seq;
 

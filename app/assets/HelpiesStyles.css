@@ -99,3 +99,8 @@
     width: 49%;
     margin-left: 1%;
 }
+.hr-afterCarousel{
+    width: 100%;
+    background: white;
+    height: 10px;
+}
