@@ -263,7 +263,6 @@ public class Users extends Controller{
             return newUser();
         }
         User u = User.find.byId(login);
-        System.out.println("DescrioRecover: "+u.description );
         return u;
     }
     public static User newUser(){
@@ -307,31 +306,37 @@ public class Users extends Controller{
             return new ArrayList<>();
         }
 
-        List<Category> list_UserSkills = user.skills;
+        List<Category> mySkills = user.skills;
         List<User> helpiesSuggestion = new ArrayList<>();
-        List<User> list_helpies = User.getLastHelps();
+        List<User> lastUsers = User.getLastHelps();
+
+        System.out.println("After Funtion.My skills are: " + mySkills.size());
 
         //nothing in DB
-        if(list_helpies.size() == 0){
+        if(mySkills.size()==0 || lastUsers.size()==0){
             return helpiesSuggestion;
         }
 
         int num=0;
         //last 5 last hepies
-        for (int i=0; i<list_helpies.size(); i++){
+        for (int i=0; i<lastUsers.size(); i++){
 
             //Avoid suggest the same user that is logged
-            if(list_helpies.get(i).login != user.login){
+            if(lastUsers.get(i).login != user.login){
 
-                for (int j=0; j<list_UserSkills.size(); j++){
-                    List<Category> skillsSuggestion = list_helpies.get(i).skills;
+                for (int j=0; j<mySkills.size(); j++){
+                    List<Category> skillsSuggestion = lastUsers.get(i).skills;
 
                     for (int z=0; z<skillsSuggestion.size(); z++) {
 
-                        if (skillsSuggestion.get(z).name == list_UserSkills.get(j).name) {
-                            helpiesSuggestion.add(num, list_helpies.get(i));
+                        if (skillsSuggestion.get(z).name == mySkills.get(j).name) {
+                            helpiesSuggestion.add(num, lastUsers.get(i));
                             num++;
-                            if(num == 5) return helpiesSuggestion;
+                            System.out.println("Users according my skills: " + skillsSuggestion.get(z).name);
+                            System.out.println("My skills are: " + mySkills.size());
+                            if(num == 5){
+                                return helpiesSuggestion;
+                            }
                         }
                     }
                 }

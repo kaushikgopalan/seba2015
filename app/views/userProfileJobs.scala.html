@@ -1,6 +1,6 @@
 @import java.util
 
-@(allMyjobs:util.List[Help])
+@(allMyjobs:util.List[Help], helpiesSuggestion:util.List[User])
 
 <div class="form-horizontal">
 
@@ -22,7 +22,7 @@
               <th scope="row">@h.id</th>
               <td >@h.category.name </td>
               <td >@h.name</td>
-              <td >@h.creatingDate.toLocaleString()</td>
+              <td >@h.creatingDate</td>
             </tr>
           }
         </tbody>
@@ -43,9 +43,9 @@
           </tr>
         </thead>
         <tbody>
-        @for(u <- Users.getHelpiesByUserNeeds){
+        @for(u <- helpiesSuggestion){
           <tr>
-            <td >@u.lastName, @u.firstName/td>
+            <td >@u.lastName, @u.firstName </td>
             <td >
             @for(cat <- u.skills){
               @cat.name
