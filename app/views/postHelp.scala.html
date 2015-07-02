@@ -1,6 +1,7 @@
 @import java.util.List
 @import models.Category
-@(categories: List[Category])
+@(categories: List[Category])(error:String)
+
 
 <!DOCTYPE html>
 
@@ -15,6 +16,9 @@
     </head>
     <body>
         @navBar()
+        @if(error!=null){
+            <h1>@error</h1>
+        }
         <div class="container">
             <div class="panel panel-primary">
                 <div class="panel-heading">
