@@ -62,13 +62,14 @@ src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDIwe654Ap3O6jqeVXCrMdQC4e
                 <button class="btn btn-default help-details-btn">Edit</button> <button class="btn btn-danger help-details-btn" data-toggle="modal" data-target="#modalDelete">Delete</button> 
 
             } else {
-              <button type="button" class="btn btn-primary btn-md" style="width: 100%" data-toggle="modal" data-target="#myModal">Offer Help</button>
+              @if(session.contains("login")){
+                <button type="button" class="btn btn-primary btn-md" style="width: 100%" data-toggle="modal" data-target="#myModal">Offer Help</button>
+              }else{
+                <button type="button" class="btn btn-primary btn-md" style="width: 100%" data-toggle="modal" data-target="#noLogin">Offer Help</button>
+              }
+
             }
-            @if(session.contains("login")){
-              <button type="button" class="btn btn-primary btn-md" style="width: 100%" data-toggle="modal" data-target="#myModal">Offer Help</button>
-            }else{
-              <button type="button" class="btn btn-primary btn-md" style="width: 100%" data-toggle="modal" data-target="#noLogin">Offer Help</button>
-            }
+
           </div>
         </div>
         <div class="col-md-6">
