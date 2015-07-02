@@ -12,6 +12,7 @@ import views.html.*;
 
 
 import java.lang.System;
+import javax.validation.constraints.Null;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,7 +20,15 @@ import static play.libs.Json.toJson;
 
 public class Application extends Controller {
 
-
+    private static Boolean islogged(){
+        return ctx().session().get("login") != null;
+    }
+    public static User getLoggedUser(){
+        if(islogged()){
+            return User.find.byId(ctx().session().get("login"));
+        }
+        return null;
+    }
 
     public static Result index(){
 
@@ -75,6 +84,9 @@ public class Application extends Controller {
     public static Result findJob(){
         List<Category> categories = Category.find.all();
         List<Help> jobs = Help.find.all();
+        for(Help help : jobs){
+            if(help.isDeleted) jobs.remove(help);
+        }
         return ok(findJob.render(categories, jobs));
     }
 
@@ -86,6 +98,9 @@ public class Application extends Controller {
 
     public static User getUserFromSession(){
 
+        if(!islogged()){
+            return new User();
+        }
         String login = ctx().session().get("login");
         User user = User.find.byId(login);
 

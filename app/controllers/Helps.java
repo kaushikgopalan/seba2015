@@ -101,7 +101,7 @@ public class Helps extends Controller{
         }
         return userHelps;
     }
-    public static List<Help> getHelpsForHElpie(){
+    public static List<Help> getHelpsForHelpie(){
         String login = ctx().session().get("login");
         if(login == null){
             return new ArrayList<>();
@@ -113,6 +113,20 @@ public class Helps extends Controller{
         }
         return userHelps;
     }
+
+    public static List<Help> getHelpsWithUserFilter(){
+        String login = ctx().session().get("login");
+        if(login == null){
+            return new ArrayList<>();
+        }
+        User user = User.find.byId(login);
+        List<Help> filteredUserHelps = new ArrayList<>();
+        if(user !=null){
+            filteredUserHelps.addAll(Help.getHelpsWithUserFilter(user));
+        }
+        return filteredUserHelps;
+    }
+
     public static List<Category> getAllCategories(){
         return (List<Category>)Category.find.all();
     }

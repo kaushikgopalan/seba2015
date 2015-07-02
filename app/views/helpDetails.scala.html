@@ -55,7 +55,11 @@ src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDIwe654Ap3O6jqeVXCrMdQC4e
         <div class="col-md-6">
           <img class="help-image" src="http://eastebuilder.co.uk/img/pictures/594.jpg" alt=""/>
           <div class="help-details-ctas">
-            <button type="button" class="btn btn-primary btn-md" style="width: 100%" data-toggle="modal" data-target="#myModal">Offer Help</button>
+            @if(session.contains("login")){
+              <button type="button" class="btn btn-primary btn-md" style="width: 100%" data-toggle="modal" data-target="#myModal">Offer Help</button>
+            }else{
+              <button type="button" class="btn btn-primary btn-md" style="width: 100%" data-toggle="modal" data-target="#noLogin">Offer Help</button>
+            }
           </div>
         </div>
         <div class="col-md-6">
@@ -148,6 +152,23 @@ src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDIwe654Ap3O6jqeVXCrMdQC4e
       </div>
     </div>
   </div>
+
+<div id="noLogin" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>Unauthorized</h3>
+      </div>
+      <div class="modal-body">
+        <h5>Please Log In before send message</h5>
+
+      </div>
+      <div class="modal-footer">
+        <a href="#" class="btn" data-dismiss="modal">Ok</a>
+      </div>
+    </div>
+  </div>
+</div>
   <script>
     $('#btn-submit').click(function(){
        $('#submit').click();

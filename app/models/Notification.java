@@ -34,6 +34,8 @@ public class Notification extends Model{
     @Column
     public Date creatingDate;
 
+    @Column
+    public boolean isDeleted;
 
     @ManyToOne
     public User sender;
@@ -52,11 +54,16 @@ public class Notification extends Model{
     public static Finder<String, Notification> find = new Finder<String, Notification>(String.class, Notification.class);
 
     public static Notification findByHelpID(String HelpID) {
-        return find.where().eq("help", HelpID).findUnique();
+
+        Notification notification = find.where().eq("help", HelpID).findUnique();
+        if(notification.isDeleted) return null;
+        return notification;
     }
 
     public static Notification findByJobID(String JobID) {
-        return find.where().eq("asociatedJob", JobID).findUnique();
+        Notification notification = find.where().eq("asociatedJob", JobID).findUnique();
+        if(notification.isDeleted) return null;
+        return notification;
     }
 
     //All Nofitifactions sent and received from and to the same user.
@@ -65,6 +72,9 @@ public class Notification extends Model{
 
         if (user != null && user.login != ""){
             filterList = (List<Notification>) find.where().or(Expr.like("sender",user.login),Expr.like("receiver",user.login)).findList();
+        }
+        for(Notification notification : filterList){
+            if(notification.isDeleted) filterList.remove(notification);
         }
         return filterList;
     }
