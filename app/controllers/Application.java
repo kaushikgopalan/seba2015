@@ -84,10 +84,11 @@ public class Application extends Controller {
     public static Result findJob(){
         List<Category> categories = Category.find.all();
         List<Help> jobs = Help.find.all();
+        List<Help> list = new ArrayList<Help>();
         for(Help help : jobs){
-            if(help.isDeleted) jobs.remove(help);
+            if(!help.isDeleted) list.add(help);
         }
-        return ok(findJob.render(categories, jobs));
+        return ok(findJob.render(categories, list));
     }
 
     //for testing

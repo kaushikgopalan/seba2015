@@ -39,6 +39,9 @@ public class User extends  Model{
     public long longitude;
 
     @Column
+    public String address;
+
+    @Column
     public boolean isDeleted;
 
     @Column

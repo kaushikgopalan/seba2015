@@ -29,12 +29,20 @@ public class Helps extends Controller{
         String sName = requestData.get("name");
         String sCat = requestData.get("category");
         String sDesc = requestData.get("description");
+        String sPreis = requestData.get("price");
         Help help = new Help();
         help.name = sName;
         help.category = Category.find.where().eq("name", sCat).findUnique();
         help.description = sDesc;
         help.longitude = Double.parseDouble(requestData.get("longitude"));
         help.latitude = Double.parseDouble(requestData.get("latitude"));
+
+        try {
+            help.price = Integer.valueOf(sPreis);
+        } catch (NumberFormatException e) {
+            help.price = 1;
+        }
+
         String login = ctx().session().get("login");
         User user = User.find.byId(login);
         if(user!=null){
@@ -44,6 +52,13 @@ public class Helps extends Controller{
         }
 
         return ok("Please login!");
+    }
+    public static Result updateHelp(String id){
+        Help newHelp = Form.form(Help.class).bindFromRequest().get();
+
+        Help oldHelp = Help.find.byId(id);
+
+        return ok("Help updated");
     }
 
     public static Result setHelpie(){
@@ -129,6 +144,13 @@ public class Helps extends Controller{
 
     public static List<Category> getAllCategories(){
         return (List<Category>)Category.find.all();
+    }
+
+    public static Result delete(String id){
+        Help help = Help.find.byId(id);
+        help.isDeleted = true;
+        help.update();
+        return ok("help updated");
     }
 
 }

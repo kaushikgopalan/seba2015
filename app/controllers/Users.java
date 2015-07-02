@@ -183,6 +183,7 @@ public class Users extends Controller{
         String sPass = requestData.get("hashPass");
         String sPass2 = requestData.get("hashPass2");
         String sSkills = requestData.get("skills");
+        String sAddress = requestData.get("address");
 
 
 /*        List<F.Tuple<String,List<Object>>> list = Form.form().field("skills").constraints();
@@ -203,6 +204,7 @@ public class Users extends Controller{
         user.firstName = sFirstName;
         user.lastName = sLastName;
         user.description = sDescription;
+        user.address = sAddress;
 
 
         try {
