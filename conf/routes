@@ -3,40 +3,41 @@
 # ~~~~
 
 # Home page
-GET         /                        controllers.Application.index
-GET         /index                   controllers.Application.index
+GET         /                       controllers.Application.index
+GET         /index                  controllers.Application.index
 
 # Info
-GET         /about                   controllers.Application.about()
-GET         /contact                   controllers.Application.contact()
+GET         /about                  controllers.Application.about()
+GET         /contact                controllers.Application.contact()
 #Only redirect
-GET         /signIn                  controllers.Application.signIn
+GET         /signIn                 controllers.Application.signIn
 #Login itself
-POST        /signIn                  controllers.Users.signIn()
+POST        /signIn                 controllers.Users.signIn()
 
-GET         /signOut                 controllers.Users.signOut()
+GET         /signOut                controllers.Users.signOut()
 #Register itself
-POST        /signUp                  controllers.Users.signUp()
+POST        /signUp                 controllers.Users.signUp()
 #Only redirect
-GET         /register                controllers.Application.register()
+GET         /register               controllers.Application.register()
 
-GET         /findJob                 controllers.Application.findJob()
-GET         /postjob                 controllers.Application.postjob()
+GET         /findJob                controllers.Application.findJob()
+GET         /postjob                controllers.Application.postjob()
 #postHelp itself
 #view Users
-GET         /users/*id                controllers.Users.viewProfile(id)
-POST        /help                    controllers.Helps.newHelp()
-GET         /help/*id                controllers.Helps.details(id)
+GET         /users/*id              controllers.Users.viewProfile(id)
+POST        /help                   controllers.Helps.newHelp()
+GET         /help/*id               controllers.Helps.details(id)
 #WebJarsh
-GET         /assets/*file            controllers.Assets.at(path="/public", file)
-GET         /webjars/*file           controllers.WebJarAssets.at(file)
+GET         /assets/*file           controllers.Assets.at(path="/public", file)
+GET         /webjars/*file          controllers.WebJarAssets.at(file)
 
-GET         /profile                 controllers.Application.profile()
+GET         /profile                controllers.Application.profile()
 
 # Map static resources from the /public folder to the /assets URL path
-GET         /assets/*file            controllers.Assets.at(path="/public", file)
-GET         /testDB                  controllers.Users.testDB()
+GET         /assets/*file           controllers.Assets.at(path="/public", file)
+GET         /testDB                 controllers.Users.testDB()
 
 # GET         /notifications           controllers.Application.GetAllNotifications()
-POST        /newNotificantion        controllers.Notifications.newNotification()
+POST        /newNotification        controllers.Notifications.newNotification()
+GET         /newNotificationIndex        controllers.Notifications.newNotificationIndex()
 
