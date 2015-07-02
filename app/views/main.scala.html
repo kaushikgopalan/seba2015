@@ -65,16 +65,30 @@
         </div>
         <div class="col-md-6">
                 @for(s <- lasthelps){
-                    <div class="tile index-helpieTile" data-toggle="modal" data-target="#myModal" data-login="@s.login">
-                        <div class="tile-title">
-                            @s.firstName @s.lastName
-                        </div>
-                        <div class="tile-ribbon">
-                        @for(skill <- s.skills){
+
+                    @if(session.contains("login")){
+                        <div class="tile index-helpieTile" data-toggle="modal" data-target="#myModal" data-login="@s.login">
+                            <div class="tile-title">
+                                @s.firstName @s.lastName
+                            </div>
+                            <div class="tile-ribbon">
+                            @for(skill <- s.skills){
                                 @skill.name
-                        }
+                            }
+                            </div>
                         </div>
-                    </div>
+                    }else{
+                        <div class="tile index-helpieTile" data-toggle="modal" data-target="#noLogin">
+                            <div class="tile-title">
+                                @s.firstName @s.lastName
+                            </div>
+                            <div class="tile-ribbon">
+                            @for(skill <- s.skills){
+                                @skill.name
+                            }
+                            </div>
+                        </div>
+                    }
                 }
 
         </div>
@@ -87,7 +101,6 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <a class="close" data-dismiss="modal">?</a>
                         <h3>Send message</h3>
                     </div>
                     <div class="modal-body">
@@ -127,6 +140,23 @@
                         <input class="btn" type="submit" value="Send!" id="submit">
                         <a href="#" class="btn" data-dismiss="modal">Nah.</a>
                     </div>-->
+                </div>
+            </div>
+        </div>
+
+        <div id="noLogin" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3>Unauthorized</h3>
+                    </div>
+                    <div class="modal-body">
+                    <h5>Please Log In before send message</h5>
+
+                    </div>
+                        <div class="modal-footer">
+                        <a href="#" class="btn" data-dismiss="modal">Ok</a>
+                    </div>
                 </div>
             </div>
         </div>
