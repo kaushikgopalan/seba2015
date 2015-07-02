@@ -73,10 +73,11 @@ public class Notification extends Model{
         if (user != null && user.login != ""){
             filterList = (List<Notification>) find.where().or(Expr.like("sender",user.login),Expr.like("receiver",user.login)).findList();
         }
+        List<Notification> filterList2 = new ArrayList<>();
         for(Notification notification : filterList){
-            if(notification.isDeleted) filterList.remove(notification);
+            if(!notification.isDeleted) filterList2.add(notification);
         }
-        return filterList;
+        return filterList2;
     }
 
     public static List<Notification> GetAllNotifications() {

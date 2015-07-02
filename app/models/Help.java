@@ -79,16 +79,18 @@ public class Help extends Model{
     public static List<Help> getHelpsForOwner(User user){
 
         List<Help> helps = find.where().eq("owner_login", user.login).findList();
+        List<Help> helps2 = new ArrayList<>();
         for (Help help : helps){
-            if(help.isDeleted) helps.remove(help);
+            if(!help.isDeleted) helps2.add(help);
         }
-        return  helps;
+        return  helps2;
     }
     public static List<Help> getHelpsForHelpie(User user){
         List<Help> helps = find.where().eq("helpie_login", user.login).findList();
+        List<Help> helps2 = new ArrayList<>();
         for (Help help : helps){
-            if(help.isDeleted) helps.remove(help);
+            if(!help.isDeleted) helps2.add(help);
         }
-        return  helps;
+        return  helps2;
     }
 }
