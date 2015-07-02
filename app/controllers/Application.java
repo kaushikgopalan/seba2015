@@ -11,6 +11,7 @@ import scala.Console;
 import views.html.*;
 
 
+import java.lang.System;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,10 +25,18 @@ public class Application extends Controller {
 
 
         if (ctx().session().get("login")==null) {
-            return ok(index.render(Help.getLastJobs(), User.getLastHelps()));
+            return ok(index.render(Help.getLastJobs(), User.getLastHelps(),null));
         } else {
-            return ok(index.render(Help.getJobsNotDone(), User.getHelpies()));
+            return ok(index.render(Help.getJobsNotDone(), User.getHelpies(),null));
         }
+    }
+    //testing if this works.. will be returning this index in case there is error
+    public static Result index(String error){
+        // right now, this is returned that no login found and hence with error.
+        // the other one just returns the the empty thing.
+        System.out.println("here at other index method.");
+        return ok(index.render(Help.getLastJobs(), User.getLastHelps(),error));
+
     }
     public static Result about() { return ok(about.render("Our Team :")); }
 
@@ -41,9 +50,15 @@ public class Application extends Controller {
     }
 
     public static Result postjob(){
-
+        System.out.println("inside postjob");
+        String login = ctx().session().get("login");
+        if(login==null){
+            System.out.println("insdie post job and error no login");
+            return index("Error: Not logged in");
+            //return ok(postHelp.render(categories,"error: not logged in"));
+        }
         List<Category> categories = Category.find.all();
-        return ok(postHelp.render(categories));
+        return ok(postHelp.render(categories,null));
     }
 
     public static Result profile(){

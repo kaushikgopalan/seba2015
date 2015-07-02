@@ -1,7 +1,7 @@
 @import java.util
 @import models.User
 @import models.Help
-@(lastjobs: util.List[Help], lasthelps: util.List[User])(content: Html)
+@(lastjobs: util.List[Help], lasthelps: util.List[User],error:String)(content: Html)
 
 <!DOCTYPE html>
 
@@ -15,6 +15,11 @@
     <body>
         @*<div style="height: 50px"></div>*@
         @navBar()
+        @if(error!=null){
+            <h1>@error</h1>
+        }
+
+
     <div class="container" >
         <div class="col-md-6">
                 <!-- <div class="bg-primary" -->
