@@ -50,7 +50,17 @@ public class Ranking extends Controller{
             first check signed in. Then check if he did the job.
 
          */
-       return ok();// return ok(rating.render("Rating"));
+        if (ctx().session().get("login")==null) {
+            ctx().session().put("error","Error: Not logged in. You need to login to rate someone.");
+            System.out.println("insdie newRating and no login");
+            return redirect(routes.Application.index());
+                    //ok(index.render(Help.getLastJobs(), User.getLastHelps(),null));
+        } else {
+            return ok(rating.render());
+                    // return ok(rating.render("Rating"));
+                    //ok(index.render(Help.getJobsNotDone(), User.getHelpies(),null));
+        }
+
     }
 
 }
