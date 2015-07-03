@@ -1,7 +1,7 @@
 @import java.util
 @import models.User
 @import models.Help
-@(error:String)(content: Html)
+@(help: Help)
 
 <!DOCTYPE html>
 
@@ -15,15 +15,93 @@
     <body>
         @*<div style="height: 50px"></div>*@
         @navBar()
-        @if(error!=null){
-            <h1>@error</h1>
-        }
 
 
-    <div class="container" >
-</div>
 
-    rating page.. the form for rating will come here
+    <div class="container">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <strong>Post Job: </strong>
+            </div>
+            <div class="panel-body">
+
+                <div class="col-md-12">
+                @helper.form(action = routes.Ranking.newNote()) {
+                    <div id="form-postJob" class="form-horizontal">
+                        <div class="form-group">
+                            <label class="control-label col-sm-2" for="rank">Rating:</label>
+                            <select name="rank" id="rankId">
+                            @for(index <- 1 until 6) {
+                                <option value="@index">@index</option>
+                            }
+                            </select>
+
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-sm-2" for="email">Description:</label>
+                            <div class="col-sm-10">
+                                <textarea name="description" id="input-description" cols="30" rows="3" style="width: 100%"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <a  action="newNote" href="/rating" id="btn-postJob" class="btn btn-primary">Post Rating</a>
+                                <button type="button" class="btn btn-default" data-toggle="modal" data-target="#modal-cancel">Cancel</button>
+                                <button type="submit" class="hidden" id="submit">Submit</button>
+                            </div>
+                        </div>
+                    </div>
+                }
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+    @*<div class="container" >*@
+    @*<div class="panel panel-primary">*@
+        @*<div class="col-md-2">*@
+
+        @*</div>*@
+        @*<div class="col-md-6">*@
+            @*@helper.form(action = routes.Ranking.newNote()) {*@
+                @*<div class="panel-heading">*@
+                    @*<strong>Post Review: </strong>*@
+                @*</div>*@
+
+                @*<div id="" >*@
+                    @*<label class="control-label col-sm-2" for="email">Title:</label>*@
+                    @*<select name="rank" id="rankId">*@
+                @*@for(index <- 1 until 6) {*@
+                    @*<option value="@index">@index</option>*@
+                @*}*@
+                @*</select>*@
+                @*</div>*@
+                @*<div class="">*@
+                    @*<label class="control-label col-sm-2" for="email">Description:</label>*@
+                        @*<textarea name="description" id="description" for="Description" cols="30" rows="3" style="width: 100%"></textarea>*@
+                    @*</div>*@
+
+                @*<div class="tile-hot">*@
+
+                        @*<input type="text"  name="jobId" style="display:none;" id="jobId" value="@help.id"/>*@
+                    @*</div>*@
+                @*</div>*@
+
+            @*<a  action="newNote" href="/rating" id="btn-postJob" class="btn btn-primary">Post Rating</a>*@
+        @*</div>*@
+        @*}*@
+       @*</div>*@
+    @*<div class="col-md-2"></div>*@
+
+    @*</div>*@
+
+
+
+@*</div>*@
+
+    @*rating page.. the form for rating will come here*@
 </body>
 
 </html>
