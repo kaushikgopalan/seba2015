@@ -31,8 +31,8 @@ GET         /deleteHelp/*id                    controllers.Helps.delete(id)
 
 #rating maps
 
-GET         /rating/*id             controllers.Ranking.newRating(id)
-GET         /rating                 controllers.Ranking.newNote()
+GET         /rating/*id                         controllers.Ranking.newRating(id)
+POST        /rating                             controllers.Ranking.newNote()
 
 #WebJarsh
 GET         /assets/*file                      controllers.Assets.at(path="/public", file)

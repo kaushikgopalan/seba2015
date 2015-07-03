@@ -21,7 +21,7 @@
     <div class="container">
         <div class="panel panel-primary">
             <div class="panel-heading">
-                <strong>Post Job: </strong>
+                <strong>Post Rating: </strong>
             </div>
             <div class="panel-body">
 
@@ -46,12 +46,13 @@
                         </div>
                         <div class="form-group">
                             <div class="col-sm-offset-2 col-sm-10">
-                                <a  action="newNote" href="/rating" id="btn-postJob" class="btn btn-primary">Post Rating</a>
+                                <button type="submit"  id="btn-postJob" class="btn btn-primary">Post Rating</button>
                                 <button type="button" class="btn btn-default" data-toggle="modal" data-target="#modal-cancel">Cancel</button>
-                                <button type="submit" class="hidden" id="submit">Submit</button>
+
                             </div>
                         </div>
                     </div>
+                    <input type="hidden"  name="jobId"  id="jobId" value="@help.id" >
                 }
                 </div>
 

@@ -46,10 +46,13 @@ public class Ranking extends Controller{
         //Form<Note> form = Form.form(Note.class).bindFromRequest();
         DynamicForm requestData = Form.form().bindFromRequest();
         String jobId = requestData.get("jobId");
+
         try{
 
         System.out.println(requestData.get("jobId")+" is the jobid");
-        int rank = Integer.parseInt( requestData.get("rankId"));
+            System.out.println(requestData.get("rank")+" is the rankid..");
+        int rank = Integer.parseInt( requestData.get("rank"));
+            System.out.println(requestData.get("rank")+" is the rankid..");
         String description = requestData.get("description");
 
         Help help = Help.find.byId(jobId);
@@ -83,8 +86,8 @@ public class Ranking extends Controller{
             return redirect(routes.Application.index());
                     //ok(index.render(Help.getLastJobs(), User.getLastHelps(),null));
         } else {
-            System.out.println(jobId+" is the job id");
-            Help help = Help.find.where().eq("id", Integer.parseInt(jobId)).findUnique();
+            System.out.println(jobId+" is the job id. inside newRating else");
+            Help help = Help.find.byId(jobId);
             //Form<Help> myForm = form(Help.class);
             System.out.println("help id:"+ help.id);
             return ok(rating.render(help));
