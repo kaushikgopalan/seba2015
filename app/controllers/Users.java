@@ -15,9 +15,7 @@ import play.mvc.Result;
 import views.html.*;
 
 import java.lang.Package;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created by Alexx on 28.05.2015.
@@ -174,7 +172,6 @@ public class Users extends Controller{
     }
 
     public static Result signUp(){
-
         DynamicForm requestData = Form.form().bindFromRequest();
         String sLogin = requestData.get("login");
         String sFirstName = requestData.get("firstName");
@@ -182,30 +179,37 @@ public class Users extends Controller{
         String sDescription = requestData.get("description");
         String sPass = requestData.get("hashPass");
         String sPass2 = requestData.get("hashPass2");
-        String sSkills = requestData.get("skills");
         String sAddress = requestData.get("address");
 
+        Map<String, String[]> map = request().body().asFormUrlEncoded();
+        String[] checkedVal = map.get("skills");
 
-/*        List<F.Tuple<String,List<Object>>> list = Form.form().field("skills").constraints();
-        System.out.println("SkilsWeb: " +lista.size());
-
-        List<Object> lista2 = lista.get(0)._2;
-
-
-        System.out.println("SkilsWeb: " +lista2.size());*/
-
-
-        /*if ((sPass != sPass2 ) || sPass == "" || sPass2 == ""){
-            return ok("Password confirmation is not the same or empty");
-        }*/
+        List<Category> catList = Category.find.all();
 
         User user = new User();
         user.login = sLogin;
         user.firstName = sFirstName;
         user.lastName = sLastName;
         user.description = sDescription;
+        user.skills = new ArrayList<>();
         user.address = sAddress;
 
+        if(checkedVal !=null ){
+            for (String sCat : checkedVal) {
+
+                int i = Integer.parseInt(sCat);
+                i--;
+
+                //the same index from DB
+                if(i>0 && i<catList.size()){
+                    user.skills.add(catList.get(i));
+                }
+            }
+        }
+
+        /*if ((!sPass.equals(sPass2) ) || sPass == "" || sPass2 == ""){
+            return ok("Password confirmation is not the same or empty");
+        }*/
 
         try {
             user.hashPass = Hash.createPassword(sPass);

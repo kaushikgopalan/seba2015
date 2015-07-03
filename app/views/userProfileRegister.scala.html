@@ -52,13 +52,24 @@
   </div>
   <div class="form-group">
     <label for="inputSkill" class="col-sm-5 control-label">Skills :</label>
-    <div class="col-sm-3">
-      <select name="skills" multiple id="skills" class="col-sm-5 form-control">
-        @for(category <- user.skills.toList) {
-          <option name="skill" value="@category.id">@category.name</option>
-        }
-      </select>
-    </div>
+
+      @if(session.contains("login")) {
+        <div class="col-sm-3">
+          <select name="skills[]" multiple class="col-sm-5 form-control">
+          @for(category <- user.skills.toList) {
+            <option name="skill" value="@category.id">@category.name</option>
+          }
+          </select>
+        </div>
+
+      } else{
+        <div class="col-sm-3">
+          @for((category, index) <- user.skills.zipWithIndex) {
+            <input type="checkbox" name="skills" value="@category.id">@category.name <br>
+            }
+        </div>
+      }
+
   </div>
   <div class="form-group">
     <label for="address" class="col-sm-5 control-label">Address :</label>
