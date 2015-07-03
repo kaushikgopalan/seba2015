@@ -30,7 +30,7 @@ public class Application extends Controller {
         return null;
     }
 
-    public static Result index(){
+    public static Result index() {
 
         if(ctx().session().get("error")!=null)
             {
