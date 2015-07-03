@@ -59,7 +59,7 @@ src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDIwe654Ap3O6jqeVXCrMdQC4e
 
             @if(session.contains("login") && session.get("login") == help.owner.login) {
 
-                <button class="btn btn-default help-details-btn">Edit</button> <button class="btn btn-danger help-details-btn" data-toggle="modal" data-target="#modalDelete">Delete</button> 
+                <button class="btn btn-default help-details-btn" disabled="disabled">Edit</button> <button class="btn btn-danger help-details-btn" data-toggle="modal" data-target="#modalDelete">Delete</button> 
 
             } else {
               @if(session.contains("login")){
@@ -95,12 +95,6 @@ src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDIwe654Ap3O6jqeVXCrMdQC4e
             </dt>
             <dd>
               @help.description
-            </dd>
-            <dt>
-              Dates:
-            </dt>
-            <dd>
-              TODO@help.dates
             </dd>
           </dl>
         </div>

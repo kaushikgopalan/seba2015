@@ -9,6 +9,7 @@ import play.data.Form;
 import play.libs.Json;
 import play.mvc.Controller;
 import play.mvc.Result;
+import views.html.findJob;
 import views.html.helpDetails;
 import views.html.index;
 
@@ -150,7 +151,20 @@ public class Helps extends Controller{
         Help help = Help.find.byId(id);
         help.isDeleted = true;
         help.update();
-        return ok("help updated");
+        return ok(index.render(Help.getJobsNotDone(), User.getHelpies(), null));
+    }
+
+    public static Result getAllJobsWithCategory(String selectedCategory){
+        List<Help> allJobs = Help.find.all();
+        List<Help> allJobsWithCategory = new ArrayList<>();
+
+        for (Help help : allJobs){
+            if (help.category.name.equals(selectedCategory)) {
+                allJobsWithCategory.add(help);
+            }
+        }
+        return ok(findJob.render(getAllCategories(), allJobsWithCategory));
+
     }
 
 }
