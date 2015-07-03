@@ -1,0 +1,29 @@
+@import java.util
+@import models.User
+@import models.Help
+@(error:String)(content: Html)
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/html">
+    <head>
+        @head(title = "Helpies.com Rating")
+        @*<link rel="stylesheet" media="screen" href="@routes.Assets.at(WebJarAssets.locate("flat-ui.css"))>*@
+        @*<link rel="" media="screen" href="@routes.WebJarAssets.at(WebJarAssets.locate("flat-ui-icons-regular.svg"))">*@
+
+    </head>
+    <body>
+        @*<div style="height: 50px"></div>*@
+        @navBar()
+        @if(error!=null){
+            <h1>@error</h1>
+        }
+
+
+    <div class="container" >
+</div>
+
+    rating page.. the form for rating will come here
+</body>
+
+</html>

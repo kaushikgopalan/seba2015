@@ -15,7 +15,7 @@ import java.util.List;
  */
 public class Ranking extends Controller{
 
-    public static List<Note> getAllFirHelpie(){
+    public static List<Note> getAllForHelpie(){
         List<Note> ranking = new ArrayList<>();
         String login = ctx().session().get("login");
         User user = User.find.byId(login);
@@ -41,6 +41,16 @@ public class Ranking extends Controller{
         note.save();
 
         return ok();
+    }
+
+    // written for Rating redirect to rate page.
+    public static Result newRating(String jobId){
+        //TODO:
+        /*
+            first check signed in. Then check if he did the job.
+
+         */
+       return ok();// return ok(rating.render("Rating"));
     }
 
 }

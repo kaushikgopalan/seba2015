@@ -32,7 +32,13 @@ public class Application extends Controller {
 
     public static Result index() {
 
+        if(ctx().session().get("error")!=null)
+            {
+                String error=ctx().session().get("error");
+                ctx().session().remove("error");
+                return ok(index.render(Help.getLastJobs(), User.getLastHelps(),error));
 
+            }
         if (ctx().session().get("login")==null) {
             return ok(index.render(Help.getLastJobs(), User.getLastHelps(),null));
         } else {
@@ -40,13 +46,13 @@ public class Application extends Controller {
         }
     }
     //testing if this works.. will be returning this index in case there is error
-    public static Result index(String error){
-        // right now, this is returned that no login found and hence with error.
-        // the other one just returns the the empty thing.
-        System.out.println("here at other index method.");
-        return ok(index.render(Help.getLastJobs(), User.getLastHelps(),error));
-
-    }
+//    public static Result index(String error){
+//        // right now, this is returned that no login found and hence with error.
+//        // the other one just returns the the empty thing.
+//        System.out.println("here at other index method.Error: "+error);
+//        return ok(index.render(Help.getLastJobs(), User.getLastHelps(),error));
+//
+//    }
     public static Result about() { return ok(about.render("Our Team :")); }
 
     public static Result contact() { return ok(contact.render("Contact Form :")); }
@@ -62,8 +68,9 @@ public class Application extends Controller {
         System.out.println("inside postjob");
         String login = ctx().session().get("login");
         if(login==null){
+            ctx().session().put("error","Error: Not logged in");
             System.out.println("insdie post job and error no login");
-            return index("Error: Not logged in");
+            return redirect(routes.Application.index());
             //return ok(postHelp.render(categories,"error: not logged in"));
         }
         List<Category> categories = Category.find.all();
@@ -77,10 +84,11 @@ public class Application extends Controller {
     public static Result findJob(){
         List<Category> categories = Category.find.all();
         List<Help> jobs = Help.find.all();
+        List<Help> list = new ArrayList<Help>();
         for(Help help : jobs){
-            if(help.isDeleted) jobs.remove(help);
+            if(!help.isDeleted) list.add(help);
         }
-        return ok(findJob.render(categories, jobs));
+        return ok(findJob.render(categories, list));
     }
 
     //for testing

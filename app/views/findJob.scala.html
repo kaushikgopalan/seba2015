@@ -15,38 +15,44 @@
   <body>
     @navBar()
     <div class="container">
-        <div class="col-md-4">
-          <div class="input-group">
-            <input type="text" class="form-control" aria-label="..." placeholder="What are you looking for?">
-            <div class="input-group-btn">
-              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">All Categories <span class="caret"></span></button>
-              <ul class="dropdown-menu">
-                <li><a href="#">All Categories</a></li>
-                <li role="separator" class="divider"></li>
-                @for(category <- categories) {
-                  <li><a href="#">@category.name</a></li>
-                }
-              </ul>
-            </div><!-- /btn-group -->
-          </div>
+      @if(jobs.isEmpty){
+        <div class="col-md-12">
+        <p>Sorry, there are no Jobs in this category <a href="../findJob">go back</a></p>
+
+        </div>
+      } else {
+        <div class="col-md-3">
+          <label for="">What are you looking for?</label>
         </div>
         <div class="col-md-4">
-          <div class="input-group">
-            <input type="text" class="form-control" aria-label="..." placeholder="Enter your location">
-            <div class="input-group-btn">
-              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">+ 5 km<span class="caret"></span></button>
-              <ul class="dropdown-menu">
-                <li><a href="#">+ 5 km</a></li>
-                <li><a href="#">+ 10 km</a></li>
-                <li><a href="#">+ 25 km</a></li>
-                <li><a href="#">+ 50 km</a></li>
-              </ul>
-            </div><!-- /btn-group -->
-          </div>
+
+          <select id="select-category" id="" class="form-control">
+            <option value="all">All Categories</option>
+            @for(category <- categories) {
+              <option value="@category.name">@category.name</option>
+            }
+          </select>
         </div>
+        @*<div class="col-md-4">
+        <div class="input-group">
+        <input type="text" class="form-control" aria-label="..." placeholder="Enter your location">
+        <div class="input-group-btn">
+        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        + 5 km<span class="caret"></span></button>
+        <ul class="dropdown-menu">
+        <li><a href="#">+ 5 km</a></li>
+        <li><a href="#">+ 10 km</a></li>
+        <li><a href="#">+ 25 km</a></li>
+        <li><a href="#">+ 50 km</a></li>
+        </ul>
+        </div><!-- /btn-group -->
+        </div>
+        </div>*@
         <div class="col-md-4">
-          <button class="btn btn-primary"><span class="glyphicon glyphicon-search" aria-hidden="true"></span> Find</button>
+          <button class="btn btn-primary" id="btn-find"><span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+            Find</button>
         </div>
+      }
     </div>
     <div class="container findjob-jobList">
       @for(job <- jobs){
@@ -92,5 +98,17 @@
       </div>
     </div>
       <!-- End Popup -->
+    <script>
+
+      $('#btn-find').click(function(){
+        var select = $('#select-category').val();
+        if (select == 'all'){
+          window.location.href = '../findJob';
+        }
+        else {
+          window.location.href = '../findJob/'+select;
+        }
+      });
+    </script>
   </body>
 </html>
