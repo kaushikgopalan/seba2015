@@ -27,11 +27,17 @@
 }
 
 .header-image{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
     max-width: 126px;
     max-height: 75px;
 
 }
 .header-image-small{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
     padding-top: 5px;
     max-width: 90px;
     max-height: 55px;
@@ -106,4 +112,18 @@
 }
 .help-container-header-price{
     color: red;
+}
+.nav-list li{
+    display: inline;
+    list-style: none;
+    padding: 5px;
+}
+.nav-list{
+    padding: 0;
+}
+.btn-navbar{
+    color:white;
+}
+.spacer{
+    height:12px;
 }

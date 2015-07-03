@@ -37,27 +37,35 @@
 </nav>
 
 <nav class="navbar navbar-inverse navbar-static-top nav-static" id="second-navbar">
-    <div class="container">
 
-        <div class="row">
-            <div class="col-xs-4 col-sm-4 col-md-5">
-                <ul class="nav navbar-nav navbar-left">
-                    <li ><a href="/findJob" class ="fui-list"> Find Jobs</a></li>
-                    <li><a action="postjob" href="/postjob" class ="fui-new"> Post Jobs</a></li>
-                </ul>
-            </div>
 
-            <div class="col-xs-3 col-sm-3 col-md-3">
-                <a href="/" class=""><img src='@routes.Assets.at("helpies3transparent.png")'  class="header-image" id="headerImg" ></a>
+        <div class="container">
+            <div class="col-xs-4 col-sm-4 col-md-4">
 
+                <div class="row">
+                    <div class="col-md-12 spacer visible-md visible-lg"></div>
+                    <div class="col-md-6">
+                        <a href="/findJob" class ="fui-list btn-navbar"> <strong>Find Jobs</strong></a>
+                    </div>
+                    <div class="col-md-6">
+                        <a action="postjob" href="/postjob" class ="fui-new btn-navbar"> <strong>Post Jobs</strong></a>
+                    </div>
+                </div>
             </div>
 
             <div class="col-xs-4 col-sm-4 col-md-4">
-                <ul class="nav navbar-nav navbar-right">
-                <li><a href="#" class ="glyphicon glyphicon-user"> Find Helpies</a></li>
-                <li><a href="#" class ="glyphicon glyphicon-scissors"> Post Help</a></li>
-                </ul>
-
+                <a href="/" class=""><img src='@routes.Assets.at("helpies3transparent.png")'  class="header-image" id="headerImg" ></a>
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <div class="row">
+                    <div class="col-md-12 spacer visible-md visible-lg"></div>
+                    <div class="col-md-6">
+                        <a href="#" class ="glyphicon glyphicon-user btn-navbar"> <strong>Find Helpies</strong></a>
+                    </div>
+                    <div class="col-md-6">
+                        <a href="#" class ="glyphicon glyphicon-scissors btn-navbar"> <strong>Post Help</strong></a>
+                    </div>
+                </div>
             </div>
         </div>
         @*<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">*@
@@ -68,9 +76,4 @@
         @*</button>*@
 
 
-            <div>
-
-
-        </div>
-    </div>
 </nav>
