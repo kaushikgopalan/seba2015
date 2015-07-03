@@ -179,7 +179,6 @@ public class Users extends Controller{
         String sDescription = requestData.get("description");
         String sPass = requestData.get("hashPass");
         String sPass2 = requestData.get("hashPass2");
-        String sSkills = requestData.get("skills");
         String sAddress = requestData.get("address");
 
         Map<String, String[]> map = request().body().asFormUrlEncoded();
