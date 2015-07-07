@@ -58,10 +58,11 @@ src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDIwe654Ap3O6jqeVXCrMdQC4e
 
 
             @if(session.contains("login") && session.get("login") == help.owner.login) {
-
-                <button class="btn btn-default help-details-btn" disabled="disabled">Edit</button> 
-                <button class="btn btn-danger help-details-btn" data-toggle="modal" data-target="#modalDelete">Delete</button> 
-                <a action="Profile" href="/rating/@help.id" class="btn btn-inverse help-details-btn" >Rate Help</a> 
+                <div class="row">
+                <button class="btn btn-default col-md-4" disabled="disabled"> Edit </button> 
+                  <button class="btn btn-danger col-md-4 " data-toggle="modal" data-target="#modalDelete"> Delete </button>
+                  <a action="Profile" href="/rating/@help.id" class="btn btn-inverse col-md-4" > Rate Help </a> 
+                </div>
 
             } else {
               @if(session.contains("login")){
