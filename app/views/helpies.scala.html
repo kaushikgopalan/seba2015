@@ -1,0 +1,56 @@
+@import java.util
+@import models.User
+@import models.Help
+@(lasthelps: util.List[User])
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/html">
+    <head>
+        @head(title = "helpies.com")
+        </head>
+    <body>
+
+@navBar()
+
+
+        @for(s <- lasthelps){
+            <div class="row">
+                <div class="col-md-3"></div>
+                <div class="col-md-6">
+            @if(session.contains("login")){
+                <div class="tile index-helpieTile" data-toggle="modal" data-target="#myModal" data-login="@s.login">
+                    <div class="tile-title">
+                        @s.firstName @s.lastName
+                    </div>
+                    <div class="tile-ribbon">
+                    <strong>Skills: </strong>
+                    @for(skill <- s.skills){
+                        @skill.name
+                    }
+                    </div>
+                    <div class="tile-ribbon">
+                        <strong>Address: </strong>
+                        @s.address
+
+                    </div>
+                </div>
+            }else{
+                <div class="tile index-helpieTile" data-toggle="modal" data-target="#noLogin">
+                    <div class="tile-title">
+                        @s.firstName @s.lastName
+                    </div>
+                    <div class="tile-ribbon">
+                    @for(skill <- s.skills){
+                        @skill.name
+                    }
+                    </div>
+                </div>
+            }
+                </div>
+
+            </div>
+         }
+
+
+    @footer()
+    </body>

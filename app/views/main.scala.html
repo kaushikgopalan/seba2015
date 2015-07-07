@@ -95,6 +95,18 @@
         </div>
     </div>
 
+        @if(session.contains("login")){
+        }else{
+
+            <div class="row ">
+                <div class=" col-md-4"></div>
+                <div class="col-md-6">
+                    <h5>Please <a action="signIn" href="/signIn" >Login/Sign up </a> to view more Content</h5>
+                </div>
+
+            </div>
+        }
+
         @footer()
 
             <!-- Modal -->

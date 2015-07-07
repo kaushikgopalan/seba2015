@@ -44,6 +44,8 @@ GET         /profile                           controllers.Application.profile()
 GET         /assets/*file                      controllers.Assets.at(path="/public", file)
 GET         /testDB                            controllers.Users.testDB()
 
+GET         /helpies                           controllers.Users.showUsers()
+
 # GET         /notifications           controllers.Application.GetAllNotifications()
 POST        /newNotification                   controllers.Notifications.newNotification()
 GET         /newNotificationIndex              controllers.Notifications.newNotificationIndex()

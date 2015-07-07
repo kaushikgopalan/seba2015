@@ -263,6 +263,20 @@ public class Users extends Controller{
         return redirect(routes.Application.index());
     }
 
+    public static Result showUsers(){
+
+        String login = ctx().session().get("login");
+        if(login==null){
+            ctx().session().put("error","Error: Not logged in");
+            System.out.println("insdie post job and error no login");
+            return redirect(routes.Application.index());
+            //return ok(postHelp.render(categories,"error: not logged in"));
+        }
+
+        return ok(helpies.render( User.getHelpies()));
+
+    }
+
     public static User getUserInformation(){
         String login = ctx().session().get("login");
         if(login == null){
