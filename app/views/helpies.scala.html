@@ -19,26 +19,29 @@
                 <div class="col-md-6">
             @if(session.contains("login")){
                 <div class="tile index-helpieTile" data-toggle="modal" data-target="#myModal" data-login="@s.login">
-                    <div class="tile-title">
+                    <strong><div class="tile-title fui-user">
                         @s.firstName @s.lastName
-                    </div>
+                    </div></strong>
                     <div class="tile-ribbon">
                     <strong>Skills: </strong>
                     @for(skill <- s.skills){
                         @skill.name
                     }
                     </div>
+                    <br>
                     <div class="tile-ribbon">
                         <strong>Address: </strong>
                         @s.address
 
                     </div>
                 </div>
+
             }else{
-                <div class="tile index-helpieTile" data-toggle="modal" data-target="#noLogin">
-                    <div class="tile-title">
+                <div class="tile " data-toggle="modal" data-target="#noLogin">
+                    <div class="tile-title fui-user">
                         @s.firstName @s.lastName
                     </div>
+
                     <div class="tile-ribbon">
                     @for(skill <- s.skills){
                         @skill.name
