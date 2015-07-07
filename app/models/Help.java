@@ -65,7 +65,13 @@ public class Help extends Model{
         for (int i=0; i<allHelps.size(); i++){
             if(allHelps.get(i).done==false && !allHelps.get(i).isDeleted) notDoneHelps.add(allHelps.get(i));
         }
-        return notDoneHelps;
+
+        List<Help> reverseNotDOneHelps = new ArrayList<>();
+        for(int i=1;i<=notDoneHelps.size();i++){
+            reverseNotDOneHelps.add(notDoneHelps.get(notDoneHelps.size()-i));
+        }
+        return reverseNotDOneHelps;
+        //return notDoneHelps;
     }
 
     public static List<Help> getLastJobs(){
